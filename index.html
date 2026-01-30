@@ -7,21 +7,20 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-dark: #05070f;
-      --bg-darker: #02040a;
-      --cyan: #00f0ff;
-      --teal: #00d4ff;
-      --magenta: #ff00d4;
-      --gold: #ffd700;
-      --purple: #9d00ff;
-      --text: #f0faff;
-      --text-muted: #b0e0ff;
-      --glass: rgba(10, 20, 40, 0.55);
-      --glow: 0 0 25px rgba(0, 240, 255, 0.6);
+      --bg: #f8fafc;               /* Very light cool gray-white – super easy on eyes */
+      --card-bg: #ffffff;
+      --primary: #4a90e2;          /* Soft trustworthy blue */
+      --primary-dark: #357abd;
+      --accent: #50c878;           /* Fresh sage green – calming & growth feel */
+      --accent-warm: #ff9999;      /* Soft coral/peach warmth */
+      --text: #1e293b;             /* Deep slate – readable, not harsh */
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 8px 24px rgba(74,144,226,0.08);
     }
 
     * {
@@ -32,311 +31,240 @@
 
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg-dark) url('https://thumbs.dreamstime.com/b/abstract-digital-background-mathematical-symbols-glowing-equations-interconnected-network-lines-futuristic-visualization-359403404.jpg') center/cover fixed no-repeat;
+      background: var(--bg);
       color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(5,7,15,0.75), rgba(2,4,10,0.92));
-      pointer-events: none;
-      z-index: -2;
+      line-height: 1.65;
     }
 
     h1, h2, h3 {
       font-family: 'Playfair Display', serif;
-      font-weight: 900;
+      font-weight: 700;
     }
 
     .container {
-      width: min(90%, 1400px);
+      width: min(92%, 1320px);
       margin: 0 auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Floating animated math elements */
-    .float-math {
-      position: fixed;
-      color: rgba(0, 240, 255, 0.18);
-      font-size: clamp(3rem, 8vw, 9rem);
-      pointer-events: none;
-      user-select: none;
-      animation: float 35s infinite ease-in-out, pulse 8s infinite alternate;
-      z-index: -1;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      50%      { transform: translate(var(--dx), var(--dy)) rotate(15deg); }
-    }
-
-    @keyframes pulse {
-      0% { opacity: 0.12; text-shadow: var(--glow); }
-      100% { opacity: 0.32; text-shadow: 0 0 60px rgba(0, 240, 255, 0.8); }
+      padding: 0 1.5rem;
     }
 
     /* Header */
     header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: rgba(5,7,15,0.75);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0,240,255,0.15);
-      z-index: 1000;
+      background: white;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.5rem 5%;
+      padding: 1.2rem 0;
     }
 
     .logo {
-      font-size: 2.6rem;
-      background: linear-gradient(90deg, var(--cyan), var(--magenta), var(--gold));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 900;
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .logo span {
+      color: var(--accent);
     }
 
     .menu {
       display: flex;
-      gap: 3rem;
+      gap: 2.4rem;
       font-weight: 500;
     }
 
     .menu a {
       color: var(--text-muted);
       text-decoration: none;
-      position: relative;
-      transition: all 0.4s;
+      transition: color 0.3s;
     }
 
-    .menu a:hover {
-      color: var(--cyan);
-      text-shadow: 0 0 15px var(--cyan);
+    .menu a:hover, .menu a.active {
+      color: var(--primary);
     }
-
-    .menu a::after {
-      content: '';
-      position: absolute;
-      bottom: -8px; left: 0;
-      width: 0; height: 3px;
-      background: linear-gradient(90deg, var(--cyan), var(--magenta));
-      transition: width 0.4s ease;
-    }
-
-    .menu a:hover::after { width: 100%; }
 
     .btn {
-      padding: 0.9rem 2.2rem;
+      padding: 0.7rem 1.8rem;
       border-radius: 50px;
-      font-weight: 700;
-      transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+      font-weight: 600;
+      transition: all 0.3s;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--cyan), #00aaff);
-      color: #000814;
-      box-shadow: var(--glow);
+      background: var(--primary);
+      color: white;
     }
 
     .btn-primary:hover {
-      transform: translateY(-5px) scale(1.08);
-      box-shadow: 0 0 40px rgba(0,240,255,0.7);
-    }
-
-    /* Hero */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0 5%;
-      position: relative;
-    }
-
-    .hero-content {
-      max-width: 1200px;
-    }
-
-    .hero h1 {
-      font-size: clamp(5rem, 12vw, 11rem);
-      margin-bottom: 1.5rem;
-      background: linear-gradient(90deg, #ffffff, var(--cyan), var(--magenta), var(--gold), #ffffff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 0.95;
-      text-shadow: 0 0 40px rgba(0,240,255,0.4);
-    }
-
-    .hero-lead {
-      font-size: 1.8rem;
-      max-width: 900px;
-      margin: 0 auto 3rem;
-      color: var(--text-muted);
-      font-weight: 300;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      flex-wrap: wrap;
+      background: var(--primary-dark);
+      transform: translateY(-2px);
     }
 
     .btn-outline {
-      border: 2px solid var(--cyan);
-      color: var(--cyan);
+      border: 2px solid var(--primary);
+      color: var(--primary);
       background: transparent;
     }
 
     .btn-outline:hover {
-      background: var(--cyan);
-      color: #000814;
-      box-shadow: var(--glow);
-      transform: translateY(-5px) scale(1.08);
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 10rem 0 8rem;
+      background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 100%);
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.8rem, 8vw, 6.2rem);
+      margin-bottom: 1.4rem;
+      color: var(--primary);
+    }
+
+    .hero-lead {
+      font-size: 1.45rem;
+      max-width: 820px;
+      margin: 0 auto 2.5rem;
+      color: var(--text-muted);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     /* Sections */
     section {
-      padding: 12rem 5% 8rem;
-      position: relative;
+      padding: 8rem 0;
     }
 
     .section-title {
       text-align: center;
-      font-size: 4.2rem;
-      margin-bottom: 5rem;
-      background: linear-gradient(90deg, var(--cyan), var(--magenta), var(--gold));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 3rem;
+      margin-bottom: 4rem;
+      color: var(--primary);
     }
 
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.2rem;
     }
 
     .card {
-      background: var(--glass);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(0,240,255,0.2);
-      border-radius: 24px;
-      padding: 2.8rem;
-      transition: all 0.5s ease;
-      position: relative;
-      overflow: hidden;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2.2rem;
+      box-shadow: var(--shadow);
+      transition: all 0.35s ease;
+      border: 1px solid var(--border);
     }
 
     .card:hover {
-      transform: translateY(-16px) scale(1.04);
-      border-color: var(--cyan);
-      box-shadow: 0 0 50px rgba(0,240,255,0.35);
+      transform: translateY(-10px);
+      box-shadow: 0 16px 40px rgba(74,144,226,0.14);
     }
 
     .card-icon {
-      font-size: 4.5rem;
-      margin-bottom: 1.5rem;
-      color: var(--cyan);
-      text-shadow: 0 0 20px var(--cyan);
+      font-size: 3.6rem;
+      margin-bottom: 1.2rem;
+      color: var(--accent);
     }
 
     .card h3 {
-      font-size: 2.1rem;
+      font-size: 1.8rem;
       margin-bottom: 1rem;
-      color: white;
     }
 
+    /* Footer */
     footer {
-      background: linear-gradient(to top, var(--bg-darker), transparent);
-      padding: 6rem 5% 3rem;
+      background: var(--primary);
+      color: white;
+      padding: 6rem 0 3rem;
       text-align: center;
-      border-top: 1px solid rgba(0,240,255,0.12);
     }
 
-    @media (max-width: 900px) {
-      .hero h1 { font-size: 6.5rem; }
-      .section-title { font-size: 3.2rem; }
-      .menu { gap: 1.8rem; font-size: 0.95rem; }
+    footer .logo {
+      color: white;
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero { padding: 7rem 0 5rem; }
+      .hero h1 { font-size: 3.6rem; }
+      .menu { gap: 1.6rem; font-size: 0.97rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Floating math particles -->
-  <div class="float-math" style="--dx:-220px; --dy:140px; top:15%; left:10%; animation-delay:0s;">∫</div>
-  <div class="float-math" style="--dx:180px; --dy:-120px; top:32%; right:12%; animation-delay:5s;">∑</div>
-  <div class="float-math" style="--dx:-160px; --dy:200px; bottom:25%; left:20%; animation-delay:11s;">π</div>
-  <div class="float-math" style="--dx:240px; --dy:-180px; top:60%; right:15%; animation-delay:17s;">∞</div>
-  <div class="float-math" style="--dx:-200px; --dy:130px; bottom:40%; left:28%; animation-delay:8s;">∂</div>
-
   <header>
     <div class="container">
       <div class="nav">
-        <div class="logo">Simple Mathematics</div>
+        <div class="logo">Simple<span>Mathematics</span></div>
 
         <nav class="menu">
           <a href="#" class="active">Home</a>
           <a href="#">Class 11</a>
           <a href="#">Class 12</a>
-          <a href="#">UG / BSc</a>
+          <a href="#">UG Courses</a>
           <a href="#">Videos</a>
           <a href="#">Quizzes</a>
-          <a href="#">About</a>
         </nav>
 
         <div>
-          <a href="#" class="btn btn-outline" style="margin-right:1.2rem;">Sign in</a>
-          <a href="#" class="btn btn-primary">Start Free Journey</a>
+          <a href="#" class="btn btn-outline" style="margin-right:1rem;">Log in</a>
+          <a href="#" class="btn btn-primary">Get Started Free</a>
         </div>
       </div>
     </div>
   </header>
 
   <section class="hero">
-    <div class="hero-content">
+    <div class="container">
       <h1>Simple Mathematics</h1>
       <p class="hero-lead">
-        Where complexity meets clarity • Elegant explanations • Deep joy of understanding • Mathematics that feels alive and wonderful
+        Clear explanations • Step-by-step mastery • Beautiful notes & quizzes<br>
+        Class 11 • Class 12 • Undergraduate • Entrance exams — made calm, focused & enjoyable
       </p>
 
       <div class="hero-buttons">
-        <a href="#" class="btn btn-primary" style="font-size:1.4rem; padding:1.3rem 3.8rem;">Explore Now</a>
-        <a href="#" class="btn btn-outline" style="font-size:1.4rem; padding:1.3rem 3.8rem;">Watch Free Videos</a>
+        <a href="#" class="btn btn-primary" style="font-size:1.2rem; padding:1rem 2.6rem;">Browse Courses</a>
+        <a href="#" class="btn btn-outline" style="font-size:1.2rem; padding:1rem 2.6rem;">Watch Free Videos</a>
       </div>
     </div>
   </section>
 
   <section>
     <div class="container">
-      <h2 class="section-title">Discover the Magic</h2>
+      <h2 class="section-title">Why Students Love Learning Here</h2>
       <div class="cards">
         <div class="card">
-          <div class="card-icon">✨</div>
-          <h3>Crystal Clear Concepts</h3>
-          <p>Visual storytelling, animations & real-world analogies that make even tough topics feel simple and exciting.</p>
+          <div class="card-icon">📘</div>
+          <h3>Calm & Focused Lessons</h3>
+          <p>Short, clear videos with perfect pace — never overwhelming, always building confidence.</p>
         </div>
         <div class="card">
-          <div class="card-icon">⚡</div>
-          <h3>Lightning Fast Mastery</h3>
-          <p>Focused lessons + smart notes + progressive quizzes = deep understanding in record time.</p>
+          <div class="card-icon">🧠</div>
+          <h3>Smart Quizzes & Notes</h3>
+          <p>Downloadable PDFs + concept-wise tests with instant feedback to reinforce learning gently.</p>
         </div>
         <div class="card">
-          <div class="card-icon">🌌</div>
-          <h3>Infinite Possibilities</h3>
-          <p>Class 11 • 12 • UG • Entrance exams • Lifelong love for mathematics starts here.</p>
+          <div class="card-icon">🌱</div>
+          <h3>Growth for Every Level</h3>
+          <p>From Class 11 basics to UG analysis — progress at your own peaceful pace.</p>
         </div>
       </div>
     </div>
@@ -344,12 +272,12 @@
 
   <footer>
     <div class="container">
-      <div class="logo" style="font-size:3.8rem; margin-bottom:2rem;">Simple Mathematics</div>
-      <p style="font-size:1.3rem; max-width:800px; margin:0 auto 2.5rem; opacity:0.9;">
-        Making mathematics feel simple, beautiful, and endlessly fascinating — one elegant moment at a time.
+      <div class="logo">Simple<span>Mathematics</span></div>
+      <p style="max-width:700px; margin:1.5rem auto; opacity:0.95;">
+        Helping students understand mathematics deeply and calmly — one clear concept at a time.
       </p>
-      <p style="opacity:0.6; font-size:1rem; margin-top:3rem;">
-        © 2026 Sunny Mathematics – Crafted with passion for curious minds
+      <p style="margin-top:3rem; opacity:0.8; font-size:0.95rem;">
+        © 2026 Sunny Mathematics • Made with care in India
       </p>
     </div>
   </footer>
