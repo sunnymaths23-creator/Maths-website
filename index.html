@@ -819,3 +819,377 @@
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Mathematics</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#fffdf7;
+      --ink:#151515;
+      --muted:#55626f;
+
+      --card: rgba(255,255,255,0.94);
+      --stroke:#efe7d6;
+      --shadow: 0 18px 50px rgba(40, 30, 10, 0.10);
+
+      --yellow:#ffd166;
+      --yellow2:#ffb703;
+
+      --green:#2ecc71;
+      --red:#ff4d4d;
+
+      --rXL: 30px;
+      --rL: 22px;
+
+      --max: 1200px;
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html{ scroll-behavior:smooth; }
+    body{
+      font-family:"Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      overflow-x:hidden;
+    }
+
+    .container{
+      max-width: var(--max);
+      margin:auto;
+      padding: 18px;
+    }
+
+    /* NAV */
+    .nav{
+      position: sticky;
+      top:0;
+      z-index:50;
+      background: rgba(255,253,247,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(239,231,214,0.95);
+    }
+    .nav-inner{
+      max-width: var(--max);
+      margin:auto;
+      padding: 14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .logo{
+      width: 46px;
+      height: 46px;
+      border-radius: 18px;
+      display:grid;
+      place-items:center;
+      color:#111;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--yellow), var(--green), var(--red));
+      box-shadow: 0 16px 26px rgba(0,0,0,0.10);
+    }
+
+    .links{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .links a{
+      text-decoration:none;
+      color: var(--muted);
+      font-weight: 800;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+    .links a:hover{
+      background: rgba(255,209,102,0.35);
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .nav-btn{
+      text-decoration:none;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+      color:#161616;
+      border: 1px solid rgba(239,231,214,0.95);
+      background: linear-gradient(135deg, var(--yellow), #fff2c7);
+      box-shadow: 0 14px 26px rgba(40,30,10,0.10);
+      transition: 0.2s ease;
+      white-space: nowrap;
+    }
+    .nav-btn:hover{ transform: translateY(-1px); }
+
+    /* HERO */
+    .hero{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .card{
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--rXL);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      overflow:hidden;
+      position: relative;
+    }
+    .badge{
+      display:inline-flex;
+      gap: 10px;
+      align-items:center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 13px;
+      background: rgba(46,204,113,0.15);
+      border: 1px solid rgba(46,204,113,0.20);
+      color: #1a3b27;
+    }
+
+    .title{
+      margin-top: 12px;
+      font-size: clamp(28px, 4.2vw, 48px);
+      line-height: 1.1;
+      font-weight: 900;
+    }
+    .title span{
+      background: linear-gradient(90deg, var(--red), var(--yellow2), var(--green));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color: transparent;
+    }
+
+    .sub{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+
+    .cta{
+      margin-top: 16px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn{
+      text-decoration:none;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-weight: 900;
+      border: 1px solid var(--stroke);
+      background: white;
+      color: var(--ink);
+      transition: 0.2s ease;
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+    }
+    .btn:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 16px 26px rgba(0,0,0,0.08);
+    }
+    .btn.main{
+      border:none;
+      background: linear-gradient(135deg, var(--green), var(--yellow2));
+      color: #102015;
+      box-shadow: 0 16px 28px rgba(46,204,113,0.18);
+    }
+
+    /* Chapters */
+    .chapters{
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .chapter{
+      text-decoration:none;
+      background: rgba(255,255,255,0.95);
+      border: 1px solid rgba(239,231,214,0.95);
+      border-radius: 18px;
+      padding: 14px;
+      font-weight: 900;
+      color: var(--ink);
+      transition: 0.22s ease;
+      box-shadow: 0 14px 26px rgba(40,30,10,0.08);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .chapter:hover{
+      transform: translateY(-4px);
+      background: rgba(255,244,210,0.95);
+    }
+    .tag{
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 900;
+      background: rgba(255,209,102,0.40);
+      border: 1px solid rgba(239,231,214,0.95);
+    }
+
+    /* Right panel */
+    .side{
+      background: linear-gradient(135deg, rgba(255,209,102,0.35), rgba(255,255,255,0.90));
+      border: 1px solid rgba(239,231,214,0.95);
+      border-radius: var(--rXL);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .side h3{
+      font-size: 18px;
+      font-weight: 900;
+    }
+    .side p{
+      margin-top: 8px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .quick{
+      margin-top: 14px;
+      display:grid;
+      gap: 10px;
+    }
+    .quick a{
+      text-decoration:none;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(239,231,214,0.95);
+      border-radius: 18px;
+      padding: 12px;
+      font-weight: 900;
+      color: var(--ink);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      transition: 0.2s ease;
+    }
+    .quick a:hover{
+      transform: translateY(-2px);
+      background: rgba(255,244,210,0.95);
+    }
+
+    footer{
+      text-align:center;
+      padding: 26px 0 38px;
+      color: var(--muted);
+      font-weight: 800;
+      line-height: 1.7;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .chapters{ grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo">∑</div>
+        Simple Mathematics
+      </div>
+
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="notes.html">Notes</a>
+        <a href="lectures.html">Lectures</a>
+        <a href="quiz.html">Quiz</a>
+      </div>
+
+      <a class="nav-btn" href="notes.html">📘 Open Notes</a>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card">
+        <div class="badge">✨ Free Learning • Notes • Lectures • Quiz</div>
+
+        <div class="title">
+          Make Maths <span>simple & enjoyable</span> 🌈
+        </div>
+
+        <p class="sub">
+          Welcome to <b>Simple Mathematics</b>. Here you get chapter-wise PDFs, easy lectures and weekly quizzes.
+          Everything is arranged topic-wise so students can learn comfortably.
+        </p>
+
+        <div class="cta">
+          <a class="btn main" href="notes.html">📘 Download Notes</a>
+          <a class="btn" href="lectures.html">🎥 Watch Lectures</a>
+          <a class="btn" href="quiz.html">📝 Take Quiz</a>
+        </div>
+
+        <div style="margin-top:18px; font-weight:900;">📌 Quick Chapters</div>
+        <div class="chapters">
+          <a class="chapter" href="notes.html#algebra">Algebra <span class="tag">PDF</span></a>
+          <a class="chapter" href="notes.html#calculus">Calculus <span class="tag">PDF</span></a>
+          <a class="chapter" href="notes.html#vectors">Vectors <span class="tag">PDF</span></a>
+          <a class="chapter" href="notes.html#trigonometry">Trigonometry <span class="tag">PDF</span></a>
+          <a class="chapter" href="notes.html#matrices">Matrices <span class="tag">PDF</span></a>
+          <a class="chapter" href="notes.html#probability">Probability <span class="tag">PDF</span></a>
+        </div>
+      </div>
+
+      <aside class="side">
+        <h3>🚀 Study Plan</h3>
+        <p>
+          ✅ Read Notes<br>
+          ✅ Watch Lecture<br>
+          ✅ Practice Daily<br>
+          ✅ Weekly Quiz
+        </p>
+
+        <div class="quick">
+          <a href="notes.html">Notes <span>→</span></a>
+          <a href="lectures.html">Lectures <span>→</span></a>
+          <a href="quiz.html">Quiz <span>→</span></a>
+        </div>
+
+        <p style="margin-top:14px; font-weight:900;">
+          Tip: Upload PDFs in <b>pdf/</b> folder
+        </p>
+      </aside>
+    </section>
+
+    <footer>
+      © 2026 <b>Simple Mathematics</b> • Made free using GitHub Pages 💛💚❤️
+    </footer>
+  </main>
+</body>
+</html>
