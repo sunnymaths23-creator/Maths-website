@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz • Simple Mathematics</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#fffdf7;
+      --ink:#151515;
+      --muted:#55626f;
+
+      --stroke:#efe7d6;
+      --shadow: 0 18px 50px rgba(40, 30, 10, 0.10);
+
+      --yellow:#ffd166;
+      --green:#2ecc71;
+      --red:#ff4d4d;
+
+      --rXL: 30px;
+      --max: 1100px;
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{
+      font-family:"Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    .nav{
+      position: sticky;
+      top:0;
+      z-index:50;
+      background: rgba(255,253,247,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(239,231,214,0.95);
+    }
+
+    .nav-inner{
+      max-width: var(--max);
+      margin:auto;
+      padding: 14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand{
+      font-weight: 900;
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      white-space: nowrap;
+    }
+    .logo{
+      width: 44px; height: 44px;
+      border-radius: 18px;
+      display:grid; place-items:center;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--yellow), var(--green), var(--red));
+    }
+
+    .links{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .links a{
+      text-decoration:none;
+      color: var(--muted);
+      font-weight: 800;
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+    .links a:hover{
+      background: rgba(255,209,102,0.35);
+      color: var(--ink);
+    }
+
+    .container{
+      max-width: var(--max);
+      margin:auto;
+      padding: 18px;
+    }
+
+    .card{
+      background: white;
+      border: 1px solid var(--stroke);
+      border-radius: var(--rXL);
+      box-shadow: var(--shadow);
+      padding: 22px;
+      margin-top: 18px;
+    }
+
+    h1{ font-size: 28px; font-weight: 900; }
+    p{
+      margin-top: 8px;
+      color: var(--muted);
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .grid{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .box{
+      background: rgba(255,255,255,0.95);
+      border: 1px solid var(--stroke);
+      border-radius: var(--rXL);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .box h2{
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top: 10px;
+      text-decoration:none;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 900;
+      border: none;
+      background: linear-gradient(135deg, var(--red), var(--yellow));
+      color: #151515;
+      transition: 0.2s ease;
+    }
+    .btn:hover{ transform: translateY(-2px); }
+
+    footer{
+      text-align:center;
+      padding: 26px 0 38px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="logo">📝</div>
+        Simple Mathematics • Quiz
+      </div>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="notes.html">Notes</a>
+        <a href="lectures.html">Lectures</a>
+        <a href="quiz.html">Quiz</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+    <div class="card">
+      <h1>📝 Quiz Section</h1>
+      <p>
+        Here you can add Google Forms quiz links or Quizizz links.
+        Students can attempt quizzes online ✅
+      </p>
+
+      <div class="grid">
+        <div class="box">
+          <h2>Algebra Quiz</h2>
+          <p>Paste Google Form link here.</p>
+          <a class="btn" href="https://forms.google.com" target="_blank">Start Quiz</a>
+        </div>
+
+        <div class="box">
+          <h2>Calculus Quiz</h2>
+          <p>Paste Google Form link here.</p>
+          <a class="btn" href="https://forms.google.com" target="_blank">Start Quiz</a>
+        </div>
+
+        <div class="box">
+          <h2>Trigonometry Quiz</h2>
+          <p>Paste Google Form link here.</p>
+          <a class="btn" href="https://forms.google.com" target="_blank">Start Quiz</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>© 2026 Simple Mathematics • Quiz page ✅</footer>
+  </main>
+</body>
+</html>
