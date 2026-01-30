@@ -1,376 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunny Mathematics Academy | Love Maths – Class 11 • 12 • UG</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #0a0e17;
-            --bg-darker: #06080f;
-            --primary: #6a5eff;       /* Elegant indigo-violet */
-            --primary-dark: #4a3aff;
-            --accent: #00d4ff;        /* Cyan-teal glow */
-            --accent2: #ff6ec7;       /* Soft magenta-pink */
-            --gold: #ffd166;
-            --text: #e0e7ff;
-            --text-light: #a5b4fc;
-            --gray: #64748b;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sunny Mathematics • Class 11 • 12 • B.Sc • Entrance Exams</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    :root {
+      --teal:    #0ea5e9;
+      --teal-dark:#0369a1;
+      --coral:   #fb7185;
+      --coral-dark:#e11d48;
+      --indigo:  #6366f1;
+      --purple:  #8b5cf6;
+      --gray-1:  #f8fafc;
+      --gray-2:  #e2e8f0;
+      --gray-3:  #64748b;
+      --dark:    #0f172a;
+      --white:   #ffffff;
+    }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg-dark);
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
+    * {
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-        }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--gray-1);
+      color: var(--dark);
+      line-height: 1.65;
+    }
 
-        /* Animated floating math symbols */
-        .math-float {
-            position: absolute;
-            font-size: 2.5rem;
-            color: rgba(100, 90, 255, 0.15);
-            pointer-events: none;
-            animation: float 18s infinite ease-in-out;
-            user-select: none;
-        }
+    h1,h2,h3,h4 {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.2;
+    }
 
-        @keyframes float {
-            0%,100% { transform: translateY(0) rotate(0deg); }
-            50%     { transform: translateY(-40px) rotate(10deg); }
-        }
+    a { text-decoration: none; }
 
-        /* Header */
-        header {
-            background: linear-gradient(to bottom, rgba(10,14,23,0.92), rgba(10,14,23,0.85));
-            backdrop-filter: blur(12px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(106,94,255,0.12);
-        }
+    .container {
+      width: min(94%, 1280px);
+      margin: 0 auto;
+    }
 
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.4rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    /* ─── Header ──────────────────────────────────────────────── */
+    header {
+      background: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-        .logo {
-            font-size: 2.4rem;
-            font-weight: 900;
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
-        }
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.1rem 0;
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 3rem;
-            list-style: none;
-        }
+    .logo {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--teal);
+    }
 
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            transition: color 0.4s;
-        }
+    .logo span {
+      color: var(--coral);
+    }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -6px;
-            left: 0;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            transition: width 0.4s ease;
-        }
+    .main-menu {
+      display: flex;
+      gap: 2.4rem;
+      font-weight: 500;
+    }
 
-        .nav-links a:hover {
-            color: white;
-        }
+    .main-menu a {
+      color: #334155;
+      transition: color 0.25s;
+    }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+    .main-menu a:hover,
+    .main-menu a.active {
+      color: var(--teal);
+    }
 
-        .cta-btn {
-            background: linear-gradient(135deg, var(--primary), #7c6eff);
-            color: white;
-            padding: 12px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 8px 25px rgba(106,94,255,0.35);
-            transition: all 0.4s;
-        }
+    .btn {
+      padding: 0.68rem 1.6rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.28s;
+    }
 
-        .cta-btn:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(106,94,255,0.5);
-        }
+    .btn-primary {
+      background: var(--teal);
+      color: white;
+    }
 
-        /* Hero */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(rgba(10,14,23,0.78), rgba(10,14,23,0.88)),
-                        url('https://thumbs.dreamstime.com/b/abstract-mathematics-background-blue-gradient-filled-various-mathematical-symbols-shapes-including-pi-sigma-407094252.jpg') center/cover no-repeat fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            padding: 0 5%;
-        }
+    .btn-primary:hover {
+      background: var(--teal-dark);
+      transform: translateY(-2px);
+    }
 
-        .hero-content {
-            max-width: 1100px;
-            z-index: 2;
-        }
+    .btn-outline {
+      border: 2px solid var(--teal);
+      color: var(--teal);
+    }
 
-        .hero h1 {
-            font-size: 5.2rem;
-            margin-bottom: 1.2rem;
-            background: linear-gradient(90deg, #c0d2ff, #a78bfa, #ff6ec7, #00d4ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.1;
-        }
+    .btn-outline:hover {
+      background: var(--teal);
+      color: white;
+    }
 
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 780px;
-            margin: 0 auto 2.5rem;
-            color: var(--text-light);
-            font-weight: 300;
-        }
+    /* ─── Hero ────────────────────────────────────────────────── */
+    .hero {
+      padding: 9rem 0 7rem;
+      background: linear-gradient(135deg, #ecfeff 0%, #f0fdfa 50%, #ecfeff 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-        .hero-buttons {
-            display: flex;
-            gap: 1.8rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+    .hero h1 {
+      font-size: clamp(3.2rem, 7vw, 5.4rem);
+      margin-bottom: 1.3rem;
+      background: linear-gradient(90deg, var(--teal), var(--purple), var(--coral));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-        .hero-btn {
-            padding: 16px 42px;
-            font-size: 1.2rem;
-            border-radius: 60px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
-        }
+    .hero-lead {
+      font-size: 1.38rem;
+      max-width: 780px;
+      margin: 0 auto 2.4rem;
+      color: #475569;
+    }
 
-        .primary-hero {
-            background: linear-gradient(135deg, var(--primary), #8b7eff);
-            color: white;
-            box-shadow: 0 12px 30px rgba(106,94,255,0.4);
-        }
+    .hero-buttons {
+      display: flex;
+      gap: 1.4rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-        .primary-hero:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(106,94,255,0.6);
-        }
+    /* ─── Features / Why ──────────────────────────────────────── */
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 3.5rem;
+    }
 
-        .outline-hero {
-            border: 2px solid var(--accent);
-            color: var(--accent);
-        }
+    .section-title span {
+      color: var(--teal);
+    }
 
-        .outline-hero:hover {
-            background: var(--accent);
-            color: var(--bg-dark);
-            transform: translateY(-8px);
-        }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
 
-        /* Sections */
-        section {
-            padding: 140px 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-        }
+    .feature-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2.2rem;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+    }
 
-        .section-title {
-            text-align: center;
-            font-size: 3.8rem;
-            margin-bottom: 5rem;
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 40px rgba(14,165,233,0.16);
+    }
 
-        /* Cards */
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 2.5rem;
-        }
+    .feature-icon {
+      font-size: 3.4rem;
+      margin-bottom: 1.2rem;
+      color: var(--teal);
+    }
 
-        .card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(106,94,255,0.15);
-            border-radius: 24px;
-            overflow: hidden;
-            transition: all 0.5s ease;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-        }
+    .feature-card h3 {
+      font-size: 1.65rem;
+      margin-bottom: 0.9rem;
+    }
 
-        .card:hover {
-            transform: translateY(-16px);
-            border-color: var(--primary);
-            box-shadow: 0 30px 70px rgba(106,94,255,0.3);
-        }
+    /* ─── Popular Topics ──────────────────────────────────────── */
+    .topics {
+      background: white;
+      padding: 7rem 0;
+    }
 
-        .card-icon {
-            height: 160px;
-            background: linear-gradient(135deg, var(--primary), #00d4ff);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            color: white;
-            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
-        }
+    .topic-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      max-width: 1100px;
+      margin: 3rem auto 0;
+    }
 
-        .card-content {
-            padding: 2.2rem;
-        }
+    .topic-tag {
+      background: rgba(14,165,233,0.08);
+      color: var(--teal-dark);
+      padding: 0.65rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.25s;
+    }
 
-        .card h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
+    .topic-tag:hover {
+      background: var(--teal);
+      color: white;
+      transform: scale(1.06);
+    }
 
-        .card p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
+    /* ─── Video Showcase ──────────────────────────────────────── */
+    .videos {
+      padding: 7rem 0;
+      background: var(--gray-1);
+    }
 
-        .card-link {
-            color: var(--accent);
-            font-weight: 600;
-            text-decoration: none;
-        }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+    }
 
-        /* YouTube & Quiz similar upgrade possible – keeping structure */
+    .video-item {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      transition: all 0.3s;
+    }
 
-        footer {
-            background: linear-gradient(to top, var(--bg-darker), #0f172a);
-            padding: 100px 5% 40px;
-            text-align: center;
-            border-top: 1px solid rgba(106,94,255,0.1);
-        }
+    .video-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(14,165,233,0.18);
+    }
 
-        @media (max-width: 900px) {
-            .hero h1 { font-size: 4rem; }
-            .section-title { font-size: 3rem; }
-            .nav-links { gap: 1.8rem; font-size: 0.95rem; }
-        }
-    </style>
+    .thumbnail-placeholder {
+      height: 190px;
+      background: linear-gradient(135deg, #7dd3fc, #67e8f9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: white;
+    }
+
+    .video-info {
+      padding: 1.3rem;
+    }
+
+    /* ─── Stats ───────────────────────────────────────────────── */
+    .stats {
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      color: white;
+      padding: 6rem 0;
+      text-align: center;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 3rem;
+    }
+
+    .stat-number {
+      font-size: 3.6rem;
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+    }
+
+    /* ─── CTA Banner ──────────────────────────────────────────── */
+    .final-cta {
+      background: linear-gradient(135deg, #ecfeff, #f0fdfa);
+      padding: 8rem 0;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-size: 3.2rem;
+      margin-bottom: 1.6rem;
+    }
+
+    /* ─── Footer ──────────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      color: #cbd5e1;
+      padding: 5rem 0 2rem;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin: 2rem 0 3rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+    }
+
+    @media (max-width: 780px) {
+      .hero          { padding: 7rem 0 5rem; }
+      .hero h1       { font-size: 3.4rem; }
+      .main-menu     { gap: 1.4rem; font-size: 0.96rem; }
+      .section-title { font-size: 2.3rem; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Floating math elements -->
-    <div class="math-float" style="top:10%; left:8%; animation-delay:0s;">∫</div>
-    <div class="math-float" style="top:25%; right:12%; animation-delay:3s;">∑</div>
-    <div class="math-float" style="bottom:18%; left:15%; animation-delay:7s;">π</div>
-    <div class="math-float" style="top:40%; right:18%; animation-delay:11s;">∞</div>
-    <div class="math-float" style="bottom:30%; left:22%; animation-delay:5s;">∂</div>
+<header>
+  <div class="container">
+    <div class="nav-bar">
+      <div class="logo">Sunny<span>Mathematics</span></div>
+      
+      <nav>
+        <ul class="main-menu">
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">Class 11</a></li>
+          <li><a href="#">Class 12</a></li>
+          <li><a href="#">BSc / UG</a></li>
+          <li><a href="#">JEE Mains</a></li>
+          <li><a href="#">Videos</a></li>
+          <li><a href="#">Quizzes</a></li>
+        </ul>
+      </nav>
 
-    <!-- Header -->
-    <header>
-        <nav>
-            <div class="logo">Sunny Mathematics</div>
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Class 11</a></li>
-                <li><a href="#">Class 12</a></li>
-                <li><a href="#">UG Maths</a></li>
-                <li><a href="#">Videos</a></li>
-                <li><a href="#">Quizzes</a></li>
-            </ul>
-            <a href="#" class="cta-btn">Start Learning Free</a>
-        </nav>
-    </header>
+      <div>
+        <a href="#" class="btn btn-outline" style="margin-right:0.8rem;">Log in</a>
+        <a href="#" class="btn btn-primary">Start Free</a>
+      </div>
+    </div>
+  </div>
+</header>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Discover the Beauty of Mathematics</h1>
-            <p>Where complex becomes clear • Elegant explanations • Deep understanding • Joy of discovery — Class 11, 12 & Undergraduate level with Sunny</p>
-            <div class="hero-buttons">
-                <a href="#" class="hero-btn primary-hero">Explore Courses →</a>
-                <a href="#" class="hero-btn outline-hero">Watch Free Lectures</a>
-            </div>
+<section class="hero">
+  <div class="container">
+    <h1>Mathematics Made <span style="color:var(--coral);">Beautiful</span> & <span style="color:var(--teal);">Understandable</span></h1>
+    <p class="hero-lead">
+      Crystal clear video lectures • Step-by-step notes • Concept-wise quizzes • Previous year questions • Doubt support<br>
+      Class 11 • Class 12 • B.Sc • JEE Mains / CUET / University exams
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#" class="btn btn-primary" style="font-size:1.18rem; padding:1rem 2.2rem;">Browse All Courses</a>
+      <a href="#" class="btn btn-outline" style="font-size:1.18rem; padding:1rem 2.2rem;">Watch Free Videos</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding:6rem 0;">
+  <div class="container">
+    <h2 class="section-title">Why Students <span>Love</span> Sunny Mathematics</h2>
+    <div class="grid-3">
+      <div class="feature-card">
+        <div class="feature-icon">🎥</div>
+        <h3>Short & Focused Videos</h3>
+        <p>Most concepts explained in 15–40 minutes with perfect pace — never boring, never rushed.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h3>Beautiful Handwritten Notes</h3>
+        <p>Downloadable PDF notes with diagrams, important theorems, tricks & common mistakes highlighted.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h3>Concept-wise Quizzes</h3>
+        <p>Graded difficulty — basic → advanced → JEE level. Instant solutions & performance analytics.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔥</div>
+        <h3>Previous Year Questions</h3>
+        <p>Chapter-wise PYQs (JEE, Boards, CUET, University) with video solutions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>Active Doubt Solving</h3>
+        <p>Ask doubts in comment section or through dedicated Telegram group — answered within 24 hours.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚀</div>
+        <h3>Entrance Exam Crash Courses</h3>
+        <p>Fast revision series, formula sheets, strategy videos specially for JEE / CUET aspirants.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="topics">
+  <div class="container">
+    <h2 class="section-title">Popular <span>Chapters & Topics</span></h2>
+    
+    <div class="topic-cloud">
+      <a href="#" class="topic-tag">Sets & Relations</a>
+      <a href="#" class="topic-tag">Trigonometry</a>
+      <a href="#" class="topic-tag">Complex Numbers</a>
+      <a href="#" class="topic-tag">Quadratic Equations</a>
+      <a href="#" class="topic-tag">Sequences & Series</a>
+      <a href="#" class="topic-tag">Straight Lines</a>
+      <a href="#" class="topic-tag">Conic Sections</a>
+      <a href="#" class="topic-tag">Limits & Continuity</a>
+      <a href="#" class="topic-tag">Differentiation</a>
+      <a href="#" class="topic-tag">Applications of Derivatives</a>
+      <a href="#" class="topic-tag">Integration</a>
+      <a href="#" class="topic-tag">Differential Equations</a>
+      <a href="#" class="topic-tag">Matrices & Determinants</a>
+      <a href="#" class="topic-tag">Vectors & 3D Geometry</a>
+      <a href="#" class="topic-tag">Probability</a>
+      <a href="#" class="topic-tag">Linear Algebra</a>
+      <a href="#" class="topic-tag">Real Analysis</a>
+      <a href="#" class="topic-tag">Abstract Algebra</a>
+    </div>
+  </div>
+</section>
+
+<section class="videos">
+  <div class="container">
+    <h2 class="section-title">Recently Uploaded <span>Videos</span></h2>
+    <div class="video-grid">
+      <div class="video-item">
+        <div class="thumbnail-placeholder">▶</div>
+        <div class="video-info">
+          <h4>Indefinite Integration in 45 Minutes – All Tricks</h4>
+          <p style="color:var(--gray-3); margin-top:0.5rem;">1.2 Lakh views • 42 min</p>
         </div>
-    </section>
-
-    <!-- Levels -->
-    <section>
-        <h2 class="section-title">Your Mathematical Journey Begins Here</h2>
-        <div class="cards-container">
-            <div class="card">
-                <div class="card-icon">📐</div>
-                <div class="card-content">
-                    <h3>Class 11 Foundation</h3>
-                    <p>Build rock-solid basics — Sets, Trigonometry, Complex Numbers, Sequences, Straight Lines, Conics...</p>
-                    <a href="#" class="card-link">Begin Class 11 →</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">🧮</div>
-                <div class="card-content">
-                    <h3>Class 12 Mastery</h3>
-                    <p>Calculus revolution, Vectors & 3D, Matrices, Probability — everything you need for boards + entrance</p>
-                    <a href="#" class="card-link">Master Class 12 →</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">🌌</div>
-                <div class="card-content">
-                    <h3>UG / College Level</h3>
-                    <p>Real Analysis, Abstract Algebra, Linear Algebra, Differential Equations, Complex Variables...</p>
-                    <a href="#" class="card-link">Dive into UG →</a>
-                </div>
-            </div>
+      </div>
+      <div class="video-item">
+        <div class="thumbnail-placeholder">▶</div>
+        <div class="video-info">
+          <h4>Vectors & 3D Geometry – JEE 2025 Most Expected</h4>
+          <p style="color:var(--gray-3); margin-top:0.5rem;">89K views • 38 min</p>
         </div>
-    </section>
+      </div>
+      <div class="video-item">
+        <div class="thumbnail-placeholder">▶</div>
+        <div class="video-info">
+          <h4>Determinants & Matrices – Shortcuts + PYQs</h4>
+          <p style="color:var(--gray-3); margin-top:0.5rem;">1.4 Lakh views • 51 min</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- More sections can follow same style -->
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-number">240+</div>
+        <div style="font-size:1.2rem; opacity:0.9;">Video Lectures</div>
+      </div>
+      <div>
+        <div class="stat-number">68</div>
+        <div style="font-size:1.2rem; opacity:0.9;">Concept Quizzes</div>
+      </div>
+      <div>
+        <div class="stat-number">9,800+</div>
+        <div style="font-size:1.2rem; opacity:0.9;">Happy Students</div>
+      </div>
+      <div>
+        <div class="stat-number">4.9/5</div>
+        <div style="font-size:1.2rem; opacity:0.9;">Average Rating</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <div class="logo" style="font-size:3rem; margin-bottom:1.5rem;">Sunny Mathematics</div>
-        <p style="max-width:700px; margin:0 auto 2rem; color:var(--text-light);">
-            Making Mathematics feel magical, approachable and deeply satisfying — one elegant proof at a time.
-        </p>
-        <p style="opacity:0.5; font-size:0.95rem;">© 2026 Sunny Mathematics Academy</p>
-    </footer>
+<section class="final-cta">
+  <div class="container">
+    <h2>Ready to Fall in Love with Maths?</h2>
+    <p style="font-size:1.32rem; max-width:720px; margin:1.6rem auto; color:#334155;">
+      Start with completely free access to 30+ videos + 12 quizzes — no card required
+    </p>
+    <div style="margin-top:2.5rem;">
+      <a href="#" class="btn btn-primary" style="font-size:1.32rem; padding:1.1rem 3rem;">Get Free Access Now</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logo" style="font-size:2.6rem; color:white; margin-bottom:1.8rem;">
+      Sunny<span style="color:var(--coral);">Mathematics</span>
+    </div>
+
+    <div class="footer-links">
+      <a href="#">About Sunny</a>
+      <a href="#">YouTube Channel</a>
+      <a href="#">Telegram Group</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <p style="margin-top:3rem; opacity:0.7; font-size:0.95rem;">
+      © 2026 Sunny Mathematics – Made with ❤️ for students who want to understand, not just memorize.
+    </p>
+  </div>
+</footer>
 
 </body>
 </html>
