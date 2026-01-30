@@ -12,21 +12,27 @@
 
   <style>
     :root{
-      --bg:#f7fbff;
-      --ink:#0b1320;
-      --muted:#516477;
+      /* LIGHT THEME BASE */
+      --bg:#fffdf7;          /* cream-white */
+      --ink:#151515;         /* dark text */
+      --muted:#55626f;
 
-      --card:#ffffffcc;
-      --cardSolid:#ffffff;
-      --stroke:#e7eef8;
-      --shadow: 0 18px 50px rgba(12, 32, 66, 0.10);
+      --card: rgba(255,255,255,0.92);
+      --stroke:#efe7d6;
+      --shadow: 0 18px 50px rgba(40, 30, 10, 0.10);
 
-      --blue:#2563eb;
-      --sky:#22d3ee;
-      --purple:#7c3aed;
+      /* FUN COLOR PALETTE */
+      --yellow:#ffd166;
+      --yellow2:#ffb703;
+
+      --green:#2ecc71;
+      --green2:#0ea85a;
+
+      --red:#ff4d4d;
+      --red2:#ff1f5a;
+
+      --blue:#2b7fff;   /* kept small for balance */
       --pink:#ff4fd8;
-      --mint:#22c55e;
-      --orange:#ff8a00;
 
       --rXL: 30px;
       --rL: 22px;
@@ -45,7 +51,7 @@
       overflow-x:hidden;
     }
 
-    /* Background blobs */
+    /* Background blobs (cream + yellow + green + red) */
     .bg{
       position: fixed;
       inset: 0;
@@ -55,16 +61,27 @@
     }
     .blob{
       position:absolute;
-      width: 520px;
-      height: 520px;
+      width: 560px;
+      height: 560px;
       border-radius: 50%;
-      filter: blur(45px);
-      opacity: 0.35;
+      filter: blur(55px);
+      opacity: 0.42;
       animation: float 11s ease-in-out infinite;
     }
-    .b1{ background: radial-gradient(circle, rgba(34,211,238,0.75), transparent 60%); top:-220px; left:-170px; }
-    .b2{ background: radial-gradient(circle, rgba(124,58,237,0.55), transparent 60%); top:110px; right:-220px; animation-delay: 2.2s; }
-    .b3{ background: radial-gradient(circle, rgba(255,79,216,0.45), transparent 60%); bottom:-260px; left:280px; animation-delay: 3.7s; }
+    .b1{
+      background: radial-gradient(circle, rgba(255,209,102,0.85), transparent 60%);
+      top:-240px; left:-190px;
+    }
+    .b2{
+      background: radial-gradient(circle, rgba(46,204,113,0.55), transparent 60%);
+      top:150px; right:-240px;
+      animation-delay: 2.2s;
+    }
+    .b3{
+      background: radial-gradient(circle, rgba(255,77,77,0.42), transparent 60%);
+      bottom:-290px; left:300px;
+      animation-delay: 3.7s;
+    }
 
     @keyframes float{
       0%{ transform: translate(0,0) scale(1); }
@@ -80,14 +97,14 @@
       z-index: 2;
     }
 
-    /* Navbar */
+    /* Navbar (white + cream + colorful border) */
     .nav{
       position: sticky;
       top:0;
       z-index:50;
-      background: rgba(247,251,255,0.82);
+      background: rgba(255,253,247,0.85);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(231,238,248,0.95);
+      border-bottom: 1px solid rgba(239,231,214,0.95);
     }
 
     .nav-inner{
@@ -116,10 +133,10 @@
       border-radius: 18px;
       display:grid;
       place-items:center;
-      background: linear-gradient(135deg, var(--blue), var(--purple), var(--pink));
-      color: white;
-      box-shadow: 0 16px 26px rgba(37,99,235,0.18);
+      color: #111;
       font-weight: 900;
+      background: linear-gradient(135deg, var(--yellow), var(--green), var(--red));
+      box-shadow: 0 16px 26px rgba(0,0,0,0.10);
     }
 
     .links{
@@ -136,7 +153,7 @@
       transition: 0.2s ease;
     }
     .links a:hover{
-      background: rgba(37,99,235,0.10);
+      background: rgba(255,209,102,0.35);
       color: var(--ink);
       transform: translateY(-1px);
     }
@@ -146,14 +163,14 @@
       padding: 10px 14px;
       border-radius: 999px;
       font-weight: 900;
-      color: white;
-      border: none;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      box-shadow: 0 16px 28px rgba(37,99,235,0.18);
+      color: #161616;
+      border: 1px solid rgba(239,231,214,0.95);
+      background: linear-gradient(135deg, var(--yellow), #fff2c7);
+      box-shadow: 0 14px 26px rgba(40,30,10,0.10);
       transition: 0.2s ease;
       white-space: nowrap;
     }
-    .nav-btn:hover{ transform: translateY(-1px); }
+    .nav-btn:hover{ transform: translateY(-1px); filter: brightness(1.03); }
 
     /* HERO */
     .hero{
@@ -178,8 +195,8 @@
       content:"";
       position:absolute;
       inset:-2px;
-      background: linear-gradient(135deg, rgba(37,99,235,0.18), transparent 55%);
-      opacity: 0.35;
+      background: linear-gradient(135deg, rgba(255,209,102,0.40), transparent 55%);
+      opacity: 0.45;
       pointer-events:none;
     }
 
@@ -191,8 +208,9 @@
       border-radius: 999px;
       font-weight: 900;
       font-size: 13px;
-      background: rgba(34,211,238,0.14);
-      border: 1px solid rgba(34,211,238,0.18);
+      background: rgba(46,204,113,0.15);
+      border: 1px solid rgba(46,204,113,0.20);
+      color: #1a3b27;
     }
 
     .title{
@@ -204,7 +222,7 @@
     }
 
     .title span{
-      background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
+      background: linear-gradient(90deg, var(--red), var(--yellow2), var(--green));
       -webkit-background-clip:text;
       background-clip:text;
       color: transparent;
@@ -247,18 +265,19 @@
 
     .btn.main{
       border:none;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      color: white;
+      background: linear-gradient(135deg, var(--green), var(--yellow2));
+      color: #102015;
+      box-shadow: 0 16px 28px rgba(46,204,113,0.18);
     }
 
     /* Right small summary card */
     .hero-side{
-      background: linear-gradient(135deg, rgba(11,19,32,0.94), rgba(31,41,64,0.94));
-      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(135deg, rgba(255,209,102,0.35), rgba(255,255,255,0.85));
+      border: 1px solid rgba(239,231,214,0.95);
       border-radius: var(--rXL);
       box-shadow: var(--shadow);
       padding: 22px;
-      color: white;
+      color: var(--ink);
       position: relative;
       overflow:hidden;
     }
@@ -271,7 +290,7 @@
 
     .hero-side p{
       margin-top: 8px;
-      color: rgba(255,255,255,0.78);
+      color: var(--muted);
       line-height: 1.6;
       font-size: 14px;
     }
@@ -285,25 +304,25 @@
 
     .quick a{
       text-decoration:none;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.14);
       border-radius: 18px;
       padding: 12px;
       transition: 0.2s ease;
-      color: white;
+      color: var(--ink);
       font-weight: 900;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap: 10px;
+      border: 1px solid rgba(239,231,214,0.95);
+      background: rgba(255,255,255,0.85);
     }
 
     .quick a:hover{
       transform: translateY(-2px);
-      background: rgba(255,255,255,0.14);
+      background: rgba(255,244,210,0.95);
     }
 
-    /* FEATURE BOXES (smart clickable placement) */
+    /* FEATURE BOXES */
     .features{
       margin-top: 16px;
       display:grid;
@@ -312,8 +331,8 @@
     }
 
     .feature{
-      background: rgba(255,255,255,0.92);
-      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(239,231,214,0.95);
       border-radius: var(--rXL);
       padding: 18px;
       box-shadow: var(--shadow);
@@ -330,12 +349,12 @@
       inset:-2px;
       opacity: 0.35;
       pointer-events:none;
-      background: linear-gradient(135deg, rgba(34,211,238,0.20), transparent 55%);
+      background: linear-gradient(135deg, rgba(255,209,102,0.35), transparent 55%);
     }
 
     .feature:hover{
       transform: translateY(-6px);
-      box-shadow: 0 22px 46px rgba(13,39,86,0.12);
+      box-shadow: 0 22px 46px rgba(40,30,10,0.12);
     }
 
     .feature .top{
@@ -346,21 +365,25 @@
       margin-bottom: 6px;
     }
 
+    /* NEW ICON STYLE */
     .bubble{
-      width: 46px;
-      height: 46px;
-      border-radius: 18px;
+      width: 54px;
+      height: 54px;
+      border-radius: 20px;
       display:grid;
       place-items:center;
       font-weight: 900;
-      color: white;
+      color: #111;
       flex: 0 0 auto;
+      box-shadow: 0 14px 24px rgba(0,0,0,0.10);
+      border: 1px solid rgba(255,255,255,0.75);
+      background: white;
     }
 
-    .bb1{ background: linear-gradient(135deg, var(--blue), var(--sky)); }
-    .bb2{ background: linear-gradient(135deg, var(--purple), var(--pink)); }
-    .bb3{ background: linear-gradient(135deg, var(--mint), var(--sky)); }
-    .bb4{ background: linear-gradient(135deg, var(--orange), var(--pink)); }
+    .bb1{ background: linear-gradient(135deg, rgba(46,204,113,0.85), rgba(255,209,102,0.95)); }
+    .bb2{ background: linear-gradient(135deg, rgba(255,77,77,0.85), rgba(255,209,102,0.95)); }
+    .bb3{ background: linear-gradient(135deg, rgba(255,209,102,0.95), rgba(46,204,113,0.85)); }
+    .bb4{ background: linear-gradient(135deg, rgba(255,77,77,0.90), rgba(46,204,113,0.75)); }
 
     .feature h4{
       font-size: 16px;
@@ -409,8 +432,8 @@
     }
 
     .box{
-      background: rgba(255,255,255,0.92);
-      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(239,231,214,0.95);
       border-radius: var(--rXL);
       padding: 18px;
       box-shadow: var(--shadow);
@@ -419,7 +442,7 @@
 
     .box:hover{
       transform: translateY(-5px);
-      box-shadow: 0 22px 46px rgba(13,39,86,0.12);
+      box-shadow: 0 22px 46px rgba(40,30,10,0.12);
     }
 
     .box h3{
@@ -447,7 +470,7 @@
       padding: 10px 14px;
       border-radius: 999px;
       font-weight: 900;
-      border: 1px solid var(--stroke);
+      border: 1px solid rgba(239,231,214,0.95);
       background: white;
       color: var(--ink);
       transition: 0.2s ease;
@@ -460,15 +483,15 @@
 
     .chipbtn.grad{
       border: none;
-      background: linear-gradient(135deg, var(--blue), var(--purple), var(--pink));
-      color: white;
+      background: linear-gradient(135deg, var(--red), var(--yellow2));
+      color: #1a1a1a;
     }
 
     /* Video */
     .video{
       border-radius: var(--rXL);
       overflow:hidden;
-      border: 1px solid var(--stroke);
+      border: 1px solid rgba(239,231,214,0.95);
       background: white;
       box-shadow: var(--shadow);
     }
@@ -539,13 +562,13 @@
         <div class="badge">✨ Free Learning • Class 11 • Class 12 • UG</div>
 
         <div class="title">
-          Learn <span>Mathematics</span> with comfort & confidence 💙
+          Learn <span>Mathematics</span> with fun & confidence 🌟
         </div>
 
         <p class="sub">
-          Welcome to <b>Simple Mathematics</b> — a smart, clean and modern learning space.
+          Welcome to <b>Simple Mathematics</b> — a bright and student-friendly learning space.
           Get <b>PDF notes</b>, <b>video lectures</b>, <b>practice sets</b> and <b>quizzes</b>.
-          Simple explanation + regular practice = top marks ✅
+          Learn daily, enjoy Maths and score high ✅
         </p>
 
         <div class="cta">
@@ -558,8 +581,8 @@
       <aside class="hero-side reveal">
         <h3>🚀 Quick Start</h3>
         <p>
-          Start from Notes, watch lectures, solve practice daily and take weekly quiz.
-          Everything in one place.
+          Start with Notes → Watch Lectures → Practice Daily → Take Weekly Quiz.
+          Everything is designed to be easy and enjoyable.
         </p>
 
         <div class="quick">
@@ -571,42 +594,42 @@
       </aside>
     </section>
 
-    <!-- SMART CLICKABLE FEATURE BOXES -->
+    <!-- FEATURES -->
     <section class="features reveal">
       <a class="feature" href="#notes">
         <div class="top">
           <div class="bubble bb1">📘</div>
-          <div>→</div>
+          <div style="font-weight:900;">→</div>
         </div>
         <h4>Download Notes</h4>
-        <small>PDF notes & formula sheets for quick revision.</small>
+        <small>Clean PDFs, formulas and chapter-wise notes.</small>
       </a>
 
       <a class="feature" href="#lectures">
         <div class="top">
           <div class="bubble bb2">🎥</div>
-          <div>→</div>
+          <div style="font-weight:900;">→</div>
         </div>
         <h4>Watch Lectures</h4>
-        <small>YouTube lectures directly on this website.</small>
+        <small>Learn concepts with simple explanations.</small>
       </a>
 
       <a class="feature" href="#practice">
         <div class="top">
           <div class="bubble bb3">🧠</div>
-          <div>→</div>
+          <div style="font-weight:900;">→</div>
         </div>
         <h4>Practice Daily</h4>
-        <small>Daily 10 questions to build speed & accuracy.</small>
+        <small>Build speed and accuracy step by step.</small>
       </a>
 
       <a class="feature" href="#quiz">
         <div class="top">
           <div class="bubble bb4">📝</div>
-          <div>→</div>
+          <div style="font-weight:900;">→</div>
         </div>
         <h4>Take Weekly Quiz</h4>
-        <small>Track progress with weekly chapter tests.</small>
+        <small>Test yourself and improve every week.</small>
       </a>
     </section>
 
@@ -622,7 +645,7 @@
       <div class="grid">
         <div class="box">
           <h3>Class 11 • Trigonometry</h3>
-          <small>Identities, graphs, transformations + important formulas.</small>
+          <small>Identities, graphs, transformations + formulas.</small>
           <div class="actions">
             <a class="chipbtn grad" href="#" onclick="alert('Upload PDF in repo and paste link here!')">⬇ Download</a>
             <a class="chipbtn" href="#practice">🧠 Practice</a>
@@ -640,7 +663,7 @@
 
         <div class="box">
           <h3>UG • Real Analysis</h3>
-          <small>Concept clarity + solved examples for semester exams.</small>
+          <small>Concept clarity + solved examples for exams.</small>
           <div class="actions">
             <a class="chipbtn grad" href="#" onclick="alert('Upload PDF in repo and paste link here!')">⬇ Download</a>
             <a class="chipbtn" href="#lectures">🎥 Watch</a>
@@ -776,8 +799,8 @@
     </section>
 
     <footer>
-      © 2026 <b>Simple Mathematics</b> • Made free with GitHub Pages 💙 <br>
-      Smart layout • Better placements • Attractive light theme
+      © 2026 <b>Simple Mathematics</b> • Made free with GitHub Pages 💛💚❤️<br>
+      White + Cream + Yellow + Green + Red theme
     </footer>
 
   </main>
