@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunny Kumar Maths Academy | Class 11 • 12 • UG Maths</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Sunny Mathematics Academy | Love Maths – Class 11 • 12 • UG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #5b5fff;
-            --secondary: #ff6b6b;
-            --accent: #feca57;
-            --dark: #2d3436;
-            --light: #f8f9fa;
-            --gray: #636e72;
+            --bg-dark: #0a0e17;
+            --bg-darker: #06080f;
+            --primary: #6a5eff;       /* Elegant indigo-violet */
+            --primary-dark: #4a3aff;
+            --accent: #00d4ff;        /* Cyan-teal glow */
+            --accent2: #ff6ec7;       /* Soft magenta-pink */
+            --gold: #ffd166;
+            --text: #e0e7ff;
+            --text-light: #a5b4fc;
+            --gray: #64748b;
         }
 
         * {
@@ -23,430 +27,349 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        /* Animated floating math symbols */
+        .math-float {
+            position: absolute;
+            font-size: 2.5rem;
+            color: rgba(100, 90, 255, 0.15);
+            pointer-events: none;
+            animation: float 18s infinite ease-in-out;
+            user-select: none;
+        }
+
+        @keyframes float {
+            0%,100% { transform: translateY(0) rotate(0deg); }
+            50%     { transform: translateY(-40px) rotate(10deg); }
         }
 
         /* Header */
         header {
-            background: white;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-            position: sticky;
+            background: linear-gradient(to bottom, rgba(10,14,23,0.92), rgba(10,14,23,0.85));
+            backdrop-filter: blur(12px);
+            position: fixed;
+            width: 100%;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(106,94,255,0.12);
         }
 
         nav {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1.4rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo span {
-            color: var(--secondary);
+            font-size: 2.4rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
             list-style: none;
         }
 
         .nav-links a {
+            color: var(--text-light);
             text-decoration: none;
-            color: var(--dark);
             font-weight: 500;
-            transition: color 0.3s;
+            position: relative;
+            transition: color 0.4s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -6px;
+            left: 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.4s ease;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: white;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .cta-btn {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), #7c6eff);
             color: white;
-            padding: 10px 22px;
+            padding: 12px 32px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(106,94,255,0.35);
+            transition: all 0.4s;
         }
 
         .cta-btn:hover {
-            background: #4a4fff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(91, 95, 255, 0.3);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(106,94,255,0.5);
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
-            background: linear-gradient(135deg, #5b5fff 0%, #7b6eff 100%);
-            color: white;
-            padding: 120px 20px 100px;
+            min-height: 100vh;
+            background: linear-gradient(rgba(10,14,23,0.78), rgba(10,14,23,0.88)),
+                        url('https://thumbs.dreamstime.com/b/abstract-mathematics-background-blue-gradient-filled-various-mathematical-symbols-shapes-including-pi-sigma-407094252.jpg') center/cover no-repeat fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
             position: relative;
-            overflow: hidden;
+            padding: 0 5%;
         }
 
-        .hero::after {
-            content: '∫ dx';
-            position: absolute;
-            font-size: 25rem;
-            opacity: 0.08;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            font-family: monospace;
+        .hero-content {
+            max-width: 1100px;
+            z-index: 2;
         }
 
         .hero h1 {
-            font-size: 3.8rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+            font-size: 5.2rem;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(90deg, #c0d2ff, #a78bfa, #ff6ec7, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
         }
 
         .hero p {
-            font-size: 1.4rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            opacity: 0.95;
+            font-size: 1.5rem;
+            max-width: 780px;
+            margin: 0 auto 2.5rem;
+            color: var(--text-light);
+            font-weight: 300;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 20px;
+            gap: 1.8rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .hero-btn {
-            padding: 16px 36px;
-            font-size: 1.1rem;
-            border-radius: 50px;
+            padding: 16px 42px;
+            font-size: 1.2rem;
+            border-radius: 60px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.4s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
         }
 
-        .primary-btn {
-            background: white;
-            color: var(--primary);
-        }
-
-        .primary-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-
-        .secondary-btn {
-            background: transparent;
+        .primary-hero {
+            background: linear-gradient(135deg, var(--primary), #8b7eff);
             color: white;
-            border: 2px solid white;
+            box-shadow: 0 12px 30px rgba(106,94,255,0.4);
         }
 
-        .secondary-btn:hover {
-            background: white;
-            color: var(--primary);
+        .primary-hero:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(106,94,255,0.6);
         }
 
-        /* Section Styling */
+        .outline-hero {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .outline-hero:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+            transform: translateY(-8px);
+        }
+
+        /* Sections */
         section {
-            padding: 90px 20px;
-            max-width: 1300px;
+            padding: 140px 5%;
+            max-width: 1400px;
             margin: 0 auto;
+            position: relative;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.6rem;
-            margin-bottom: 3rem;
-            color: var(--dark);
-        }
-
-        .section-title span {
-            color: var(--primary);
+            font-size: 3.8rem;
+            margin-bottom: 5rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         /* Cards */
         .cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2.5rem;
         }
 
         .card {
-            background: white;
-            border-radius: 20px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(106,94,255,0.15);
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.4s;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
         }
 
         .card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(91, 95, 255, 0.25);
+            transform: translateY(-16px);
+            border-color: var(--primary);
+            box-shadow: 0 30px 70px rgba(106,94,255,0.3);
         }
 
         .card-icon {
-            height: 140px;
-            background: linear-gradient(135deg, var(--primary), #8e7fff);
+            height: 160px;
+            background: linear-gradient(135deg, var(--primary), #00d4ff);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 5rem;
             color: white;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
 
         .card-content {
-            padding: 25px;
+            padding: 2.2rem;
         }
 
         .card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 12px;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
         }
 
         .card p {
-            color: var(--gray);
-            margin-bottom: 20px;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
         }
 
         .card-link {
-            color: var(--primary);
+            color: var(--accent);
             font-weight: 600;
             text-decoration: none;
         }
 
-        /* YouTube Section */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
+        /* YouTube & Quiz similar upgrade possible – keeping structure */
 
-        .video-card {
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
-
-        .video-card:hover {
-            transform: scale(1.03);
-        }
-
-        .thumbnail {
-            height: 180px;
-            background: #333;
-            position: relative;
-        }
-
-        .thumbnail::after {
-            content: '▶';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            color: rgba(255,255,255,0.8);
-        }
-
-        .video-info {
-            padding: 18px;
-            background: white;
-        }
-
-        /* Footer */
         footer {
-            background: var(--dark);
-            color: #ddd;
-            padding: 80px 20px 30px;
+            background: linear-gradient(to top, var(--bg-darker), #0f172a);
+            padding: 100px 5% 40px;
             text-align: center;
+            border-top: 1px solid rgba(106,94,255,0.1);
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
-            .hero p { font-size: 1.2rem; }
-            .nav-links { display: none; } /* Add hamburger menu later if needed */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 4rem; }
+            .section-title { font-size: 3rem; }
+            .nav-links { gap: 1.8rem; font-size: 0.95rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Floating math elements -->
+    <div class="math-float" style="top:10%; left:8%; animation-delay:0s;">∫</div>
+    <div class="math-float" style="top:25%; right:12%; animation-delay:3s;">∑</div>
+    <div class="math-float" style="bottom:18%; left:15%; animation-delay:7s;">π</div>
+    <div class="math-float" style="top:40%; right:18%; animation-delay:11s;">∞</div>
+    <div class="math-float" style="bottom:30%; left:22%; animation-delay:5s;">∂</div>
+
     <!-- Header -->
     <header>
         <nav>
-            <div class="logo">Sunny<span>Kumar</span> Maths</div>
+            <div class="logo">Sunny Mathematics</div>
             <ul class="nav-links">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Class 11</a></li>
                 <li><a href="#">Class 12</a></li>
-                <li><a href="#">UG Courses</a></li>
-                <li><a href="#">YouTube</a></li>
+                <li><a href="#">UG Maths</a></li>
+                <li><a href="#">Videos</a></li>
                 <li><a href="#">Quizzes</a></li>
             </ul>
-            <a href="#" class="cta-btn">Join Free</a>
+            <a href="#" class="cta-btn">Start Learning Free</a>
         </nav>
     </header>
 
     <!-- Hero -->
     <section class="hero">
-        <h1>Master Maths with Sunny Kumar</h1>
-        <p>Complete video lectures, notes, quizzes & doubt solving for Class 11, Class 12 & Undergraduate Mathematics</p>
-        
-        <div class="hero-buttons">
-            <a href="#" class="hero-btn primary-btn">Browse Courses →</a>
-            <a href="#" class="hero-btn secondary-btn">Watch Free Videos</a>
+        <div class="hero-content">
+            <h1>Discover the Beauty of Mathematics</h1>
+            <p>Where complex becomes clear • Elegant explanations • Deep understanding • Joy of discovery — Class 11, 12 & Undergraduate level with Sunny</p>
+            <div class="hero-buttons">
+                <a href="#" class="hero-btn primary-hero">Explore Courses →</a>
+                <a href="#" class="hero-btn outline-hero">Watch Free Lectures</a>
+            </div>
         </div>
     </section>
 
-    <!-- Levels Section -->
+    <!-- Levels -->
     <section>
-        <h2 class="section-title">Choose Your <span>Level</span></h2>
+        <h2 class="section-title">Your Mathematical Journey Begins Here</h2>
         <div class="cards-container">
-            <div class="card">
-                <div class="card-icon">📘</div>
-                <div class="card-content">
-                    <h3>Class 11 Mathematics</h3>
-                    <p>Sets, Relations, Functions, Trigonometry, Complex Numbers, Sequences & Series, Conic Sections</p>
-                    <a href="#" class="card-link">Explore Class 11 →</a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">📗</div>
-                <div class="card-content">
-                    <h3>Class 12 Mathematics</h3>
-                    <p>Calculus, Matrices, Determinants, Vectors, 3D Geometry, Probability, Differential Equations</p>
-                    <a href="#" class="card-link">Explore Class 12 →</a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">🎓</div>
-                <div class="card-content">
-                    <h3>Undergraduate (UG) Maths</h3>
-                    <p>Real Analysis, Abstract Algebra, Linear Algebra, Differential Equations, Numerical Methods, Complex Analysis</p>
-                    <a href="#" class="card-link">Explore UG Courses →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- YouTube Videos -->
-    <section style="background: #f1f3f5;">
-        <h2 class="section-title">Latest YouTube <span>Videos</span></h2>
-        <div class="video-grid">
-            <div class="video-card">
-                <div class="thumbnail"></div>
-                <div class="video-info">
-                    <h4>Limits & Continuity - Full Concept in 1 Video</h4>
-                    <p>Sunny Kumar • 2.3M views • 45 min</p>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="thumbnail"></div>
-                <div class="video-info">
-                    <h4>Integration by Parts - Best Tricks & Shortcuts</h4>
-                    <p>Sunny Kumar • 1.8M views • 38 min</p>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="thumbnail"></div>
-                <div class="video-info">
-                    <h4>Determinants & Matrices | JEE Mains 2025</h4>
-                    <p>Sunny Kumar • 980K views • 52 min</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quizzes -->
-    <section>
-        <h2 class="section-title">Test Your Knowledge</h2>
-        <div class="cards-container">
-            <div class="card">
-                <div class="card-icon">🧠</div>
-                <div class="card-content">
-                    <h3>Calculus Quiz</h3>
-                    <p>20 Questions • 30 Minutes • Class 12 Level</p>
-                    <a href="#" class="card-link">Start Quiz →</a>
-                </div>
-            </div>
             <div class="card">
                 <div class="card-icon">📐</div>
                 <div class="card-content">
-                    <h3>Coordinate Geometry Quiz</h3>
-                    <p>15 Questions • Class 11</p>
-                    <a href="#" class="card-link">Start Quiz →</a>
+                    <h3>Class 11 Foundation</h3>
+                    <p>Build rock-solid basics — Sets, Trigonometry, Complex Numbers, Sequences, Straight Lines, Conics...</p>
+                    <a href="#" class="card-link">Begin Class 11 →</a>
                 </div>
             </div>
+
             <div class="card">
-                <div class="card-icon">📊</div>
+                <div class="card-icon">🧮</div>
                 <div class="card-content">
-                    <h3>Linear Algebra Quiz</h3>
-                    <p>UG Level • Matrices & Eigenvalues</p>
-                    <a href="#" class="card-link">Start Quiz →</a>
+                    <h3>Class 12 Mastery</h3>
+                    <p>Calculus revolution, Vectors & 3D, Matrices, Probability — everything you need for boards + entrance</p>
+                    <a href="#" class="card-link">Master Class 12 →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🌌</div>
+                <div class="card-content">
+                    <h3>UG / College Level</h3>
+                    <p>Real Analysis, Abstract Algebra, Linear Algebra, Differential Equations, Complex Variables...</p>
+                    <a href="#" class="card-link">Dive into UG →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- More sections can follow same style -->
+
     <footer>
-        <div class="logo" style="color:white; justify-content:center;">Sunny<span>Kumar</span> Maths</div>
-        <p style="margin:20px 0; max-width:600px; margin-left:auto; margin-right:auto;">
-            Making Mathematics simple, enjoyable and understandable for students of Class 11, 12 & Undergraduate level.
+        <div class="logo" style="font-size:3rem; margin-bottom:1.5rem;">Sunny Mathematics</div>
+        <p style="max-width:700px; margin:0 auto 2rem; color:var(--text-light);">
+            Making Mathematics feel magical, approachable and deeply satisfying — one elegant proof at a time.
         </p>
-        
-        <div class="footer-links">
-            <a href="#">About Me</a>
-            <a href="#">YouTube Channel</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Contact</a>
-        </div>
-        
-        <p style="margin-top:40px; opacity:0.6;">© 2026 Sunny Kumar Maths Academy. All Rights Reserved.</p>
+        <p style="opacity:0.5; font-size:0.95rem;">© 2026 Sunny Mathematics Academy</p>
     </footer>
 
 </body>
