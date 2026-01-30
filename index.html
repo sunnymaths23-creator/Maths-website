@@ -5,375 +5,365 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sunny Maths Academy</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --sky1:#00c6ff;
-      --sky2:#0072ff;
+      --bg1:#ff5f6d;   /* pink-red */
+      --bg2:#ffc371;   /* orange-yellow */
+      --bg3:#7f00ff;   /* purple */
+      --bg4:#00c6ff;   /* skyblue */
       --white:#ffffff;
-      --dark:#0b1b3a;
-      --glass: rgba(255,255,255,0.16);
-      --glass2: rgba(255,255,255,0.10);
-      --border: rgba(255,255,255,0.25);
-      --shadow: 0 14px 40px rgba(0,0,0,0.18);
+      --dark:#141522;
+      --soft:rgba(255,255,255,0.16);
+      --soft2:rgba(255,255,255,0.12);
+      --border:rgba(255,255,255,0.22);
+      --shadow: 0 16px 40px rgba(0,0,0,0.18);
     }
 
     *{ box-sizing:border-box; margin:0; padding:0; }
 
     body{
-      font-family: "Poppins", sans-serif;
-      background: radial-gradient(1200px 700px at 15% 10%, rgba(255,255,255,0.35), transparent 50%),
-                  radial-gradient(1200px 700px at 90% 20%, rgba(255,255,255,0.25), transparent 55%),
-                  linear-gradient(135deg, var(--sky1), var(--sky2));
+      font-family:"Nunito", sans-serif;
+      min-height:100vh;
       color: var(--white);
-      min-height: 100vh;
-      overflow-x: hidden;
+      overflow-x:hidden;
+
+      background:
+        radial-gradient(900px 550px at 15% 10%, rgba(255,255,255,0.32), transparent 55%),
+        radial-gradient(800px 520px at 85% 20%, rgba(255,255,255,0.25), transparent 60%),
+        linear-gradient(135deg, var(--bg3), var(--bg1), var(--bg2), var(--bg4));
+      background-size: 240% 240%;
+      animation: bgMove 12s ease infinite;
     }
 
-    /* Floating Maths Symbols Background */
-    .floating{
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.25;
-      z-index: 0;
+    @keyframes bgMove{
+      0%{ background-position: 0% 50%; }
+      50%{ background-position: 100% 50%; }
+      100%{ background-position: 0% 50%; }
     }
-    .symbol{
-      position: absolute;
-      font-weight: 700;
-      color: rgba(255,255,255,0.9);
-      animation: floatUp 10s linear infinite;
+
+    /* floating bubbles */
+    .bubbles{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      opacity:0.45;
+    }
+    .bubble{
+      position:absolute;
+      border-radius:50%;
+      background: rgba(255,255,255,0.25);
       filter: blur(0.2px);
-      user-select: none;
+      animation: floatBubble 12s linear infinite;
     }
-    @keyframes floatUp{
-      0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-      15% { opacity: 0.9; }
-      100% { transform: translateY(-20vh) rotate(220deg); opacity: 0; }
+    @keyframes floatBubble{
+      0%{ transform: translateY(120vh) translateX(0); opacity:0; }
+      10%{ opacity: 0.9; }
+      100%{ transform: translateY(-30vh) translateX(50px); opacity:0; }
     }
 
-    /* Navbar */
-    .navbar{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
+    /* NAVBAR */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:60;
+      backdrop-filter: blur(16px);
       background: rgba(0,0,0,0.12);
-      border-bottom: 1px solid rgba(255,255,255,0.15);
+      border-bottom: 1px solid rgba(255,255,255,0.18);
     }
     .nav-inner{
       max-width: 1200px;
-      margin: auto;
+      margin:auto;
       padding: 14px 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
       gap: 12px;
+      flex-wrap: wrap;
     }
 
     .brand{
       display:flex;
       align-items:center;
       gap:10px;
-      font-weight:700;
-      letter-spacing: 0.5px;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      font-size: 16px;
       white-space: nowrap;
     }
     .logo{
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.25);
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
       display:grid;
       place-items:center;
-      box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+      background: rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.24);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      font-size: 18px;
     }
 
-    .nav-links{
+    .links{
       display:flex;
-      gap: 16px;
+      gap:10px;
       flex-wrap: wrap;
-      justify-content: flex-end;
     }
-    .nav-links a{
+    .links a{
+      text-decoration:none;
       color: rgba(255,255,255,0.92);
-      text-decoration: none;
-      font-weight: 500;
       padding: 8px 12px;
       border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
       transition: 0.25s ease;
     }
-    .nav-links a:hover{
+    .links a:hover{
       background: rgba(255,255,255,0.18);
       transform: translateY(-2px);
     }
 
-    /* Hero */
-    .hero{
+    /* LAYOUT */
+    .wrap{
       position: relative;
       z-index: 2;
       max-width: 1200px;
-      margin: 28px auto 0;
-      padding: 26px 18px 10px;
+      margin: 18px auto 0;
+      padding: 16px 18px 40px;
     }
 
-    .hero-grid{
+    /* HERO */
+    .hero{
       display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 22px;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 18px;
       align-items: center;
+      margin-top: 18px;
     }
 
-    .hero-card{
-      background: var(--glass);
+    .glass{
+      background: var(--soft);
       border: 1px solid var(--border);
+      border-radius: 24px;
       box-shadow: var(--shadow);
-      border-radius: 22px;
-      padding: 26px;
+      padding: 22px;
       overflow:hidden;
-      position: relative;
+      position:relative;
     }
 
-    .badge{
+    .shine{
+      position:absolute;
+      width: 340px;
+      height: 340px;
+      right:-160px;
+      top:-170px;
+      border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.7), rgba(255,255,255,0) 60%);
+      opacity:0.85;
+      pointer-events:none;
+    }
+
+    .tag{
       display:inline-flex;
-      gap: 8px;
       align-items:center;
-      font-size: 13px;
+      gap:10px;
+      background: rgba(255,255,255,0.20);
+      border: 1px solid rgba(255,255,255,0.24);
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.16);
-      border: 1px solid rgba(255,255,255,0.24);
-      margin-bottom: 12px;
+      font-weight: 800;
+      font-size: 13px;
     }
 
-    .hero-title{
-      font-size: clamp(26px, 4vw, 44px);
-      line-height: 1.15;
-      margin-bottom: 10px;
-      font-weight: 700;
+    .title{
+      margin-top: 14px;
+      font-size: clamp(26px, 4vw, 46px);
+      line-height: 1.12;
+      font-weight: 900;
+      letter-spacing: 0.2px;
     }
 
-    .hero-sub{
-      color: rgba(255,255,255,0.92);
+    .subtitle{
+      margin-top: 10px;
+      line-height: 1.6;
       font-size: 16px;
-      line-height: 1.55;
-      margin-bottom: 18px;
+      color: rgba(255,255,255,0.92);
     }
 
-    .cta-row{
+    .cta{
+      margin-top: 16px;
       display:flex;
       gap: 12px;
       flex-wrap: wrap;
-      margin-top: 12px;
     }
 
     .btn{
-      border: none;
-      cursor: pointer;
-      padding: 12px 16px;
-      border-radius: 14px;
-      font-weight: 600;
-      transition: 0.25s ease;
       display:inline-flex;
       align-items:center;
       gap: 10px;
-      text-decoration: none;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-weight: 900;
+      font-size: 14px;
+      text-decoration:none;
+      border: 1px solid rgba(255,255,255,0.22);
+      transition: 0.25s ease;
+      cursor:pointer;
+      user-select:none;
     }
-    .btn-primary{
-      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.70));
-      color: #0b1b3a;
-      box-shadow: 0 14px 28px rgba(0,0,0,0.2);
+
+    .btn-main{
+      background: rgba(255,255,255,0.95);
+      color: #131525;
+      box-shadow: 0 16px 28px rgba(0,0,0,0.18);
     }
-    .btn-primary:hover{
+    .btn-main:hover{
       transform: translateY(-2px) scale(1.02);
     }
-    .btn-glass{
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.28);
+
+    .btn-soft{
+      background: rgba(0,0,0,0.14);
       color: white;
     }
-    .btn-glass:hover{
+    .btn-soft:hover{
       transform: translateY(-2px);
-      background: rgba(255,255,255,0.20);
+      background: rgba(255,255,255,0.18);
     }
 
-    /* Small Info Panel */
-    .hero-side{
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.22);
-      border-radius: 22px;
-      padding: 20px;
-      box-shadow: 0 12px 26px rgba(0,0,0,0.16);
-      animation: popIn 0.8s ease forwards;
-      transform: translateY(10px);
-      opacity: 0;
-    }
-
-    @keyframes popIn{
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .stat{
+    /* side card */
+    .side .mini{
       display:flex;
       align-items:center;
-      justify-content: space-between;
+      justify-content:space-between;
       gap: 10px;
       padding: 12px 12px;
-      border-radius: 16px;
-      background: rgba(0,0,0,0.12);
-      border: 1px solid rgba(255,255,255,0.16);
-      margin-bottom: 10px;
+      border-radius: 18px;
+      margin-top: 10px;
+      background: rgba(0,0,0,0.14);
+      border: 1px solid rgba(255,255,255,0.14);
+      transition: 0.25s ease;
     }
-    .stat strong{
-      font-size: 18px;
+    .side .mini:hover{
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.16);
     }
-    .stat span{
+    .side .mini strong{
+      font-size: 16px;
+      font-weight: 900;
+    }
+    .side .mini span{
       font-size: 13px;
       opacity: 0.9;
     }
 
     /* Sections */
     .section{
-      max-width: 1200px;
-      margin: 18px auto;
-      padding: 16px 18px;
-      position: relative;
-      z-index: 2;
+      margin-top: 18px;
     }
-    .section-title{
+    .section h2{
       font-size: 22px;
-      margin-bottom: 8px;
-      font-weight: 700;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+      margin-bottom: 6px;
     }
-    .section-desc{
+    .section p{
       opacity: 0.92;
-      margin-bottom: 14px;
-      line-height: 1.5;
+      line-height: 1.55;
+      margin-bottom: 12px;
     }
 
-    .cards{
+    .grid{
       display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 14px;
     }
 
     .card{
-      background: var(--glass2);
+      background: var(--soft2);
       border: 1px solid rgba(255,255,255,0.22);
-      border-radius: 20px;
+      border-radius: 22px;
       padding: 18px;
-      box-shadow: 0 14px 36px rgba(0,0,0,0.15);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.14);
       transition: 0.25s ease;
       position: relative;
       overflow: hidden;
     }
-
     .card:hover{
       transform: translateY(-6px);
-      background: rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.18);
     }
 
     .card h3{
       font-size: 18px;
+      font-weight: 900;
       margin-bottom: 6px;
-      font-weight: 700;
     }
-
-    .card p{
-      font-size: 14px;
-      line-height: 1.55;
+    .card small{
+      display:block;
       opacity: 0.92;
+      line-height: 1.55;
     }
 
-    .mini-btn{
+    .pill{
       margin-top: 12px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
       padding: 10px 14px;
-      border-radius: 14px;
-      font-weight: 600;
-      border: 1px solid rgba(255,255,255,0.28);
-      background: rgba(0,0,0,0.10);
-      color: white;
-      cursor: pointer;
-      transition: 0.25s ease;
-      text-decoration: none;
-    }
-
-    .mini-btn:hover{
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.18);
-    }
-
-    /* Footer */
-    footer{
-      position: relative;
-      z-index: 2;
-      margin-top: 30px;
-      padding: 26px 18px 40px;
-      text-align: center;
-      opacity: 0.95;
-    }
-    footer p{
-      opacity: 0.9;
+      border-radius: 999px;
+      font-weight: 900;
       font-size: 14px;
-      line-height: 1.6;
+      text-decoration:none;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.26);
+      background: rgba(0,0,0,0.14);
+      transition: 0.25s ease;
+    }
+    .pill:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.20);
     }
 
-    /* Scroll Animation */
-    .fade-up{
+    /* Fade in on scroll */
+    .fade{
       opacity: 0;
       transform: translateY(18px);
       transition: 0.7s ease;
     }
-    .fade-up.show{
+    .fade.show{
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Responsive */
-    @media (max-width: 900px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      .nav-inner{ flex-direction: column; align-items:flex-start; }
-      .nav-links{ justify-content:flex-start; }
+    footer{
+      text-align:center;
+      margin-top: 28px;
+      opacity: 0.92;
+      line-height: 1.6;
+      font-size: 14px;
     }
 
-    /* Small highlight bubble */
-    .glow{
-      position:absolute;
-      width: 380px;
-      height: 380px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.6), rgba(255,255,255,0) 60%);
-      top: -140px;
-      right: -160px;
-      opacity: 0.7;
-      filter: blur(1px);
-      pointer-events: none;
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Floating symbols background -->
-  <div class="floating" aria-hidden="true" id="floatingArea"></div>
+  <div class="bubbles" id="bubbles"></div>
 
-  <!-- Navbar -->
-  <div class="navbar">
+  <div class="nav">
     <div class="nav-inner">
       <div class="brand">
-        <div class="logo">∑</div>
-        <div>Sunny Maths Academy</div>
+        <div class="logo">🎓</div>
+        Sunny Maths Academy
       </div>
 
-      <div class="nav-links">
+      <div class="links">
         <a href="#notes">Notes</a>
         <a href="#lectures">Lectures</a>
         <a href="#practice">Practice</a>
@@ -383,256 +373,244 @@
     </div>
   </div>
 
-  <!-- HERO -->
-  <section class="hero" id="top">
-    <div class="hero-grid">
+  <div class="wrap">
 
-      <div class="hero-card">
-        <div class="glow"></div>
+    <!-- HERO -->
+    <div class="hero">
+      <div class="glass">
+        <div class="shine"></div>
 
-        <div class="badge">✨ Free Learning Platform • Class 11 • 12 • UG</div>
-        <h1 class="hero-title">Fall in love with Maths 💙</h1>
-        <p class="hero-sub">
-          Welcome to <b>Sunny Maths Academy</b> — a vibrant place where you get
-          <b>notes, video lectures, practice questions, quizzes</b> and more.
-          Learn step-by-step, improve your concepts, and become confident in Mathematics.
-        </p>
+        <div class="tag">✨ Fun Learning • Smart Notes • Clear Concepts</div>
 
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#notes">📘 Start with Notes</a>
-          <a class="btn btn-glass" href="#lectures">🎥 Watch Lectures</a>
-          <a class="btn btn-glass" href="#quiz">📝 Take Quiz</a>
+        <div class="title">
+          Maths made <span style="text-decoration: underline;">Easy</span>,  
+          <br>Colorful & Enjoyable 🎉
+        </div>
+
+        <div class="subtitle">
+          Welcome to <b>Sunny Maths Academy</b> — a free platform for students to learn
+          Maths with <b>notes</b>, <b>video lectures</b>, <b>practice questions</b> and <b>quizzes</b>.
+          Learn step-by-step and build strong concepts with confidence 💪
+        </div>
+
+        <div class="cta">
+          <a class="btn btn-main" href="#notes">📘 Download Notes</a>
+          <a class="btn btn-soft" href="#lectures">🎥 Watch Lectures</a>
+          <a class="btn btn-soft" href="#quiz">📝 Take Quiz</a>
         </div>
       </div>
 
-      <div class="hero-side">
-        <div class="stat">
+      <div class="glass side">
+        <div class="tag">🚀 Learning Tracks</div>
+
+        <div class="mini">
           <div>
             <strong>Class 11</strong><br>
-            <span>Foundation + Concepts</span>
+            <span>Basics + Foundation</span>
           </div>
           <div>✅</div>
         </div>
 
-        <div class="stat">
+        <div class="mini">
           <div>
             <strong>Class 12</strong><br>
-            <span>Board + Competitive</span>
+            <span>Boards + Practice</span>
           </div>
           <div>✅</div>
         </div>
 
-        <div class="stat">
+        <div class="mini">
           <div>
             <strong>UG Maths</strong><br>
-            <span>Real Analysis + More</span>
+            <span>Advanced concepts</span>
           </div>
           <div>✅</div>
         </div>
 
-        <div class="stat">
+        <div class="mini">
           <div>
-            <strong>Daily Practice</strong><br>
-            <span>Strong problem solving</span>
+            <strong>Daily Routine</strong><br>
+            <span>10 Questions / Day</span>
           </div>
           <div>🔥</div>
         </div>
       </div>
-
     </div>
-  </section>
 
-  <!-- NOTES -->
-  <section class="section fade-up" id="notes">
-    <h2 class="section-title">📘 Notes (PDF)</h2>
-    <p class="section-desc">Download chapter-wise notes and important formulas (PDF). I will keep updating regularly.</p>
+    <!-- NOTES -->
+    <div class="section fade" id="notes">
+      <h2>📘 Notes (PDF)</h2>
+      <p>Download colourful notes, formula sheets and important questions topic-wise.</p>
 
-    <div class="cards">
-      <div class="card">
-        <h3>Class 11 • Trigonometry</h3>
-        <p>Basic identities, graphs, transformations and important formulas.</p>
-        <a class="mini-btn" href="#" onclick="alert('Upload your PDF file in GitHub and link it here!')">Download PDF</a>
-      </div>
-
-      <div class="card">
-        <h3>Class 12 • Integration</h3>
-        <p>Standard results, methods, substitution, by parts and practice set.</p>
-        <a class="mini-btn" href="#" onclick="alert('Upload your PDF file in GitHub and link it here!')">Download PDF</a>
-      </div>
-
-      <div class="card">
-        <h3>UG • Real Analysis</h3>
-        <p>Limits, continuity, differentiability, Riemann integrals and more.</p>
-        <a class="mini-btn" href="#" onclick="alert('Upload your PDF file in GitHub and link it here!')">Download PDF</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- LECTURES -->
-  <section class="section fade-up" id="lectures">
-    <h2 class="section-title">🎥 Video Lectures</h2>
-    <p class="section-desc">Watch lecture videos directly here. Replace the YouTube Video ID with your own lecture.</p>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Sample Lecture</h3>
-        <p>Embed your YouTube lecture here for students.</p>
-
-        <div style="margin-top:12px; border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,0.18);">
-          <iframe
-            width="100%"
-            height="290"
-            src="https://www.youtube.com/embed/VIDEO_ID_HERE"
-            title="YouTube video"
-            allowfullscreen
-            style="border:none;">
-          </iframe>
+      <div class="grid">
+        <div class="card">
+          <h3>Class 11 • Trigonometry</h3>
+          <small>Identities, graphs, transformations + important problems.</small>
+          <a class="pill" href="#" onclick="alert('Upload PDF in repo & link it here!')">Download PDF</a>
         </div>
 
-        <p style="margin-top:12px; font-size:13px; opacity:0.9;">
-          ✅ Replace <b>VIDEO_ID_HERE</b> with your YouTube video ID.
-        </p>
-      </div>
+        <div class="card">
+          <h3>Class 12 • Calculus</h3>
+          <small>Limits, continuity, differentiation, integration + revision set.</small>
+          <a class="pill" href="#" onclick="alert('Upload PDF in repo & link it here!')">Download PDF</a>
+        </div>
 
-      <div class="card">
-        <h3>Quick Tip</h3>
-        <p>
-          You can record Maths lectures with XP-Pen tablet + OBS Studio and upload on YouTube.
-          Then embed the video here.
-        </p>
-        <a class="mini-btn" href="#contact">📩 Ask Doubt</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRACTICE -->
-  <section class="section fade-up" id="practice">
-    <h2 class="section-title">🧠 Practice Zone</h2>
-    <p class="section-desc">Daily practice is the secret of mastering Maths. Solve questions and build speed.</p>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Daily Practice (10 Questions)</h3>
-        <p>Simple-to-advanced questions for consistency and confidence.</p>
-        <a class="mini-btn" href="#" onclick="alert('We can add daily question sets here!')">Start Practice</a>
-      </div>
-
-      <div class="card">
-        <h3>Assignments</h3>
-        <p>Download assignment sheets and revise important topics.</p>
-        <a class="mini-btn" href="#" onclick="alert('Upload assignment PDFs and link here!')">Get Assignment</a>
-      </div>
-
-      <div class="card">
-        <h3>Formula Sheet</h3>
-        <p>Fast revision sheet to boost marks and confidence.</p>
-        <a class="mini-btn" href="#" onclick="alert('Upload formula PDF and link here!')">Download</a>
+        <div class="card">
+          <h3>UG • Real Analysis</h3>
+          <small>Concept-based notes + solved examples for semester exams.</small>
+          <a class="pill" href="#" onclick="alert('Upload PDF in repo & link it here!')">Download PDF</a>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- QUIZ -->
-  <section class="section fade-up" id="quiz">
-    <h2 class="section-title">📝 Quiz & Tests</h2>
-    <p class="section-desc">Weekly quizzes + chapter tests. You can connect Google Forms or Quizizz.</p>
+    <!-- LECTURES -->
+    <div class="section fade" id="lectures">
+      <h2>🎥 Video Lectures</h2>
+      <p>Watch lecture videos here. You can embed YouTube videos easily.</p>
 
-    <div class="cards">
-      <div class="card">
-        <h3>Weekly Quiz (Google Form)</h3>
-        <p>Test your understanding and check your progress.</p>
-        <a class="mini-btn" href="https://forms.google.com" target="_blank">Open Quiz</a>
-      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>Sample Lecture (Embed)</h3>
+          <small>Replace VIDEO_ID_HERE with your lecture video ID.</small>
 
-      <div class="card">
-        <h3>Quizizz / Kahoot</h3>
-        <p>Fun and interactive MCQs to learn quickly.</p>
-        <a class="mini-btn" href="https://quizizz.com" target="_blank">Start Quizizz</a>
-      </div>
+          <div style="margin-top:12px; border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,0.22);">
+            <iframe
+              width="100%"
+              height="290"
+              src="https://www.youtube.com/embed/VIDEO_ID_HERE"
+              title="YouTube video"
+              allowfullscreen
+              style="border:none;">
+            </iframe>
+          </div>
 
-      <div class="card">
-        <h3>Board Exam Practice</h3>
-        <p>Topic-wise MCQs + important questions for Class 12.</p>
-        <a class="mini-btn" href="#" onclick="alert('I can add board style tests here!')">Start</a>
-      </div>
-    </div>
-  </section>
+          <a class="pill" href="#contact">Ask Doubt</a>
+        </div>
 
-  <!-- CONTACT -->
-  <section class="section fade-up" id="contact">
-    <h2 class="section-title">📩 Contact</h2>
-    <p class="section-desc">Need help or want to suggest a topic? Contact me anytime.</p>
-
-    <div class="cards">
-      <div class="card">
-        <h3>Teacher</h3>
-        <p><b>Sunny Kumar</b> <br> Maths Teacher • Notes • Lectures • Guidance</p>
-        <a class="mini-btn" href="#" onclick="alert('Add your email / WhatsApp link here!')">Message Me</a>
-      </div>
-
-      <div class="card">
-        <h3>YouTube Channel</h3>
-        <p>Watch all lectures on YouTube (add your channel link here).</p>
-        <a class="mini-btn" href="#" onclick="alert('Paste your YouTube channel link in this button!')">Open Channel</a>
-      </div>
-
-      <div class="card">
-        <h3>Motivation 💙</h3>
-        <p>
-          “Mathematics is not about numbers, it’s about understanding.”
-          <br><br>
-          Keep practicing and you will master it ✨
-        </p>
-        <a class="mini-btn" href="#top">⬆ Back to Top</a>
+        <div class="card">
+          <h3>Quick Tip</h3>
+          <small>
+            Upload lectures on YouTube and paste the video ID here.
+            Your students can watch directly on this site ✅
+          </small>
+          <a class="pill" href="https://www.youtube.com" target="_blank">Open YouTube</a>
+        </div>
       </div>
     </div>
-  </section>
 
-  <footer>
-    <p>
-      © 2026 <b>Sunny Maths Academy</b> • Made with 💙 using GitHub Pages (100% Free)<br>
-      Designed to make Maths easy, vibrant and enjoyable.
-    </p>
-  </footer>
+    <!-- PRACTICE -->
+    <div class="section fade" id="practice">
+      <h2>🧠 Practice Zone</h2>
+      <p>Daily practice makes Maths super easy. Improve speed, accuracy and confidence.</p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Daily 10 Questions</h3>
+          <small>Topic-wise practice sets for strong fundamentals.</small>
+          <a class="pill" href="#" onclick="alert('We can add question lists here!')">Start Practice</a>
+        </div>
+
+        <div class="card">
+          <h3>Assignments</h3>
+          <small>Download assignments and submit through Google Forms.</small>
+          <a class="pill" href="https://forms.google.com" target="_blank">Open Forms</a>
+        </div>
+
+        <div class="card">
+          <h3>Formula Sheets</h3>
+          <small>Short notes for last-minute revision before exams.</small>
+          <a class="pill" href="#" onclick="alert('Upload formula PDF and link it here!')">Download</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="section fade" id="quiz">
+      <h2>📝 Quizzes & Tests</h2>
+      <p>Weekly quizzes to track your learning and get better marks.</p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Weekly Quiz (Google Forms)</h3>
+          <small>Chapter-wise MCQ quiz with instant results.</small>
+          <a class="pill" href="https://forms.google.com" target="_blank">Take Quiz</a>
+        </div>
+
+        <div class="card">
+          <h3>Quizizz Practice</h3>
+          <small>Fun interactive quizzes like games 🎮</small>
+          <a class="pill" href="https://quizizz.com" target="_blank">Start Quizizz</a>
+        </div>
+
+        <div class="card">
+          <h3>Board Exam Tests</h3>
+          <small>Important questions for Class 12 boards.</small>
+          <a class="pill" href="#" onclick="alert('I can add board-style tests here!')">Start</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section fade" id="contact">
+      <h2>📩 Contact</h2>
+      <p>Want topic request / doubt support? Contact your teacher here.</p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Teacher</h3>
+          <small><b>Sunny Kumar</b> • Maths Teacher • Notes + Lectures + Guidance</small>
+          <a class="pill" href="#" onclick="alert('Add WhatsApp / Email link here!')">Message Me</a>
+        </div>
+
+        <div class="card">
+          <h3>YouTube Channel</h3>
+          <small>Add your YouTube channel link in this button.</small>
+          <a class="pill" href="#" onclick="alert('Paste your YouTube channel link here!')">Open Channel</a>
+        </div>
+
+        <div class="card">
+          <h3>Motivation 💖</h3>
+          <small>
+            “Success in Maths comes from clarity + practice + patience.” <br><br>
+            You can do it ✅
+          </small>
+          <a class="pill" href="#top" onclick="window.scrollTo({top:0, behavior:'smooth'})">⬆ Back to Top</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      © 2026 <b>Sunny Maths Academy</b> • Built Free using GitHub Pages 💛<br>
+      Designed to make Maths feel fun, colourful and easy.
+    </footer>
+
+  </div>
 
   <script>
-    // Floating symbols generator
-    const floatingArea = document.getElementById("floatingArea");
-    const symbols = ["π","√","∑","∞","∆","θ","+","−","×","÷","∫","≈","≠","≤","≥"];
-    const total = 26;
+    // create bubbles
+    const bubbles = document.getElementById("bubbles");
+    const total = 22;
 
-    for(let i=0; i<total; i++){
-      const el = document.createElement("div");
-      el.className = "symbol";
-      el.textContent = symbols[Math.floor(Math.random()*symbols.length)];
-      el.style.left = Math.random()*100 + "%";
-      el.style.fontSize = (14 + Math.random()*28) + "px";
-      el.style.animationDuration = (8 + Math.random()*10) + "s";
-      el.style.animationDelay = (Math.random()*6) + "s";
-      floatingArea.appendChild(el);
+    for(let i=0;i<total;i++){
+      const b = document.createElement("div");
+      b.className = "bubble";
+      const size = 20 + Math.random()*70;
+      b.style.width = size + "px";
+      b.style.height = size + "px";
+      b.style.left = Math.random()*100 + "%";
+      b.style.animationDuration = (8 + Math.random()*10) + "s";
+      b.style.animationDelay = (Math.random()*7) + "s";
+      bubbles.appendChild(b);
     }
 
-    // Fade-up animation on scroll
-    const fadeElements = document.querySelectorAll(".fade-up");
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add("show");
-        }
+    // fade in on scroll
+    const fades = document.querySelectorAll(".fade");
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) e.target.classList.add("show");
       });
-    }, { threshold: 0.12 });
-
-    fadeElements.forEach(el=>observer.observe(el));
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-      anchor.addEventListener("click", function(e){
-        const targetId = this.getAttribute("href");
-        if(targetId.length > 1){
-          e.preventDefault();
-          document.querySelector(targetId).scrollIntoView({behavior:"smooth"});
-        }
-      });
-    });
+    }, {threshold: 0.12});
+    fades.forEach(el=>obs.observe(el));
   </script>
 
 </body>
