@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simple Mathematics</title>
+  <title>Notes • Simple Mathematics</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,38 +15,26 @@
       --ink:#151515;
       --muted:#55626f;
 
-      --card: rgba(255,255,255,0.94);
+      --card: rgba(255,255,255,0.95);
       --stroke:#efe7d6;
       --shadow: 0 18px 50px rgba(40, 30, 10, 0.10);
 
       --yellow:#ffd166;
-      --yellow2:#ffb703;
-
       --green:#2ecc71;
       --red:#ff4d4d;
 
       --rXL: 30px;
       --rL: 22px;
-
-      --max: 1200px;
+      --max: 1100px;
     }
 
     *{ box-sizing:border-box; margin:0; padding:0; }
-    html{ scroll-behavior:smooth; }
     body{
       font-family:"Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background: var(--bg);
       color: var(--ink);
-      overflow-x:hidden;
     }
 
-    .container{
-      max-width: var(--max);
-      margin:auto;
-      padding: 18px;
-    }
-
-    /* NAV */
     .nav{
       position: sticky;
       top:0;
@@ -62,26 +50,23 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap: 12px;
       flex-wrap: wrap;
+      gap: 12px;
     }
+
     .brand{
+      font-weight: 900;
       display:flex;
       align-items:center;
       gap: 10px;
-      font-weight: 900;
       white-space: nowrap;
     }
     .logo{
-      width: 46px;
-      height: 46px;
+      width: 44px; height: 44px;
       border-radius: 18px;
-      display:grid;
-      place-items:center;
-      color:#111;
+      display:grid; place-items:center;
       font-weight: 900;
       background: linear-gradient(135deg, var(--yellow), var(--green), var(--red));
-      box-shadow: 0 16px 26px rgba(0,0,0,0.10);
     }
 
     .links{
@@ -95,186 +80,87 @@
       font-weight: 800;
       padding: 8px 12px;
       border-radius: 999px;
-      transition: 0.2s ease;
     }
     .links a:hover{
       background: rgba(255,209,102,0.35);
       color: var(--ink);
-      transform: translateY(-1px);
     }
 
-    .nav-btn{
-      text-decoration:none;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 900;
-      color:#161616;
-      border: 1px solid rgba(239,231,214,0.95);
-      background: linear-gradient(135deg, var(--yellow), #fff2c7);
-      box-shadow: 0 14px 26px rgba(40,30,10,0.10);
-      transition: 0.2s ease;
-      white-space: nowrap;
+    .container{
+      max-width: var(--max);
+      margin:auto;
+      padding: 18px;
     }
-    .nav-btn:hover{ transform: translateY(-1px); }
 
-    /* HERO */
-    .hero{
-      margin-top: 18px;
-      display:grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 16px;
-      align-items: stretch;
-    }
-    .card{
+    .top-card{
       background: var(--card);
       border: 1px solid var(--stroke);
       border-radius: var(--rXL);
       box-shadow: var(--shadow);
-      padding: 24px;
-      overflow:hidden;
-      position: relative;
-    }
-    .badge{
-      display:inline-flex;
-      gap: 10px;
-      align-items:center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-weight: 900;
-      font-size: 13px;
-      background: rgba(46,204,113,0.15);
-      border: 1px solid rgba(46,204,113,0.20);
-      color: #1a3b27;
+      padding: 22px;
+      margin-top: 18px;
     }
 
-    .title{
-      margin-top: 12px;
-      font-size: clamp(28px, 4.2vw, 48px);
-      line-height: 1.1;
+    h1{
+      font-size: 30px;
       font-weight: 900;
     }
-    .title span{
-      background: linear-gradient(90deg, var(--red), var(--yellow2), var(--green));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color: transparent;
-    }
-
-    .sub{
-      margin-top: 10px;
+    p{
+      margin-top: 8px;
       color: var(--muted);
-      font-size: 15.5px;
-      line-height: 1.75;
-      max-width: 72ch;
+      line-height: 1.7;
+      font-weight: 700;
     }
 
-    .cta{
-      margin-top: 16px;
+    .grid{
+      margin-top: 14px;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .note{
+      background: white;
+      border: 1px solid var(--stroke);
+      border-radius: var(--rXL);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .note h2{
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+    .note small{
+      display:block;
+      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 700;
+    }
+
+    .btns{
+      margin-top: 12px;
       display:flex;
       gap: 10px;
       flex-wrap: wrap;
     }
-
     .btn{
       text-decoration:none;
-      padding: 12px 16px;
-      border-radius: 16px;
+      padding: 10px 14px;
+      border-radius: 999px;
       font-weight: 900;
       border: 1px solid var(--stroke);
       background: white;
       color: var(--ink);
       transition: 0.2s ease;
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
     }
-    .btn:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 16px 26px rgba(0,0,0,0.08);
-    }
-    .btn.main{
-      border:none;
-      background: linear-gradient(135deg, var(--green), var(--yellow2));
+    .btn:hover{ transform: translateY(-2px); }
+
+    .btn.download{
+      border: none;
+      background: linear-gradient(135deg, var(--green), var(--yellow));
       color: #102015;
-      box-shadow: 0 16px 28px rgba(46,204,113,0.18);
-    }
-
-    /* Chapters */
-    .chapters{
-      margin-top: 16px;
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 12px;
-    }
-    .chapter{
-      text-decoration:none;
-      background: rgba(255,255,255,0.95);
-      border: 1px solid rgba(239,231,214,0.95);
-      border-radius: 18px;
-      padding: 14px;
-      font-weight: 900;
-      color: var(--ink);
-      transition: 0.22s ease;
-      box-shadow: 0 14px 26px rgba(40,30,10,0.08);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-    }
-    .chapter:hover{
-      transform: translateY(-4px);
-      background: rgba(255,244,210,0.95);
-    }
-    .tag{
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-weight: 900;
-      background: rgba(255,209,102,0.40);
-      border: 1px solid rgba(239,231,214,0.95);
-    }
-
-    /* Right panel */
-    .side{
-      background: linear-gradient(135deg, rgba(255,209,102,0.35), rgba(255,255,255,0.90));
-      border: 1px solid rgba(239,231,214,0.95);
-      border-radius: var(--rXL);
-      box-shadow: var(--shadow);
-      padding: 22px;
-    }
-
-    .side h3{
-      font-size: 18px;
-      font-weight: 900;
-    }
-    .side p{
-      margin-top: 8px;
-      color: var(--muted);
-      line-height: 1.65;
-      font-size: 14px;
-    }
-
-    .quick{
-      margin-top: 14px;
-      display:grid;
-      gap: 10px;
-    }
-    .quick a{
-      text-decoration:none;
-      background: rgba(255,255,255,0.92);
-      border: 1px solid rgba(239,231,214,0.95);
-      border-radius: 18px;
-      padding: 12px;
-      font-weight: 900;
-      color: var(--ink);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      transition: 0.2s ease;
-    }
-    .quick a:hover{
-      transform: translateY(-2px);
-      background: rgba(255,244,210,0.95);
     }
 
     footer{
@@ -282,14 +168,7 @@
       padding: 26px 0 38px;
       color: var(--muted);
       font-weight: 800;
-      line-height: 1.7;
-      font-size: 14px;
-      margin-top: 20px;
-    }
-
-    @media (max-width: 900px){
-      .hero{ grid-template-columns: 1fr; }
-      .chapters{ grid-template-columns: repeat(2, 1fr); }
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -298,75 +177,87 @@
   <div class="nav">
     <div class="nav-inner">
       <div class="brand">
-        <div class="logo">∑</div>
-        Simple Mathematics
+        <div class="logo">📘</div>
+        Simple Mathematics • Notes
       </div>
-
       <div class="links">
         <a href="index.html">Home</a>
         <a href="notes.html">Notes</a>
         <a href="lectures.html">Lectures</a>
         <a href="quiz.html">Quiz</a>
       </div>
-
-      <a class="nav-btn" href="notes.html">📘 Open Notes</a>
     </div>
   </div>
 
   <main class="container">
-    <section class="hero">
-      <div class="card">
-        <div class="badge">✨ Free Learning • Notes • Lectures • Quiz</div>
+    <div class="top-card">
+      <h1>📘 Notes (PDF Download)</h1>
+      <p>
+        Upload your PDFs inside <b>pdf/</b> folder in GitHub repository.
+        Then links like <b>pdf/algebra.pdf</b> will work automatically ✅
+      </p>
+    </div>
 
-        <div class="title">
-          Make Maths <span>simple & enjoyable</span> 🌈
-        </div>
+    <div class="grid">
 
-        <p class="sub">
-          Welcome to <b>Simple Mathematics</b>. Here you get chapter-wise PDFs, easy lectures and weekly quizzes.
-          Everything is arranged topic-wise so students can learn comfortably.
-        </p>
-
-        <div class="cta">
-          <a class="btn main" href="notes.html">📘 Download Notes</a>
-          <a class="btn" href="lectures.html">🎥 Watch Lectures</a>
-          <a class="btn" href="quiz.html">📝 Take Quiz</a>
-        </div>
-
-        <div style="margin-top:18px; font-weight:900;">📌 Quick Chapters</div>
-        <div class="chapters">
-          <a class="chapter" href="notes.html#algebra">Algebra <span class="tag">PDF</span></a>
-          <a class="chapter" href="notes.html#calculus">Calculus <span class="tag">PDF</span></a>
-          <a class="chapter" href="notes.html#vectors">Vectors <span class="tag">PDF</span></a>
-          <a class="chapter" href="notes.html#trigonometry">Trigonometry <span class="tag">PDF</span></a>
-          <a class="chapter" href="notes.html#matrices">Matrices <span class="tag">PDF</span></a>
-          <a class="chapter" href="notes.html#probability">Probability <span class="tag">PDF</span></a>
+      <div class="note" id="algebra">
+        <h2>Algebra</h2>
+        <small>Linear equations, polynomials, quadratic, inequalities.</small>
+        <div class="btns">
+          <a class="btn download" href="pdf/algebra.pdf" download>⬇ Download PDF</a>
+          <a class="btn" href="pdf/algebra.pdf" target="_blank">👁 View</a>
         </div>
       </div>
 
-      <aside class="side">
-        <h3>🚀 Study Plan</h3>
-        <p>
-          ✅ Read Notes<br>
-          ✅ Watch Lecture<br>
-          ✅ Practice Daily<br>
-          ✅ Weekly Quiz
-        </p>
-
-        <div class="quick">
-          <a href="notes.html">Notes <span>→</span></a>
-          <a href="lectures.html">Lectures <span>→</span></a>
-          <a href="quiz.html">Quiz <span>→</span></a>
+      <div class="note" id="calculus">
+        <h2>Calculus</h2>
+        <small>Limits, continuity, derivatives, integration, applications.</small>
+        <div class="btns">
+          <a class="btn download" href="pdf/calculus.pdf" download>⬇ Download PDF</a>
+          <a class="btn" href="pdf/calculus.pdf" target="_blank">👁 View</a>
         </div>
+      </div>
 
-        <p style="margin-top:14px; font-weight:900;">
-          Tip: Upload PDFs in <b>pdf/</b> folder
-        </p>
-      </aside>
-    </section>
+      <div class="note" id="vectors">
+        <h2>Vectors</h2>
+        <small>Vector algebra, dot product, cross product, applications.</small>
+        <div class="btns">
+          <a class="btn download" href="pdf/vectors.pdf" download>⬇ Download PDF</a>
+          <a class="btn" href="pdf/vectors.pdf" target="_blank">👁 View</a>
+        </div>
+      </div>
+
+      <div class="note" id="trigonometry">
+        <h2>Trigonometry</h2>
+        <small>Identities, graphs, transformations, inverse trig.</small>
+        <div class="btns">
+          <a class="btn download" href="pdf/trigonometry.pdf" download>⬇ Download PDF</a>
+          <a class="btn" href="pdf/trigonometry.pdf" target="_blank">👁 View</a>
+        </div>
+      </div>
+
+      <div class="note" id="matrices">
+        <h2>Matrices</h2>
+        <small>Determinants, inverse, rank, linear systems.</small>
+        <div class="btns">
+          <a class="btn download" href="pdf/matrices.pdf" download>⬇ Download PDF</a>
+          <a class="btn" href="pdf/matrices.pdf" target="_blank">👁 View</a>
+        </div>
+      </div>
+
+      <div class="note" id="probability">
+        <h2>Probability</h2>
+        <small>Events, conditional probability, Bayes theorem, distributions.</small>
+        <div class="btns">
+          <a class="btn download" href="pdf/probability.pdf" download>⬇ Download PDF</a>
+          <a class="btn" href="pdf/probability.pdf" target="_blank">👁 View</a>
+        </div>
+      </div>
+
+    </div>
 
     <footer>
-      © 2026 <b>Simple Mathematics</b> • Made free using GitHub Pages 💛💚❤️
+      © 2026 Simple Mathematics • Notes page ✅
     </footer>
   </main>
 </body>
