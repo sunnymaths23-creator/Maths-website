@@ -1,735 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sunny Maths Academy</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunny Kumar Maths Academy | Class 11 • 12 • UG Maths</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5b5fff;
+            --secondary: #ff6b6b;
+            --accent: #feca57;
+            --dark: #2d3436;
+            --light: #f8f9fa;
+            --gray: #636e72;
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <style>
-    :root{
-      --bg:#f7fbff;
-      --text:#091427;
-      --muted:#55657a;
-      --stroke:#e7eef9;
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
 
-      --blue:#2b7fff;
-      --sky:#22d3ee;
-      --purple:#7c3aed;
-      --pink:#ff4fd8;
-      --orange:#ff8a00;
-      --green:#22c55e;
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
 
-      --card:#ffffffcc;
-      --shadow: 0 18px 45px rgba(10,30,70,0.10);
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-      --rXL: 30px;
-      --rL: 22px;
-      --rM: 18px;
+        nav {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-      --max: 1200px;
-    }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    *{ box-sizing:border-box; margin:0; padding:0; }
-    html{ scroll-behavior:smooth; }
+        .logo span {
+            color: var(--secondary);
+        }
 
-    body{
-      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x:hidden;
-    }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
 
-    /* Pastel wallpaper (very clean) */
-    .bg{
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-    .shape{
-      position: absolute;
-      filter: blur(35px);
-      opacity: 0.55;
-      border-radius: 50%;
-      animation: float 10s ease-in-out infinite;
-    }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
 
-    .s1{
-      width: 520px; height: 520px;
-      background: radial-gradient(circle, rgba(34,211,238,0.75), transparent 60%);
-      top:-200px; left:-160px;
-    }
-    .s2{
-      width: 520px; height: 520px;
-      background: radial-gradient(circle, rgba(124,58,237,0.65), transparent 60%);
-      top:70px; right:-220px;
-      animation-delay: 1.5s;
-    }
-    .s3{
-      width: 560px; height: 560px;
-      background: radial-gradient(circle, rgba(255,79,216,0.55), transparent 60%);
-      bottom:-260px; left:280px;
-      animation-delay: 2.8s;
-    }
+        .cta-btn {
+            background: var(--primary);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
 
-    @keyframes float{
-      0%{ transform: translate(0,0) scale(1); }
-      50%{ transform: translate(16px, 12px) scale(1.04); }
-      100%{ transform: translate(0,0) scale(1); }
-    }
+        .cta-btn:hover {
+            background: #4a4fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(91, 95, 255, 0.3);
+        }
 
-    .container{
-      max-width: var(--max);
-      margin:auto;
-      padding: 18px;
-      position: relative;
-      z-index: 2;
-    }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #5b5fff 0%, #7b6eff 100%);
+            color: white;
+            padding: 120px 20px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-    /* Navbar */
-    .nav{
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(247,251,255,0.75);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(231,238,249,0.9);
-    }
+        .hero::after {
+            content: '∫ dx';
+            position: absolute;
+            font-size: 25rem;
+            opacity: 0.08;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            font-family: monospace;
+        }
 
-    .nav-inner{
-      max-width: var(--max);
-      margin:auto;
-      padding: 14px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      font-weight: 800;
-      color: var(--text);
-      white-space: nowrap;
-    }
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+        }
 
-    .logo{
-      width: 44px;
-      height: 44px;
-      border-radius: 16px;
-      display:grid;
-      place-items:center;
-      background: linear-gradient(135deg, var(--blue), var(--purple), var(--pink));
-      color: white;
-      box-shadow: 0 16px 28px rgba(43,127,255,0.20);
-      font-weight: 900;
-    }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-    .links{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+        .hero-btn {
+            padding: 16px 36px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .links a{
-      text-decoration:none;
-      color: var(--muted);
-      font-weight: 700;
-      padding: 8px 12px;
-      border-radius: 999px;
-      transition: 0.2s ease;
-    }
+        .primary-btn {
+            background: white;
+            color: var(--primary);
+        }
 
-    .links a:hover{
-      background: rgba(43,127,255,0.10);
-      color: var(--text);
-      transform: translateY(-1px);
-    }
+        .primary-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
 
-    .nav-btn{
-      text-decoration:none;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 800;
-      border: 1px solid var(--stroke);
-      background: white;
-      color: var(--text);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.06);
-      transition: 0.2s ease;
-    }
-    .nav-btn:hover{ transform: translateY(-1px); }
+        .secondary-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
 
-    /* Hero */
-    .hero{
-      margin-top: 16px;
-      display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 16px;
-      align-items: stretch;
-    }
+        .secondary-btn:hover {
+            background: white;
+            color: var(--primary);
+        }
 
-    .card{
-      background: var(--card);
-      border: 1px solid var(--stroke);
-      border-radius: var(--rXL);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      position: relative;
-      overflow: hidden;
-    }
+        /* Section Styling */
+        section {
+            padding: 90px 20px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
 
-    .badge{
-      display:inline-flex;
-      gap: 10px;
-      align-items:center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 13px;
-      color: var(--text);
-      background: rgba(34,211,238,0.14);
-      border: 1px solid rgba(34,211,238,0.18);
-    }
+        .section-title {
+            text-align: center;
+            font-size: 2.6rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+        }
 
-    .title{
-      margin-top: 12px;
-      font-size: clamp(26px, 4.2vw, 48px);
-      line-height: 1.1;
-      font-weight: 800;
-      letter-spacing: -0.3px;
-    }
+        .section-title span {
+            color: var(--primary);
+        }
 
-    .title span{
-      background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color: transparent;
-    }
+        /* Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
 
-    .sub{
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 15.5px;
-      line-height: 1.75;
-      max-width: 70ch;
-    }
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+        }
 
-    .cta{
-      margin-top: 16px;
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(91, 95, 255, 0.25);
+        }
 
-    .btn{
-      border:none;
-      cursor:pointer;
-      padding: 12px 16px;
-      border-radius: 16px;
-      font-weight: 800;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      transition: 0.2s ease;
-      white-space: nowrap;
-    }
+        .card-icon {
+            height: 140px;
+            background: linear-gradient(135deg, var(--primary), #8e7fff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
 
-    .btn.primary{
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      color: white;
-      box-shadow: 0 16px 26px rgba(124,58,237,0.18);
-    }
-    .btn.primary:hover{ transform: translateY(-2px); }
+        .card-content {
+            padding: 25px;
+        }
 
-    .btn.soft{
-      background: white;
-      color: var(--text);
-      border: 1px solid var(--stroke);
-    }
-    .btn.soft:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 16px 26px rgba(0,0,0,0.08);
-    }
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
 
-    /* Right column cards */
-    .mini-grid{
-      display:flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+        .card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
 
-    .mini{
-      border-radius: var(--rL);
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,0.85);
-      padding: 16px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      box-shadow: 0 14px 26px rgba(0,0,0,0.05);
-      transition: 0.2s ease;
-    }
-    .mini:hover{ transform: translateY(-2px); }
+        .card-link {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
 
-    .mini strong{
-      font-weight: 800;
-      color: var(--text);
-    }
-    .mini span{
-      display:block;
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 2px;
-      font-weight: 600;
-    }
+        /* YouTube Section */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
 
-    .icon{
-      width: 48px;
-      height: 48px;
-      border-radius: 18px;
-      display:grid;
-      place-items:center;
-      color: white;
-      font-weight: 900;
-      flex: 0 0 auto;
-    }
-    .i1{ background: linear-gradient(135deg, var(--blue), var(--sky)); }
-    .i2{ background: linear-gradient(135deg, var(--purple), var(--pink)); }
-    .i3{ background: linear-gradient(135deg, var(--green), var(--sky)); }
-    .i4{ background: linear-gradient(135deg, var(--orange), var(--pink)); }
+        .video-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
 
-    /* Sections */
-    .section{
-      margin-top: 18px;
-    }
+        .video-card:hover {
+            transform: scale(1.03);
+        }
 
-    .head{
-      display:flex;
-      align-items:flex-end;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 12px;
-    }
+        .thumbnail {
+            height: 180px;
+            background: #333;
+            position: relative;
+        }
 
-    h2{
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--text);
-    }
+        .thumbnail::after {
+            content: '▶';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: rgba(255,255,255,0.8);
+        }
 
-    .desc{
-      color: var(--muted);
-      line-height: 1.65;
-      font-size: 15px;
-      max-width: 75ch;
-    }
+        .video-info {
+            padding: 18px;
+            background: white;
+        }
 
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
-    }
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: #ddd;
+            padding: 80px 20px 30px;
+            text-align: center;
+        }
 
-    .box{
-      background: rgba(255,255,255,0.86);
-      border: 1px solid var(--stroke);
-      border-radius: var(--rXL);
-      padding: 18px;
-      box-shadow: 0 16px 34px rgba(0,0,0,0.05);
-      transition: 0.22s ease;
-      position: relative;
-      overflow: hidden;
-    }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
 
-    .box::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: linear-gradient(135deg, rgba(43,127,255,0.18), transparent 55%);
-      opacity: 0.35;
-      pointer-events:none;
-    }
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
 
-    .box:hover{
-      transform: translateY(-6px);
-      box-shadow: 0 22px 44px rgba(0,0,0,0.08);
-    }
+        .footer-links a:hover {
+            color: var(--accent);
+        }
 
-    .box h3{
-      font-weight: 800;
-      font-size: 17px;
-      margin-bottom: 6px;
-    }
-
-    .box small{
-      display:block;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    .actions{
-      margin-top: 12px;
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .chipbtn{
-      text-decoration:none;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 800;
-      border: 1px solid var(--stroke);
-      background: white;
-      color: var(--text);
-      transition: 0.2s ease;
-    }
-
-    .chipbtn:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 16px 26px rgba(0,0,0,0.08);
-    }
-
-    .chipbtn.grad{
-      background: linear-gradient(135deg, var(--blue), var(--purple), var(--pink));
-      color: white;
-      border: none;
-    }
-
-    /* Video */
-    .video{
-      border-radius: var(--rXL);
-      overflow:hidden;
-      border: 1px solid var(--stroke);
-      background: white;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
-    }
-    iframe{ width:100%; height: 320px; border:0; display:block; }
-
-    footer{
-      margin-top: 26px;
-      text-align:center;
-      padding: 22px 0 38px;
-      color: var(--muted);
-      font-weight: 700;
-      line-height: 1.7;
-      font-size: 14px;
-    }
-
-    /* Reveal */
-    .reveal{
-      opacity: 0;
-      transform: translateY(14px);
-      transition: 0.75s ease;
-    }
-    .reveal.show{
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 900px){
-      .hero{ grid-template-columns: 1fr; }
-      iframe{ height: 240px; }
-    }
-  </style>
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.2rem; }
+            .nav-links { display: none; } /* Add hamburger menu later if needed */
+        }
+    </style>
 </head>
-
 <body>
-  <div class="bg" aria-hidden="true">
-    <div class="shape s1"></div>
-    <div class="shape s2"></div>
-    <div class="shape s3"></div>
-  </div>
 
-  <!-- Navbar -->
-  <div class="nav">
-    <div class="nav-inner">
-      <div class="brand">
-        <div class="logo">∑</div>
-        Sunny Maths Academy
-      </div>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Sunny<span>Kumar</span> Maths</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Class 11</a></li>
+                <li><a href="#">Class 12</a></li>
+                <li><a href="#">UG Courses</a></li>
+                <li><a href="#">YouTube</a></li>
+                <li><a href="#">Quizzes</a></li>
+            </ul>
+            <a href="#" class="cta-btn">Join Free</a>
+        </nav>
+    </header>
 
-      <div class="links">
-        <a href="#notes">Notes</a>
-        <a href="#lectures">Lectures</a>
-        <a href="#practice">Practice</a>
-        <a href="#quiz">Quiz</a>
-        <a href="#contact">Contact</a>
-      </div>
-
-      <a class="nav-btn" href="#notes">🚀 Start Learning</a>
-    </div>
-  </div>
-
-  <main class="container">
-
-    <!-- HERO -->
+    <!-- Hero -->
     <section class="hero">
-      <div class="card reveal show">
-        <div class="badge">✨ Free Learning • Class 11 • 12 • UG</div>
-
-        <h1 class="title">
-          Maths feels <span>easy + fun</span> here 🎉
-        </h1>
-
-        <p class="sub">
-          Welcome to <b>Sunny Maths Academy</b> — a colorful and friendly place where you get
-          <b>PDF notes</b>, <b>video lectures</b>, <b>practice sets</b> and <b>quizzes</b>.
-          Learn step-by-step and build strong concepts confidently.
-        </p>
-
-        <div class="cta">
-          <a class="btn primary" href="#notes">📘 Notes</a>
-          <a class="btn soft" href="#lectures">🎥 Lectures</a>
-          <a class="btn soft" href="#quiz">📝 Quiz</a>
+        <h1>Master Maths with Sunny Kumar</h1>
+        <p>Complete video lectures, notes, quizzes & doubt solving for Class 11, Class 12 & Undergraduate Mathematics</p>
+        
+        <div class="hero-buttons">
+            <a href="#" class="hero-btn primary-btn">Browse Courses →</a>
+            <a href="#" class="hero-btn secondary-btn">Watch Free Videos</a>
         </div>
-      </div>
+    </section>
 
-      <div class="mini-grid reveal">
-        <div class="mini">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <div class="icon i1">11</div>
-            <div>
-              <strong>Class 11</strong>
-              <span>Foundation + clarity</span>
+    <!-- Levels Section -->
+    <section>
+        <h2 class="section-title">Choose Your <span>Level</span></h2>
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-icon">📘</div>
+                <div class="card-content">
+                    <h3>Class 11 Mathematics</h3>
+                    <p>Sets, Relations, Functions, Trigonometry, Complex Numbers, Sequences & Series, Conic Sections</p>
+                    <a href="#" class="card-link">Explore Class 11 →</a>
+                </div>
             </div>
-          </div>
-          ✅
-        </div>
-
-        <div class="mini">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <div class="icon i2">12</div>
-            <div>
-              <strong>Class 12</strong>
-              <span>Boards + practice</span>
+            
+            <div class="card">
+                <div class="card-icon">📗</div>
+                <div class="card-content">
+                    <h3>Class 12 Mathematics</h3>
+                    <p>Calculus, Matrices, Determinants, Vectors, 3D Geometry, Probability, Differential Equations</p>
+                    <a href="#" class="card-link">Explore Class 12 →</a>
+                </div>
             </div>
-          </div>
-          🔥
-        </div>
-
-        <div class="mini">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <div class="icon i3">UG</div>
-            <div>
-              <strong>UG Maths</strong>
-              <span>Advanced learning</span>
+            
+            <div class="card">
+                <div class="card-icon">🎓</div>
+                <div class="card-content">
+                    <h3>Undergraduate (UG) Maths</h3>
+                    <p>Real Analysis, Abstract Algebra, Linear Algebra, Differential Equations, Numerical Methods, Complex Analysis</p>
+                    <a href="#" class="card-link">Explore UG Courses →</a>
+                </div>
             </div>
-          </div>
-          ⭐
         </div>
+    </section>
 
-        <div class="mini">
-          <div style="display:flex; align-items:center; gap:12px;">
-            <div class="icon i4">✓</div>
-            <div>
-              <strong>Daily Practice</strong>
-              <span>10 questions/day</span>
+    <!-- YouTube Videos -->
+    <section style="background: #f1f3f5;">
+        <h2 class="section-title">Latest YouTube <span>Videos</span></h2>
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <h4>Limits & Continuity - Full Concept in 1 Video</h4>
+                    <p>Sunny Kumar • 2.3M views • 45 min</p>
+                </div>
             </div>
-          </div>
-          🏆
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <h4>Integration by Parts - Best Tricks & Shortcuts</h4>
+                    <p>Sunny Kumar • 1.8M views • 38 min</p>
+                </div>
+            </div>
+            <div class="video-card">
+                <div class="thumbnail"></div>
+                <div class="video-info">
+                    <h4>Determinants & Matrices | JEE Mains 2025</h4>
+                    <p>Sunny Kumar • 980K views • 52 min</p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- NOTES -->
-    <section class="section reveal" id="notes">
-      <div class="head">
-        <div>
-          <h2>📘 Notes (PDF)</h2>
-          <p class="desc">Topic-wise notes and formula sheets for fast revision.</p>
+    <!-- Quizzes -->
+    <section>
+        <h2 class="section-title">Test Your Knowledge</h2>
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-icon">🧠</div>
+                <div class="card-content">
+                    <h3>Calculus Quiz</h3>
+                    <p>20 Questions • 30 Minutes • Class 12 Level</p>
+                    <a href="#" class="card-link">Start Quiz →</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">📐</div>
+                <div class="card-content">
+                    <h3>Coordinate Geometry Quiz</h3>
+                    <p>15 Questions • Class 11</p>
+                    <a href="#" class="card-link">Start Quiz →</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <div class="card-content">
+                    <h3>Linear Algebra Quiz</h3>
+                    <p>UG Level • Matrices & Eigenvalues</p>
+                    <a href="#" class="card-link">Start Quiz →</a>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="grid">
-        <div class="box">
-          <h3>Class 11 • Trigonometry</h3>
-          <small>Identities, graphs, transformations + practice.</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Upload PDF in repo and paste link here!')">⬇ Download</a>
-            <a class="chipbtn" href="#practice">🧠 Practice</a>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3>Class 12 • Calculus</h3>
-          <small>Limits, continuity, differentiation & integration.</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Upload PDF in repo and paste link here!')">⬇ Download</a>
-            <a class="chipbtn" href="#quiz">📝 Quiz</a>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3>UG • Real Analysis</h3>
-          <small>Concept clarity + solved examples for exams.</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Upload PDF in repo and paste link here!')">⬇ Download</a>
-            <a class="chipbtn" href="#lectures">🎥 Watch</a>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- LECTURES -->
-    <section class="section reveal" id="lectures">
-      <div class="head">
-        <div>
-          <h2>🎥 Video Lectures</h2>
-          <p class="desc">Embed your YouTube video below (replace VIDEO_ID_HERE).</p>
-        </div>
-      </div>
-
-      <div class="video">
-        <iframe
-          src="https://www.youtube.com/embed/VIDEO_ID_HERE"
-          title="YouTube lecture"
-          allowfullscreen>
-        </iframe>
-      </div>
-
-      <p style="margin-top:10px; color: var(--muted);">
-        ✅ Replace <b>VIDEO_ID_HERE</b> with your YouTube video ID.
-      </p>
-    </section>
-
-    <!-- PRACTICE -->
-    <section class="section reveal" id="practice">
-      <div class="head">
-        <div>
-          <h2>🧠 Practice</h2>
-          <p class="desc">Daily practice makes Maths easy and scoring.</p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="box">
-          <h3>Daily 10 Questions</h3>
-          <small>Best routine for speed + accuracy.</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Add practice sets here later.')">Start</a>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3>Assignments</h3>
-          <small>Upload worksheets and accept responses via Google Forms.</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="https://forms.google.com" target="_blank">Submit</a>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3>Formula Sheets</h3>
-          <small>Fast revision sheets for exams.</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Upload formula PDF & link here.')">Download</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- QUIZ -->
-    <section class="section reveal" id="quiz">
-      <div class="head">
-        <div>
-          <h2>📝 Quiz</h2>
-          <p class="desc">Weekly quizzes to track progress.</p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="box">
-          <h3>Google Forms Quiz</h3>
-          <small>Create a quiz and paste link here.</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="https://forms.google.com" target="_blank">Open</a>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3>Quizizz Practice</h3>
-          <small>Fun MCQs and learning games 🎮</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="https://quizizz.com" target="_blank">Start</a>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3>Chapter Tests</h3>
-          <small>Short tests for revision.</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('We can add tests later.')">Start</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section reveal" id="contact">
-      <div class="head">
-        <div>
-          <h2>📩 Contact</h2>
-          <p class="desc">For doubts, requests and suggestions.</p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="box">
-          <h3>Teacher</h3>
-          <small><b>Sunny Kumar</b> • Maths Teacher</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Add Email/WhatsApp link here!')">Message</a>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3>YouTube Channel</h3>
-          <small>Add your channel link for students.</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Paste channel URL here!')">Open</a>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3>Motivation</h3>
-          <small>“Practice daily and Maths becomes your strength.” ✅</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="#top">⬆ Top</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <!-- Footer -->
     <footer>
-      © 2026 <b>Sunny Maths Academy</b> • Made Free with GitHub Pages 💙 <br>
-      Fresh • Modern • Fun-learning design
+        <div class="logo" style="color:white; justify-content:center;">Sunny<span>Kumar</span> Maths</div>
+        <p style="margin:20px 0; max-width:600px; margin-left:auto; margin-right:auto;">
+            Making Mathematics simple, enjoyable and understandable for students of Class 11, 12 & Undergraduate level.
+        </p>
+        
+        <div class="footer-links">
+            <a href="#">About Me</a>
+            <a href="#">YouTube Channel</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Contact</a>
+        </div>
+        
+        <p style="margin-top:40px; opacity:0.6;">© 2026 Sunny Kumar Maths Academy. All Rights Reserved.</p>
     </footer>
-
-  </main>
-
-  <script>
-    const items = document.querySelectorAll(".reveal");
-    const obs = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting) e.target.classList.add("show");
-      });
-    }, {threshold: 0.12});
-    items.forEach(el=>obs.observe(el));
-  </script>
 
 </body>
 </html>
