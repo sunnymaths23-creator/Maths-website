@@ -7,84 +7,76 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#f6fbff;
-      --ink:#0b1220;
-      --muted:#516173;
+      --bg:#070A12;
+      --card: rgba(255,255,255,0.06);
+      --card2: rgba(255,255,255,0.085);
+      --border: rgba(255,255,255,0.13);
 
-      --sky:#2fb7ff;
-      --blue:#2563eb;
-      --purple:#7c3aed;
+      --white:#ffffff;
+      --muted: rgba(255,255,255,0.72);
+
+      --cyan:#22d3ee;
+      --purple:#a78bfa;
       --pink:#ff4fd8;
-      --mint:#22c55e;
+      --green:#34d399;
+      --yellow:#ffd166;
 
-      --card:#ffffffcc;
-      --stroke:#e8eef7;
-      --shadow: 0 18px 50px rgba(13, 38, 76, 0.12);
-
+      --shadow: 0 18px 50px rgba(0,0,0,0.55);
       --rXL: 28px;
       --rL: 22px;
       --rM: 18px;
 
-      --max: 1180px;
+      --max: 1200px;
     }
 
     *{ box-sizing:border-box; margin:0; padding:0; }
     html{ scroll-behavior:smooth; }
 
     body{
-      font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family:"Outfit", sans-serif;
       background: var(--bg);
-      color: var(--ink);
-      overflow-x:hidden;
+      color: var(--white);
+      overflow-x: hidden;
     }
 
-    /* Soft animated blobs background */
-    .bg{
+    /* Neon wallpaper */
+    .wall{
       position: fixed;
       inset: 0;
+      pointer-events:none;
       z-index: 0;
-      pointer-events: none;
       overflow: hidden;
     }
 
-    .blob{
-      position: absolute;
+    .glow{
+      position:absolute;
       width: 520px;
       height: 520px;
       border-radius: 50%;
-      filter: blur(40px);
-      opacity: 0.45;
-      animation: float 12s ease-in-out infinite;
+      filter: blur(55px);
+      opacity: 0.60;
+      animation: drift 10s ease-in-out infinite;
     }
 
-    .blob.one{
-      background: radial-gradient(circle, rgba(47,183,255,0.75), rgba(47,183,255,0));
-      top:-180px; left:-140px;
-    }
-    .blob.two{
-      background: radial-gradient(circle, rgba(124,58,237,0.65), rgba(124,58,237,0));
-      top:120px; right:-200px;
-      animation-delay: 1.5s;
-    }
-    .blob.three{
-      background: radial-gradient(circle, rgba(255,79,216,0.55), rgba(255,79,216,0));
-      bottom:-220px; left:240px;
-      animation-delay: 2.6s;
+    .g1{ background: radial-gradient(circle, rgba(34,211,238,0.95), transparent 60%); top:-180px; left:-120px; }
+    .g2{ background: radial-gradient(circle, rgba(167,139,250,0.90), transparent 60%); top:60px; right:-210px; animation-delay: 1.5s; }
+    .g3{ background: radial-gradient(circle, rgba(255,79,216,0.75), transparent 60%); bottom:-220px; left:280px; animation-delay: 2.8s; }
+    .g4{ background: radial-gradient(circle, rgba(52,211,153,0.55), transparent 60%); bottom:-240px; right:220px; animation-delay: 3.5s; }
+
+    @keyframes drift{
+      0%{ transform: translate(0,0) scale(1); }
+      50%{ transform: translate(18px, 12px) scale(1.05); }
+      100%{ transform: translate(0,0) scale(1); }
     }
 
-    @keyframes float{
-      0%{ transform: translateY(0) translateX(0) scale(1); }
-      50%{ transform: translateY(18px) translateX(14px) scale(1.05); }
-      100%{ transform: translateY(0) translateX(0) scale(1); }
-    }
-
+    /* Layout */
     .container{
       max-width: var(--max);
-      margin: auto;
+      margin:auto;
       padding: 18px;
       position: relative;
       z-index: 2;
@@ -95,9 +87,9 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(246,251,255,0.72);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(232,238,247,0.9);
+      background: rgba(7,10,18,0.55);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
     }
 
     .nav-inner{
@@ -114,22 +106,21 @@
     .brand{
       display:flex;
       align-items:center;
-      gap: 10px;
-      font-weight: 800;
+      gap: 12px;
+      font-weight: 900;
       letter-spacing: 0.2px;
-      color: var(--ink);
+      font-size: 16px;
       white-space: nowrap;
     }
 
     .logo{
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 16px;
       display:grid;
       place-items:center;
-      background: linear-gradient(135deg, rgba(47,183,255,1), rgba(124,58,237,1));
-      color: white;
-      box-shadow: 0 16px 28px rgba(37,99,235,0.18);
+      background: linear-gradient(135deg, rgba(34,211,238,1), rgba(255,79,216,1));
+      box-shadow: 0 18px 30px rgba(0,0,0,0.45);
       font-weight: 900;
     }
 
@@ -147,8 +138,8 @@
       transition: 0.2s ease;
     }
     .links a:hover{
-      background: rgba(37,99,235,0.10);
-      color: var(--ink);
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
       transform: translateY(-1px);
     }
 
@@ -157,48 +148,31 @@
       padding: 10px 14px;
       border-radius: 999px;
       font-weight: 800;
-      border: 1px solid var(--stroke);
-      background: white;
-      color: var(--ink);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: var(--white);
       transition: 0.2s ease;
       white-space: nowrap;
     }
-    .nav-btn:hover{ transform: translateY(-1px); }
+    .nav-btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.14); }
 
     /* Hero */
     .hero{
       margin-top: 16px;
       display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.18fr 0.82fr;
       gap: 16px;
       align-items: stretch;
     }
 
     .card{
       background: var(--card);
-      border: 1px solid var(--stroke);
+      border: 1px solid var(--border);
       border-radius: var(--rXL);
       box-shadow: var(--shadow);
       padding: 22px;
       position: relative;
       overflow: hidden;
-    }
-
-    .hero-title{
-      font-size: clamp(26px, 4.2vw, 46px);
-      line-height: 1.1;
-      margin-top: 12px;
-      font-weight: 800;
-      letter-spacing: -0.3px;
-      color: var(--ink);
-    }
-
-    .hero-title span{
-      background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color: transparent;
     }
 
     .badge{
@@ -207,11 +181,26 @@
       align-items:center;
       padding: 8px 12px;
       border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
       font-weight: 800;
-      color: var(--ink);
-      background: rgba(37,99,235,0.10);
-      border: 1px solid rgba(37,99,235,0.14);
       font-size: 13px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero-title{
+      margin-top: 12px;
+      font-size: clamp(28px, 4.4vw, 52px);
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+    }
+
+    .grad{
+      background: linear-gradient(90deg, var(--cyan), var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero-sub{
@@ -219,7 +208,7 @@
       color: var(--muted);
       font-size: 15.5px;
       line-height: 1.7;
-      max-width: 65ch;
+      max-width: 68ch;
     }
 
     .cta{
@@ -234,7 +223,7 @@
       cursor:pointer;
       padding: 12px 16px;
       border-radius: 16px;
-      font-weight: 800;
+      font-weight: 900;
       transition: 0.2s ease;
       text-decoration:none;
       display:inline-flex;
@@ -244,53 +233,48 @@
     }
 
     .btn.primary{
-      background: linear-gradient(135deg, var(--blue), var(--purple));
-      color: white;
-      box-shadow: 0 18px 28px rgba(37,99,235,0.22);
+      background: linear-gradient(135deg, rgba(34,211,238,1), rgba(255,79,216,1));
+      color: #081018;
+      box-shadow: 0 18px 30px rgba(0,0,0,0.45);
     }
     .btn.primary:hover{ transform: translateY(-2px); }
 
     .btn.soft{
-      background: white;
-      color: var(--ink);
-      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.08);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.12);
     }
-    .btn.soft:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 16px 26px rgba(0,0,0,0.08);
-    }
+    .btn.soft:hover{ transform: translateY(-2px); background: rgba(255,255,255,0.12); }
 
-    /* Right side stats */
-    .stats{
+    /* Right side quick cards */
+    .mini-grid{
       display:flex;
       flex-direction: column;
       gap: 12px;
     }
 
     .mini{
+      background: var(--card2);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--rL);
+      padding: 16px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap: 12px;
-      padding: 16px;
-      border-radius: var(--rL);
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,0.78);
-      box-shadow: 0 14px 26px rgba(0,0,0,0.05);
       transition: 0.2s ease;
     }
-    .mini:hover{ transform: translateY(-2px); }
+    .mini:hover{ transform: translateY(-3px); }
 
     .mini strong{
-      font-weight: 800;
-      color: var(--ink);
+      font-weight: 900;
+      font-size: 16px;
     }
     .mini span{
       display:block;
       color: var(--muted);
       font-size: 13px;
-      margin-top: 2px;
-      font-weight: 600;
+      margin-top: 3px;
     }
 
     .icon{
@@ -299,13 +283,13 @@
       border-radius: 16px;
       display:grid;
       place-items:center;
-      color: white;
       font-weight: 900;
+      color: #081018;
     }
-    .i1{ background: linear-gradient(135deg, var(--sky), var(--blue)); }
-    .i2{ background: linear-gradient(135deg, var(--purple), var(--pink)); }
-    .i3{ background: linear-gradient(135deg, var(--mint), var(--sky)); }
-    .i4{ background: linear-gradient(135deg, var(--pink), var(--bg)); color: var(--ink); }
+    .i1{ background: linear-gradient(135deg, var(--cyan), var(--yellow)); }
+    .i2{ background: linear-gradient(135deg, var(--purple), var(--pink)); color: white; }
+    .i3{ background: linear-gradient(135deg, var(--green), var(--cyan)); }
+    .i4{ background: linear-gradient(135deg, var(--pink), var(--yellow)); }
 
     /* Sections */
     .section{
@@ -323,15 +307,14 @@
 
     .section h2{
       font-size: 22px;
-      font-weight: 800;
-      color: var(--ink);
+      font-weight: 900;
     }
 
     .section p{
       color: var(--muted);
       line-height: 1.65;
       font-size: 15px;
-      max-width: 70ch;
+      max-width: 72ch;
     }
 
     .grid{
@@ -341,31 +324,41 @@
     }
 
     .box{
-      background: rgba(255,255,255,0.80);
-      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: var(--rXL);
       padding: 18px;
-      box-shadow: 0 16px 34px rgba(0,0,0,0.05);
+      box-shadow: 0 18px 46px rgba(0,0,0,0.32);
       transition: 0.22s ease;
+      position: relative;
+      overflow:hidden;
+    }
+
+    .box::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.14), transparent 55%);
+      opacity: 0.35;
+      pointer-events:none;
     }
 
     .box:hover{
-      transform: translateY(-5px);
-      box-shadow: 0 22px 46px rgba(0,0,0,0.08);
+      transform: translateY(-6px);
+      background: rgba(255,255,255,0.085);
     }
 
     .box h3{
-      font-weight: 800;
-      color: var(--ink);
+      font-weight: 900;
       font-size: 17px;
       margin-bottom: 6px;
     }
 
     .box small{
+      display:block;
       color: var(--muted);
       line-height: 1.6;
       font-size: 14px;
-      display:block;
     }
 
     .actions{
@@ -379,45 +372,39 @@
       text-decoration:none;
       padding: 10px 14px;
       border-radius: 999px;
-      font-weight: 800;
-      border: 1px solid var(--stroke);
-      background: white;
-      color: var(--ink);
+      font-weight: 900;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.08);
+      color: white;
       transition: 0.2s ease;
     }
 
     .chipbtn:hover{
       transform: translateY(-2px);
-      box-shadow: 0 16px 26px rgba(0,0,0,0.08);
-    }
-
-    .chipbtn.grad{
-      background: linear-gradient(135deg, var(--sky), var(--purple));
-      color: white;
-      border: none;
+      background: rgba(255,255,255,0.12);
     }
 
     /* Video */
     .video{
       border-radius: var(--rXL);
       overflow:hidden;
-      border: 1px solid var(--stroke);
-      background: white;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 18px 46px rgba(0,0,0,0.32);
     }
     iframe{ width:100%; height: 320px; border:0; display:block; }
 
-    /* Footer */
     footer{
       margin-top: 26px;
       text-align:center;
-      padding: 20px 0 34px;
+      padding: 22px 0 38px;
       color: var(--muted);
       font-weight: 700;
       line-height: 1.7;
+      font-size: 14px;
     }
 
-    /* Reveal animation */
+    /* reveal */
     .reveal{
       opacity: 0;
       transform: translateY(14px);
@@ -436,13 +423,15 @@
 </head>
 
 <body>
-  <div class="bg" aria-hidden="true">
-    <div class="blob one"></div>
-    <div class="blob two"></div>
-    <div class="blob three"></div>
+
+  <div class="wall" aria-hidden="true">
+    <div class="glow g1"></div>
+    <div class="glow g2"></div>
+    <div class="glow g3"></div>
+    <div class="glow g4"></div>
   </div>
 
-  <!-- Navbar -->
+  <!-- NAV -->
   <div class="nav">
     <div class="nav-inner">
       <div class="brand">
@@ -458,7 +447,7 @@
         <a href="#contact">Contact</a>
       </div>
 
-      <a class="nav-btn" href="#notes">🚀 Start Learning</a>
+      <a class="nav-btn" href="#notes">🚀 Start</a>
     </div>
   </div>
 
@@ -470,13 +459,13 @@
         <div class="badge">✨ Free Learning • Class 11 • Class 12 • UG</div>
 
         <h1 class="hero-title">
-          Learn Maths in a <span>beautiful & easy</span> way 💙
+          Maths becomes easy when you <span class="grad">enjoy learning</span> ⚡
         </h1>
 
         <p class="hero-sub">
-          Welcome to <b>Sunny Maths Academy</b> — your free Maths learning space.
-          Here you will get <b>PDF notes</b>, <b>video lectures</b>, <b>practice questions</b>, and <b>quizzes</b>.
-          This website is designed to feel clean, modern and enjoyable for students.
+          Welcome to <b>Sunny Maths Academy</b> — a premium learning space where you get
+          <b>PDF notes</b>, <b>video lectures</b>, <b>daily practice sets</b> and <b>weekly quizzes</b>.
+          Learn with clarity, confidence and speed.
         </p>
 
         <div class="cta">
@@ -486,13 +475,13 @@
         </div>
       </div>
 
-      <div class="stats reveal">
+      <div class="mini-grid reveal">
         <div class="mini">
           <div style="display:flex; align-items:center; gap:12px;">
             <div class="icon i1">11</div>
             <div>
               <strong>Class 11</strong>
-              <span>Foundation + clarity</span>
+              <span>Basics + foundation</span>
             </div>
           </div>
           ✅
@@ -513,7 +502,7 @@
           <div style="display:flex; align-items:center; gap:12px;">
             <div class="icon i3">UG</div>
             <div>
-              <strong>Undergraduate</strong>
+              <strong>UG Maths</strong>
               <span>Concept-based learning</span>
             </div>
           </div>
@@ -525,7 +514,7 @@
             <div class="icon i4">✓</div>
             <div>
               <strong>Daily Practice</strong>
-              <span>Small steps → big results</span>
+              <span>10 Questions/day</span>
             </div>
           </div>
           🏆
@@ -538,16 +527,16 @@
       <div class="section-head">
         <div>
           <h2>📘 Notes (PDF)</h2>
-          <p>Chapter-wise notes and formula sheets designed for revision + exam practice.</p>
+          <p>Topic-wise notes, formula sheets and revision material to boost marks fast.</p>
         </div>
       </div>
 
       <div class="grid">
         <div class="box">
           <h3>Class 11 • Trigonometry</h3>
-          <small>Identities, graphs, transformations and important formulas.</small>
+          <small>Identities, graphs, transformations + practice.</small>
           <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Upload PDF in repo and paste link here.')">⬇ Download</a>
+            <a class="chipbtn" href="#" onclick="alert('Upload PDF in repo and paste link here.')">⬇ Download</a>
             <a class="chipbtn" href="#practice">🧠 Practice</a>
           </div>
         </div>
@@ -556,8 +545,8 @@
           <h3>Class 12 • Calculus</h3>
           <small>Limits, continuity, differentiation, integration + board questions.</small>
           <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Upload PDF in repo and paste link here.')">⬇ Download</a>
-            <a class="chipbtn" href="#quiz">📝 Test</a>
+            <a class="chipbtn" href="#" onclick="alert('Upload PDF in repo and paste link here.')">⬇ Download</a>
+            <a class="chipbtn" href="#quiz">📝 Quiz</a>
           </div>
         </div>
 
@@ -565,7 +554,7 @@
           <h3>UG • Real Analysis</h3>
           <small>Concept clarity + solved examples for semester exams.</small>
           <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Upload PDF in repo and paste link here.')">⬇ Download</a>
+            <a class="chipbtn" href="#" onclick="alert('Upload PDF in repo and paste link here.')">⬇ Download</a>
             <a class="chipbtn" href="#lectures">🎥 Watch</a>
           </div>
         </div>
@@ -577,7 +566,7 @@
       <div class="section-head">
         <div>
           <h2>🎥 Video Lectures</h2>
-          <p>Add your YouTube lecture video here (students can watch directly on this website).</p>
+          <p>Embed your YouTube lecture below. Replace VIDEO_ID_HERE with your video ID.</p>
         </div>
       </div>
 
@@ -589,7 +578,7 @@
         </iframe>
       </div>
 
-      <p style="margin-top:10px;">
+      <p style="margin-top:10px; color: var(--muted);">
         ✅ Replace <b>VIDEO_ID_HERE</b> with your YouTube video ID.
       </p>
     </section>
@@ -599,33 +588,32 @@
       <div class="section-head">
         <div>
           <h2>🧠 Practice</h2>
-          <p>Practice makes Maths easy. Regular practice will improve speed + accuracy.</p>
+          <p>Daily practice makes Maths easy and scoring.</p>
         </div>
       </div>
 
       <div class="grid">
         <div class="box">
           <h3>Daily 10 Questions</h3>
-          <small>Small daily practice → big improvement in marks.</small>
+          <small>Daily routine to improve speed + accuracy.</small>
           <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('You can add practice sets here later.')">Start</a>
+            <a class="chipbtn" href="#" onclick="alert('Add practice sets here later.')">Start</a>
           </div>
         </div>
 
         <div class="box">
           <h3>Assignments</h3>
-          <small>Upload worksheets as PDF and share to students.</small>
+          <small>Upload worksheets and allow students to submit through Google Form.</small>
           <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Upload assignment PDF and paste link here.')">Get PDF</a>
             <a class="chipbtn" href="https://forms.google.com" target="_blank">Submit</a>
           </div>
         </div>
 
         <div class="box">
-          <h3>Formula Sheet</h3>
-          <small>Fast revision sheet for exams.</small>
+          <h3>Formula Sheets</h3>
+          <small>Fast revision notes for exams.</small>
           <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Upload formula PDF and paste link here.')">Download</a>
+            <a class="chipbtn" href="#" onclick="alert('Upload formula PDF and link here.')">Download</a>
           </div>
         </div>
       </div>
@@ -636,32 +624,32 @@
       <div class="section-head">
         <div>
           <h2>📝 Quiz</h2>
-          <p>Weekly quizzes for performance check and revision.</p>
+          <p>Weekly quizzes to check progress and boost performance.</p>
         </div>
       </div>
 
       <div class="grid">
         <div class="box">
           <h3>Google Forms Quiz</h3>
-          <small>Create a quiz in Google Forms and paste your link here.</small>
+          <small>Create quiz and paste link here.</small>
           <div class="actions">
-            <a class="chipbtn grad" href="https://forms.google.com" target="_blank">Open Forms</a>
+            <a class="chipbtn" href="https://forms.google.com" target="_blank">Open</a>
           </div>
         </div>
 
         <div class="box">
           <h3>Quizizz Practice</h3>
-          <small>Fun game-style MCQs for students.</small>
+          <small>Game-style MCQs for fun learning 🎮</small>
           <div class="actions">
-            <a class="chipbtn grad" href="https://quizizz.com" target="_blank">Start</a>
+            <a class="chipbtn" href="https://quizizz.com" target="_blank">Start</a>
           </div>
         </div>
 
         <div class="box">
           <h3>Chapter Tests</h3>
-          <small>Short tests to boost confidence in every chapter.</small>
+          <small>Short tests for revision and confidence.</small>
           <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('We can add chapter tests later.')">Start</a>
+            <a class="chipbtn" href="#" onclick="alert('We can add tests later.')">Start</a>
           </div>
         </div>
       </div>
@@ -672,7 +660,7 @@
       <div class="section-head">
         <div>
           <h2>📩 Contact</h2>
-          <p>If you want a topic, lecture request, or doubts support — contact me anytime.</p>
+          <p>Topic request, doubts or suggestions — contact anytime.</p>
         </div>
       </div>
 
@@ -681,37 +669,37 @@
           <h3>Teacher</h3>
           <small><b>Sunny Kumar</b> • Maths Teacher</small>
           <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Add Email/WhatsApp link here!')">Message</a>
+            <a class="chipbtn" href="#" onclick="alert('Add Email/WhatsApp link here!')">Message</a>
           </div>
         </div>
 
         <div class="box">
           <h3>YouTube Channel</h3>
-          <small>Add your YouTube channel link for students.</small>
+          <small>Add your channel link here.</small>
           <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Paste your channel link here!')">Open</a>
+            <a class="chipbtn" href="#" onclick="alert('Paste channel URL here!')">Open</a>
           </div>
         </div>
 
         <div class="box">
           <h3>Motivation</h3>
-          <small>“Maths becomes easy when concepts are clear and practice is regular.” ✅</small>
+          <small>“Maths becomes easy when you practice regularly.” ✅</small>
           <div class="actions">
-            <a class="chipbtn grad" href="#top">⬆ Top</a>
+            <a class="chipbtn" href="#top">⬆ Top</a>
           </div>
         </div>
       </div>
     </section>
 
     <footer>
-      © 2026 <b>Sunny Maths Academy</b> • Made free with GitHub Pages 💙 <br>
-      Clean • Modern • Student-friendly • Maths made enjoyable
+      © 2026 <b>Sunny Maths Academy</b> • Built free with GitHub Pages ✨<br>
+      Premium design • Fast • Mobile friendly
     </footer>
 
   </main>
 
   <script>
-    // Reveal sections on scroll
+    // reveal sections
     const items = document.querySelectorAll(".reveal");
     const obs = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
@@ -720,5 +708,6 @@
     }, {threshold: 0.12});
     items.forEach(el=>obs.observe(el));
   </script>
+
 </body>
 </html>
