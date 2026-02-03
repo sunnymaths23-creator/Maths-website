@@ -309,6 +309,33 @@
       font-weight: 900;
       margin-bottom: 6px;
     }
+.review-item{
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(239,231,214,0.95);
+  background: rgba(255,255,255,0.92);
+}
+
+.review-item.correct{
+  border-left: 6px solid #2ecc71;
+}
+
+.review-item.wrong{
+  border-left: 6px solid #ff4d4d;
+}
+
+.review-q{
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.review-a{
+  color: #55626f;
+  line-height: 1.6;
+  font-weight: 800;
+  margin-top: 4px;
+}
 
     footer{
       margin-top: 26px;
@@ -358,10 +385,15 @@
         <!-- Question load here -->
       </div>
 
-      <div class="result" id="resultBox">
-        <div class="score" id="scoreText"></div>
-        <div class="msg" id="resultMsg"></div>
-        <div class="actions">
+     <div class="result" id="resultBox">
+  <div class="score" id="scoreText"></div>
+  <div class="msg" id="resultMsg"></div>
+
+  <!-- ✅ NEW: Answer Review List -->
+  <div id="reviewList" style="margin-top:14px;"></div>
+
+  <div class="actions">
+
           <button class="btn main" onclick="restartQuiz()">🔄 Restart Quiz</button>
           <a class="btn" href="index.html">🏠 Home</a>
         </div>
@@ -536,38 +568,70 @@
       }
     }
 
-    function finishQuiz(){
-      const data = quizzes[level];
-      let score = 0;
+   function finishQuiz(){
+  const data = quizzes[level];
+  let score = 0;
 
-      data.forEach((item, i)=>{
-        if(answers[i] === item.ans) score++;
-      });
+  // Calculate score
+  data.forEach((item, i)=>{
+    if(answers[i] === item.ans) score++;
+  });
 
-      document.getElementById("quizBox").style.display = "none";
-      document.getElementById("resultBox").classList.add("show");
+  document.getElementById("quizBox").style.display = "none";
+  document.getElementById("resultBox").classList.add("show");
 
-      document.getElementById("scoreText").innerText =
-        `Your Score: ${score} / ${data.length}`;
+  document.getElementById("scoreText").innerText =
+    `Your Score: ${score} / ${data.length}`;
 
-      let msg = "";
-      const percent = Math.round((score/data.length)*100);
+  let msg = "";
+  const percent = Math.round((score/data.length)*100);
 
-      if(percent >= 85) msg = "Excellent ✅ Keep it up!";
-      else if(percent >= 60) msg = "Good 👍 Practice a little more!";
-      else msg = "Keep practicing 💪 You will improve fast!";
+  if(percent >= 85) msg = "Excellent ✅ Keep it up!";
+  else if(percent >= 60) msg = "Good 👍 Practice a little more!";
+  else msg = "Keep practicing 💪 You will improve fast!";
 
-      document.getElementById("resultMsg").innerText =
-        `Performance: ${percent}% • ${msg}`;
-    }
+  document.getElementById("resultMsg").innerText =
+    `Performance: ${percent}% • ${msg}`;
 
-    function restartQuiz(){
-      index = 0;
-      answers = [];
-      document.getElementById("resultBox").classList.remove("show");
-      document.getElementById("quizBox").style.display = "block";
-      renderQuestion();
-    }
+  // ✅ NEW: Generate Answer Review List
+  let reviewHTML = `<h3 style="margin-top:10px; font-weight:900;">📌 Answer Review</h3>`;
+
+  data.forEach((item, i)=>{
+    const userAnsIndex = answers[i];
+    const correctIndex = item.ans;
+
+    const userAnsText =
+      (userAnsIndex === undefined)
+        ? "Not Answered"
+        : item.options[userAnsIndex];
+
+    const correctText = item.options[correctIndex];
+
+    const isCorrect = (userAnsIndex === correctIndex);
+
+    reviewHTML += `
+      <div class="review-item ${isCorrect ? "correct" : "wrong"}">
+        <div class="review-q">
+          Q${i+1}. ${item.q} ${isCorrect ? "✅" : "❌"}
+        </div>
+        <div class="review-a"><b>Your Answer:</b> ${userAnsText}</div>
+        <div class="review-a"><b>Correct Answer:</b> ${correctText}</div>
+      </div>
+    `;
+  });
+
+  document.getElementById("reviewList").innerHTML = reviewHTML;
+}
+
+
+  function restartQuiz(){
+  index = 0;
+  answers = [];
+  document.getElementById("reviewList").innerHTML = ""; // ✅ clear review
+  document.getElementById("resultBox").classList.remove("show");
+  document.getElementById("quizBox").style.display = "block";
+  renderQuestion();
+}
 
     // Load default
     renderQuestion();
