@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <head>
+  <!-- ... your other meta/title tags ... -->
+  <style>
+    .visitor-counter-box {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      z-index: 9999;
+      background-color: #1e1e1e;   /* dark background */
+      color: #00ff9d;              /* neon green text – feel free to change */
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      border: 1px solid #444;
+      display: flex;
+      align-items: center;
+      gap: 8px;                    /* space between "Visitors:" and number */
+      user-select: none;
+    }
+
+    .visitor-counter-box a {
+      display: none;               /* hides the "at freevisitorcounters.com" link if you don't want it visible */
+    }
+
+    /* Optional: smaller on mobile */
+    @media (max-width: 600px) {
+      .visitor-counter-box {
+        font-size: 13px;
+        padding: 6px 10px;
+        top: 10px;
+        right: 12px;
+      }
+    }
+  </style>
+</head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Simple Mathematics</title>
@@ -549,7 +587,13 @@
         <a href="quiz.html">Quiz</a>
         <a href="#contact">Contact</a>
       </div>
-
+        <div class="visitor-counter-box">
+  Visitors:
+  <!-- Your counter code goes here – paste exactly what you have -->
+  <a href='http://www.freevisitorcounters.com'>at freevisitorcounters.com</a>
+  <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=1cf40262b43db1b434a9ac3f4016305dea4bb805'></script>
+  <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1495855/t/2"></script>
+</div>
       <a class="nav-btn" href="#notes">🚀 Start Learning</a>
     </div>
   </div>
@@ -841,6 +885,7 @@
 
 </body>
 </html>
+
 
 
 
