@@ -954,9 +954,33 @@
     }, {threshold: 0.12});
     items.forEach(el=>obs.observe(el));
   </script>
+<script>
+  window.addEventListener("load", function () {
+
+    let visits = localStorage.getItem("site_visits");
+
+    if (visits === null) {
+      visits = 1;
+    } else {
+      visits = parseInt(visits, 10) + 1;
+    }
+
+    localStorage.setItem("site_visits", visits);
+
+    const counter = document.getElementById("visitor-count");
+    if (counter) {
+      counter.textContent = visits.toString().padStart(6, "0");
+    } else {
+      console.error("❌ visitor-count element NOT found");
+    }
+
+    console.log("✅ Visitor counter updated:", visits);
+  });
+</script>
 
 </body>
 </html>
+
 
 
 
