@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <head>
+
 
 
   </style>
@@ -52,52 +52,7 @@
 
 
 
-    <script>
-  let visits = localStorage.getItem("site_visits");
-
-  if (visits === null) {
-    visits = 1;
-  } else {
-    visits = parseInt(visits) + 1;
-  }
-
-  localStorage.setItem("site_visits", visits);
-  document.getElementById("visitor-count").innerText = visits;
-</script>
-
-    body{
-      font-family:"Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      overflow-x:hidden;
-    }
-
-
-
-
-      <script>
-  window.addEventListener("load", function () {
-
-    let visits = localStorage.getItem("site_visits");
-
-    if (visits === null) {
-      visits = 1;
-    } else {
-      visits = parseInt(visits, 10) + 1;
-    }
-
-    localStorage.setItem("site_visits", visits);
-
-    const counter = document.getElementById("visitor-count");
-    if (counter) {
-      counter.textContent = visits.toString().padStart(6, "0");
-    } else {
-      console.error("❌ visitor-count element NOT found");
-    }
-
-    console.log("✅ Visitor counter updated:", visits);
-  });
-</script>
+ 
 
     /* Background blobs (cream + yellow + green + red) */
     .bg{
@@ -972,6 +927,7 @@
 
 </body>
 </html>
+
 
 
 
