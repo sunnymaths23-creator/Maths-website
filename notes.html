@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notes • Simple Mathematics</title>
 
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -28,12 +29,19 @@
       --max: 1100px;
     }
 
-    *{ box-sizing:border-box; margin:0; padding:0; }
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
     body{
       font-family:"Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background: var(--bg);
       color: var(--ink);
     }
+
+    /* ================= NAVBAR ================= */
 
     .nav{
       position: sticky;
@@ -43,6 +51,7 @@
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(239,231,214,0.95);
     }
+
     .nav-inner{
       max-width: var(--max);
       margin:auto;
@@ -60,11 +69,15 @@
       align-items:center;
       gap: 10px;
       white-space: nowrap;
+      font-size: 18px;
     }
+
     .logo{
-      width: 44px; height: 44px;
+      width: 44px;
+      height: 44px;
       border-radius: 18px;
-      display:grid; place-items:center;
+      display:grid;
+      place-items:center;
       font-weight: 900;
       background: linear-gradient(135deg, var(--yellow), var(--green), var(--red));
     }
@@ -74,17 +87,22 @@
       gap: 10px;
       flex-wrap: wrap;
     }
+
     .links a{
       text-decoration:none;
       color: var(--muted);
       font-weight: 800;
       padding: 8px 12px;
       border-radius: 999px;
+      transition: 0.2s ease;
     }
+
     .links a:hover{
       background: rgba(255,209,102,0.35);
       color: var(--ink);
     }
+
+    /* ================= MAIN ================= */
 
     .container{
       max-width: var(--max);
@@ -105,12 +123,15 @@
       font-size: 30px;
       font-weight: 900;
     }
+
     p{
       margin-top: 8px;
       color: var(--muted);
       line-height: 1.7;
       font-weight: 700;
     }
+
+    /* ================= GRID ================= */
 
     .grid{
       margin-top: 14px;
@@ -125,13 +146,19 @@
       border-radius: var(--rXL);
       box-shadow: var(--shadow);
       padding: 18px;
+      transition: 0.25s ease;
+    }
+
+    .note:hover{
+      transform: translateY(-4px);
     }
 
     .note h2{
       font-size: 18px;
       font-weight: 900;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
+
     .note small{
       display:block;
       color: var(--muted);
@@ -139,12 +166,15 @@
       font-weight: 700;
     }
 
+    /* ================= BUTTONS ================= */
+
     .btns{
-      margin-top: 12px;
+      margin-top: 14px;
       display:flex;
       gap: 10px;
       flex-wrap: wrap;
     }
+
     .btn{
       text-decoration:none;
       padding: 10px 14px;
@@ -155,13 +185,18 @@
       color: var(--ink);
       transition: 0.2s ease;
     }
-    .btn:hover{ transform: translateY(-2px); }
+
+    .btn:hover{
+      transform: translateY(-2px);
+    }
 
     .btn.download{
       border: none;
       background: linear-gradient(135deg, var(--green), var(--yellow));
       color: #102015;
     }
+
+    /* ================= FOOTER ================= */
 
     footer{
       text-align:center;
@@ -170,128 +205,281 @@
       font-weight: 800;
       margin-top: 10px;
     }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 600px){
+
+      h1{
+        font-size: 24px;
+      }
+
+      .brand{
+        font-size: 16px;
+      }
+
+      .note h2{
+        font-size: 17px;
+      }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- ================= NAVBAR ================= -->
+
   <div class="nav">
     <div class="nav-inner">
+
       <div class="brand">
         <div class="logo">📘</div>
         Simple Mathematics • Notes
       </div>
+
       <div class="links">
         <a href="index.html">Home</a>
         <a href="notes.html">Notes</a>
         <a href="lectures.html">Lectures</a>
         <a href="quiz.html">Quiz</a>
       </div>
+
     </div>
   </div>
 
+  <!-- ================= MAIN CONTENT ================= -->
+
   <main class="container">
+
+    <!-- TOP CARD -->
+
     <div class="top-card">
       <h1>📘 Notes (PDF Download)</h1>
+
       <p>
-        Upload your PDFs inside <b>pdf/</b> folder in GitHub repository.
-        Then links like <b>pdf/algebra.pdf</b> will work automatically ✅
+        Upload your PDFs inside the <b>pdf/</b> folder in the GitHub repository.
+        Then links such as <b>pdf/algebra.pdf</b> will work automatically ✅
       </p>
     </div>
 
+    <!-- NOTES GRID -->
+
     <div class="grid">
 
-      <!-- ✅ NEW: Number System Added -->
+      <!-- Number System -->
+
       <div class="note" id="numbersystem">
-        <h2>B.Sc (Hons.) Ag. •Number System</h2>
-        <small>Natural numbers, integers, rational/irrational, real numbers & properties.</small>
+        <h2>B.Sc (Hons.) Ag. • Number System</h2>
+
+        <small>
+          Natural numbers, integers, rational/irrational,
+          real numbers, and properties.
+        </small>
 
         <div class="btns">
-          <a class="btn download" href="pdf/numbersystem.pdf" download>⬇ Download PDF</a>
-          <a class="btn" href="pdf/numbersystem.pdf" target="_blank">👁 View</a>
+          <a class="btn download"
+             href="pdf/numbersystem.pdf"
+             download>
+             ⬇ Download PDF
+          </a>
+
+          <a class="btn"
+             href="pdf/numbersystem.pdf"
+             target="_blank">
+             👁 View
+          </a>
         </div>
       </div>
+
+      <!-- Algebra -->
 
       <div class="note" id="algebra">
-        <h2>B.Sc (Hons.) Ag. •Algebra</h2>
-        <small>Linear equations, polynomials, quadratic, inequalities.</small>
+        <h2>B.Sc (Hons.) Ag. • Algebra</h2>
+
+        <small>
+          Linear equations, polynomials,
+          quadratic equations, and inequalities.
+        </small>
+
         <div class="btns">
-          <a class="btn download" href="pdf/algebra.pdf" download>⬇ Download PDF</a>
-          <a class="btn" href="pdf/algebra.pdf" target="_blank">👁 View</a>
+          <a class="btn download"
+             href="pdf/algebra.pdf"
+             download>
+             ⬇ Download PDF
+          </a>
+
+          <a class="btn"
+             href="pdf/algebra.pdf"
+             target="_blank">
+             👁 View
+          </a>
         </div>
       </div>
+
+      <!-- Calculus -->
 
       <div class="note" id="calculus">
-        <h2>B.Sc (Hons.) Ag. •Calculus</h2>
-        <small>Limits, continuity, derivatives, integration, applications.</small>
+        <h2>B.Sc (Hons.) Ag. • Calculus</h2>
+
+        <small>
+          Limits, continuity, derivatives,
+          integration, and applications.
+        </small>
+
         <div class="btns">
-          <a class="btn download" href="pdf/calculus.pdf" download>⬇ Download PDF</a>
-          <a class="btn" href="pdf/calculus.pdf" target="_blank">👁 View</a>
+          <a class="btn download"
+             href="pdf/calculus.pdf"
+             download>
+             ⬇ Download PDF
+          </a>
+
+          <a class="btn"
+             href="pdf/calculus.pdf"
+             target="_blank">
+             👁 View
+          </a>
         </div>
       </div>
+
+      <!-- Vectors -->
 
       <div class="note" id="vectors">
-        <h2>B.Sc (Hons.) Ag. •Vectors</h2>
-        <small>Vector algebra, dot product, cross product, applications.</small>
+        <h2>B.Sc (Hons.) Ag. • Vectors</h2>
+
+        <small>
+          Vector algebra, dot product,
+          cross product, and applications.
+        </small>
+
         <div class="btns">
-          <a class="btn download" href="pdf/vectors.pdf" download>⬇ Download PDF</a>
-          <a class="btn" href="pdf/vectors.pdf" target="_blank">👁 View</a>
+          <a class="btn download"
+             href="pdf/vectors.pdf"
+             download>
+             ⬇ Download PDF
+          </a>
+
+          <a class="btn"
+             href="pdf/vectors.pdf"
+             target="_blank">
+             👁 View
+          </a>
         </div>
       </div>
+
+      <!-- Trigonometry -->
 
       <div class="note" id="trigonometry">
-        <h2>B.Sc (Hons.) Ag. •Trigonometry</h2>
-        <small>Identities, graphs, transformations, inverse trig.</small>
+        <h2>B.Sc (Hons.) Ag. • Trigonometry</h2>
+
+        <small>
+          Identities, graphs, transformations,
+          and inverse trigonometric functions.
+        </small>
+
         <div class="btns">
-          <a class="btn download" href="pdf/trigonometry.pdf" download>⬇ Download PDF</a>
-          <a class="btn" href="pdf/trigonometry.pdf" target="_blank">👁 View</a>
+          <a class="btn download"
+             href="pdf/trigonometry.pdf"
+             download>
+             ⬇ Download PDF
+          </a>
+
+          <a class="btn"
+             href="pdf/trigonometry.pdf"
+             target="_blank">
+             👁 View
+          </a>
         </div>
       </div>
+
+      <!-- Matrices -->
 
       <div class="note" id="matrices">
-        <h2>B.Sc (Hons.) Ag. •Matrices</h2>
-        <small>Determinants, inverse, rank, linear systems.</small>
+        <h2>B.Sc (Hons.) Ag. • Matrices</h2>
+
+        <small>
+          Determinants, inverse matrices,
+          rank, and linear systems.
+        </small>
+
         <div class="btns">
-          <a class="btn download" href="pdf/matrices.pdf" download>⬇ Download PDF</a>
-          <a class="btn" href="pdf/matrices.pdf" target="_blank">👁 View</a>
+          <a class="btn download"
+             href="pdf/matrices.pdf"
+             download>
+             ⬇ Download PDF
+          </a>
+
+          <a class="btn"
+             href="pdf/matrices.pdf"
+             target="_blank">
+             👁 View
+          </a>
         </div>
       </div>
 
-      <div class="note" id="Arithmetic Progression">
-    <h2>B.Sc (Hons.) Ag. • Arithmetic Progression</h2>
+      <!-- Arithmetic Progression -->
 
-    <small>
-        Definition of A.P., common difference, nth term, sum of n terms,
-        arithmetic mean, applications and solved examples.
-    </small>
+      <div class="note" id="arithmetic-progression">
 
-    <div class="btns">
-        <a class="btn download"
-           href="pdf/Arithmetic Progression.pdf"
-           download>
-           ⬇ Download PDF
-        </a>
+        <h2>B.Sc (Hons.) Ag. • Arithmetic Progression</h2>
 
-        <a class="btn"
-           href="pdf/Arithmetic Progression.pdf"
-           target="_blank">
-           👁 View
-        </a>
-    </div>
-</div>
+        <small>
+          Definition of A.P., common difference,
+          nth term, sum of n terms,
+          arithmetic mean, applications,
+          and solved examples.
+        </small>
+
+        <div class="btns">
+
+          <a class="btn download"
+             href="pdf/Arithmetic Progression.pdf"
+             download>
+             ⬇ Download PDF
+          </a>
+
+          <a class="btn"
+             href="pdf/Arithmetic Progression.pdf"
+             target="_blank">
+             👁 View
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Probability -->
+
       <div class="note" id="probability">
-        <h2>B.Sc (Hons.) Ag. •Probability</h2>
-        <small>Events, conditional probability, Bayes theorem, distributions.</small>
+        <h2>B.Sc (Hons.) Ag. • Probability</h2>
+
+        <small>
+          Events, conditional probability,
+          Bayes theorem, and distributions.
+        </small>
+
         <div class="btns">
-          <a class="btn download" href="pdf/probability.pdf" download>⬇ Download PDF</a>
-          <a class="btn" href="pdf/probability.pdf" target="_blank">👁 View</a>
+          <a class="btn download"
+             href="pdf/probability.pdf"
+             download>
+             ⬇ Download PDF
+          </a>
+
+          <a class="btn"
+             href="pdf/probability.pdf"
+             target="_blank">
+             👁 View
+          </a>
         </div>
       </div>
 
     </div>
+
+    <!-- FOOTER -->
 
     <footer>
-      © 2026 Simple Mathematics • Notes page ✅
+      © 2026 Simple Mathematics • Notes Page ✅
     </footer>
+
   </main>
+
 </body>
 </html>
