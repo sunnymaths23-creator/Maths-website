@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Simple Mathematics</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mathematics Notes</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -20,14 +22,12 @@ scroll-behavior:smooth;
 body{
 background:#f8f7f2;
 color:#222;
-overflow-x:hidden;
 }
 
 :root{
 --yellow:#f8c81f;
 --green:#36d760;
 --red:#ff5757;
---cream:#fffdf7;
 --shadow:0 15px 40px rgba(0,0,0,.08);
 }
 
@@ -37,10 +37,6 @@ max-width:1300px;
 margin:auto;
 }
 
-section{
-padding:100px 0;
-}
-
 /* NAVBAR */
 
 .navbar{
@@ -48,214 +44,99 @@ position:fixed;
 top:0;
 left:0;
 width:100%;
-background:rgba(255,255,255,0.92);
-backdrop-filter:blur(15px);
+background:rgba(255,255,255,0.95);
+backdrop-filter:blur(10px);
+padding:18px 0;
 z-index:1000;
 box-shadow:0 5px 20px rgba(0,0,0,.05);
-padding:15px 0;
 }
 
 .nav-content{
-
-width:90%;
-max-width:1300px;
-margin:auto;
-
 display:flex;
 justify-content:space-between;
 align-items:center;
 }
 
 .logo{
-
 font-size:32px;
 font-weight:800;
-
 background:linear-gradient(
 90deg,
 #f8c81f,
 #36d760,
 #ff5757
 );
-
 -webkit-background-clip:text;
 color:transparent;
 }
 
-/* Horizontal menu */
-
 nav{
-
 display:flex;
-align-items:center;
-gap:35px;
-flex-wrap:nowrap;
+gap:30px;
 }
 
 nav a{
-
 text-decoration:none;
-font-size:18px;
-font-weight:600;
 color:#222;
+font-weight:600;
 transition:.3s;
-padding:8px;
 }
 
 nav a:hover{
-
 color:#36d760;
-transform:translateY(-3px);
-
 }
 
+/* HEADER */
 
-/* Mobile */
-
-@media(max-width:768px){
-
-.nav-content{
-flex-direction:column;
-gap:15px;
-}
-
-nav{
-
-flex-wrap:wrap;
-justify-content:center;
-gap:15px;
-
-}
-
-}
-
-.hero{
-
-padding-top:120px;
-min-height:100vh;
-display:flex;
-align-items:center;
-position:relative;
-overflow:hidden;
-
-}
-
-.hero-content{
-
+.header{
+padding-top:160px;
+padding-bottom:80px;
 text-align:center;
-width:100%;
-margin-top:80px;
-
 }
 
-.hero h1{
-
-font-size:80px;
-line-height:1.1;
+.header h1{
+font-size:70px;
+margin-bottom:20px;
 font-weight:800;
-margin-bottom:30px;
-
 }
 
-.gradient-text{
-
+.gradient{
 background:linear-gradient(
 90deg,
 var(--yellow),
 var(--green),
 var(--red)
 );
-
 -webkit-background-clip:text;
 color:transparent;
-
-}
-.hero p{
-
-max-width:850px;
-margin:auto;
-font-size:22px;
-line-height:1.8;
-color:#666;
 }
 
-.btns{
-margin-top:40px;
-}
-
-.btn{
-
-padding:18px 35px;
-border-radius:40px;
-border:none;
-font-size:17px;
-font-weight:600;
-cursor:pointer;
-margin:10px;
-transition:.5s;
-text-decoration:none;
-display:inline-block;
-}
-
-.primary{
-background:linear-gradient(90deg,var(--yellow),var(--green),var(--red));
-color:white;
-}
-
-.secondary{
-background:white;
-color:#222;
-border:2px solid #ddd;
-}
-
-.btn:hover{
-transform:translateY(-5px);
-box-shadow:var(--shadow);
-}
-
-.quick{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-margin-top:40px;
-gap:15px;
-}
-
-.quick span{
-background:white;
-padding:14px 25px;
-border-radius:40px;
-box-shadow:var(--shadow);
-}
-
-.title{
-text-align:center;
-margin-bottom:60px;
-}
-
-.title h2{
-font-size:60px;
-font-weight:800;
-}
-
-.title p{
-color:#666;
+.header p{
 font-size:20px;
+color:#666;
+max-width:800px;
+margin:auto;
+line-height:1.8;
+}
+
+/* NOTES GRID */
+
+.notes{
+padding-bottom:100px;
 }
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:30px;
+gap:35px;
 }
 
 .card{
-
-background:var(--cream);
+background:white;
 padding:30px;
 border-radius:25px;
 box-shadow:var(--shadow);
-transition:.5s;
+transition:.4s;
 }
 
 .card:hover{
@@ -267,28 +148,28 @@ display:inline-block;
 padding:6px 15px;
 background:#fff0bf;
 border-radius:30px;
-margin-bottom:15px;
 font-size:13px;
 font-weight:600;
-}
-
-.card h3{
-margin-bottom:15px;
-font-size:28px;
-}
-
-.card p{
-color:#666;
-line-height:1.8;
 margin-bottom:20px;
 }
 
-.button-group{
+.card h3{
+font-size:30px;
+margin-bottom:15px;
+}
+
+.card p{
+line-height:1.8;
+color:#666;
+margin-bottom:25px;
+}
+
+.buttons{
 display:flex;
 gap:15px;
 }
 
-.button-group a{
+.buttons a{
 flex:1;
 text-align:center;
 padding:15px;
@@ -296,6 +177,7 @@ border-radius:12px;
 font-weight:600;
 text-decoration:none;
 color:white;
+transition:.3s;
 }
 
 .download{
@@ -306,109 +188,51 @@ background:#ffc72b;
 background:#34c759;
 }
 
-iframe{
-width:100%;
-height:300px;
-border:none;
-border-radius:20px;
+.buttons a:hover{
+transform:translateY(-3px);
 }
 
-.contact-box{
-background:var(--cream);
-padding:50px;
-border-radius:30px;
-box-shadow:var(--shadow);
-}
-
-input,textarea{
-width:100%;
-padding:18px;
-margin-top:10px;
-margin-bottom:25px;
-border:1px solid #ddd;
-border-radius:10px;
-}
+/* FOOTER */
 
 footer{
-
-padding:70px 0;
-background:#fff;
+padding:50px 0;
+background:white;
+text-align:center;
 margin-top:50px;
 }
 
-.footer-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px;
-}
-
-.footer-grid h3{
-margin-bottom:15px;
-}
-
-.footer-grid p,a{
+footer p{
 color:#666;
-text-decoration:none;
-display:block;
-margin:8px 0;
 }
 
-.glow1,.glow2{
-
-position:absolute;
-width:450px;
-height:450px;
-border-radius:50%;
-filter:blur(90px);
-opacity:.3;
-}
-
-.glow1{
-background:#90ff90;
-left:-100px;
-top:150px;
-}
-
-.glow2{
-background:#ffd56e;
-right:-100px;
-top:300px;
-}
-
-.topBtn{
-
-position:fixed;
-bottom:20px;
-right:20px;
-background:linear-gradient(90deg,var(--yellow),var(--green));
-border:none;
-padding:15px 18px;
-border-radius:50%;
-font-size:22px;
-color:white;
-cursor:pointer;
-}
+/* MOBILE */
 
 @media(max-width:768px){
 
-.hero h1{
-font-size:45px;
-}
-
-.title h2{
-font-size:40px;
+.nav-content{
+flex-direction:column;
+gap:15px;
 }
 
 nav{
-display:none;
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+}
+
+.header h1{
+font-size:45px;
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
+
+<!-- NAVBAR -->
 
 <div class="navbar">
 
@@ -420,147 +244,327 @@ Simple Mathematics
 
 <nav>
 
-<a href="#">Home</a>
-<a href="#notes">Notes</a>
-<a href="#lectures">Lectures</a>
-<a href="#practice">Practice</a>
-<a href="#quiz">Quiz</a>
-<a href="#contact">Contact</a>
+<a href="index.html">Home</a>
+<a href="notes.html">Notes</a>
+<a href="lectures.html">Lectures</a>
+<a href="quiz.html">Quiz</a>
 
 </nav>
 
 </div>
+
 </div>
 
+<!-- HEADER -->
 
-<section class="hero">
+<section class="header">
 
-<div class="glow1"></div>
-<div class="glow2"></div>
-
-<div class="container hero-content">
+<div class="container">
 
 <h1>
-Learn Mathematics with<br>
-<span class="gradient-text">
-Fun & Confidence
-</span>
+Study <span class="gradient">Notes</span>
 </h1>
 
 <p>
 
-Free mathematics learning platform for Class 11, Class 12, B.Sc Agriculture, MATH-101 and B.Tech BioTech Mathematics with notes, lectures, quizzes and practice materials.
+Download complete mathematics PDF notes for Class 11, Class 12 and university mathematics topics.
 
 </p>
-
-<div class="btns">
-
-<a href="#notes" class="btn primary">
-Start Learning →
-</a>
-
-<a href="#contact" class="btn secondary">
-Contact Us
-</a>
-
-</div>
-
-<div class="quick">
-
-<span>📘 Notes</span>
-<span>🎥 Lectures</span>
-<span>✏ Practice</span>
-<span>❓ Quiz</span>
-
-</div>
 
 </div>
 
 </section>
 
+<!-- NOTES -->
 
-
-<section id="notes">
+<section class="notes">
 
 <div class="container">
 
-<div class="title">
-
-<h2>Study Notes</h2>
-<p>Download PDF notes and revision material</p>
-
-</div>
-
 <div class="grid">
+
+<!-- Number System -->
 
 <div class="card">
 
-<span class="badge">Class 11</span>
+<span class="badge">
+Class 11
+</span>
 
 <h3>Number System</h3>
 
 <p>
-Complete concepts of Number System.
+Complete notes on rational numbers, irrational numbers, real numbers and complex numbers.
 </p>
 
-<div class="button-group">
+<div class="buttons">
 
-<a href="#" class="download">
+<a href="pdf/Numbersystem.pdf"
+target="_blank"
+class="download">
+
 Download PDF
+
 </a>
 
-<a href="#" class="view">
+<a href="pdf/Numbersystem.pdf"
+target="_blank"
+class="view">
+
 View PDF
+
 </a>
 
 </div>
 
 </div>
 
-
+<!-- Set Theory -->
 
 <div class="card">
 
-<span class="badge">Class 11</span>
+<span class="badge">
+Class 11
+</span>
 
 <h3>Set Theory</h3>
 
 <p>
-Sets, relations and operations.
+Learn sets, subsets, operations on sets and Venn diagrams with examples.
 </p>
 
-<div class="button-group">
+<div class="buttons">
 
-<a href="#" class="download">
+<a href="pdf/SetTheory.pdf"
+target="_blank"
+class="download">
+
 Download PDF
+
 </a>
 
-<a href="#" class="view">
+<a href="pdf/SetTheory.pdf"
+target="_blank"
+class="view">
+
 View PDF
+
 </a>
 
 </div>
 
 </div>
+
+<!-- Functions -->
 
 <div class="card">
 
-<span class="badge">Class 12</span>
+<span class="badge">
+Class 11
+</span>
+
+<h3>Functions</h3>
+
+<p>
+Complete explanation of functions, graphs, domain and range concepts.
+</p>
+
+<div class="buttons">
+
+<a href="pdf/Functions.pdf"
+target="_blank"
+class="download">
+
+Download PDF
+
+</a>
+
+<a href="pdf/Functions.pdf"
+target="_blank"
+class="view">
+
+View PDF
+
+</a>
+
+</div>
+
+</div>
+
+<!-- Trigonometry -->
+
+<div class="card">
+
+<span class="badge">
+Class 12
+</span>
 
 <h3>Trigonometry</h3>
 
 <p>
-Trigonometric ratios and identities.
+Important trigonometric identities, formulas and solved examples.
 </p>
 
-<div class="button-group">
+<div class="buttons">
 
-<a href="#" class="download">
+<a href="pdf/Trigonometry.pdf"
+target="_blank"
+class="download">
+
 Download PDF
+
 </a>
 
-<a href="#" class="view">
+<a href="pdf/Trigonometry.pdf"
+target="_blank"
+class="view">
+
 View PDF
+
+</a>
+
+</div>
+
+</div>
+
+<!-- Matrices -->
+
+<div class="card">
+
+<span class="badge">
+Class 12
+</span>
+
+<h3>Matrices</h3>
+
+<p>
+Matrix operations, determinants, inverse matrices and applications.
+</p>
+
+<div class="buttons">
+
+<a href="pdf/Matrices.pdf"
+target="_blank"
+class="download">
+
+Download PDF
+
+</a>
+
+<a href="pdf/Matrices.pdf"
+target="_blank"
+class="view">
+
+View PDF
+
+</a>
+
+</div>
+
+</div>
+
+<!-- Arithmetic Progression -->
+
+<div class="card">
+
+<span class="badge">
+Progressions
+</span>
+
+<h3>Arithmetic Progression</h3>
+
+<p>
+AP formulas, nth term, sums and important solved problems.
+</p>
+
+<div class="buttons">
+
+<a href="pdf/Arithmetic Progression.pdf"
+target="_blank"
+class="download">
+
+Download PDF
+
+</a>
+
+<a href="pdf/Arithmetic Progression.pdf"
+target="_blank"
+class="view">
+
+View PDF
+
+</a>
+
+</div>
+
+</div>
+
+<!-- Geometric Progression -->
+
+<div class="card">
+
+<span class="badge">
+Progressions
+</span>
+
+<h3>Geometric Progression</h3>
+
+<p>
+GP concepts, infinite GP and sequence based applications.
+</p>
+
+<div class="buttons">
+
+<a href="pdf/Geometric Progression.pdf"
+target="_blank"
+class="download">
+
+Download PDF
+
+</a>
+
+<a href="pdf/Geometric Progression.pdf"
+target="_blank"
+class="view">
+
+View PDF
+
+</a>
+
+</div>
+
+</div>
+
+<!-- Harmonic Progression -->
+
+<div class="card">
+
+<span class="badge">
+Progressions
+</span>
+
+<h3>Harmonic Progression</h3>
+
+<p>
+Complete harmonic progression formulas and practice examples.
+</p>
+
+<div class="buttons">
+
+<a href="pdf/Harmonic Progression.pdf"
+target="_blank"
+class="download">
+
+Download PDF
+
+</a>
+
+<a href="pdf/Harmonic Progression.pdf"
+target="_blank"
+class="view">
+
+View PDF
+
 </a>
 
 </div>
@@ -573,187 +577,15 @@ View PDF
 
 </section>
 
-
-
-
-<section id="lectures">
-
-<div class="container">
-
-<div class="title">
-
-<h2>Video Lectures</h2>
-
-<p>Watch YouTube lectures</p>
-
-</div>
-
-<div class="grid">
-
-<div class="card">
-
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
-
-<h3>Introduction to Mathematics</h3>
-
-</div>
-
-
-<div class="card">
-
-<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
-
-<h3>Functions & Graphs</h3>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-
-<section id="practice">
-
-<div class="container">
-
-<div class="title">
-
-<h2>Practice Resources</h2>
-
-<p>Practice daily questions</p>
-
-</div>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Daily Questions</h3>
-
-<p>Improve speed and accuracy.</p>
-
-<a class="btn primary">Start Practice</a>
-
-</div>
-
-<div class="card">
-
-<h3>Formula Sheets</h3>
-
-<p>Quick revision formulas.</p>
-
-<a class="btn primary">Download</a>
-
-</div>
-
-<div class="card">
-
-<h3>Assignments</h3>
-
-<p>Practice with worksheets.</p>
-
-<a class="btn primary">Open</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-
-
-<section id="contact">
-
-<div class="container">
-
-<div class="title">
-
-<h2>Get in Touch</h2>
-
-<p>Questions or support</p>
-
-</div>
-
-<div class="contact-box">
-
-<input placeholder="Your Name">
-
-<input placeholder="Email">
-
-<input placeholder="Subject">
-
-<textarea rows="6" placeholder="Message"></textarea>
-
-<button class="btn primary">
-Send Message
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-
+<!-- FOOTER -->
 
 <footer>
 
-<div class="container footer-grid">
-
-<div>
-
-<h3>Simple Mathematics</h3>
-
 <p>
-
-Learn mathematics through videos,
-notes and quizzes.
-
+© 2026 Simple Mathematics | All Rights Reserved
 </p>
 
-</div>
-
-<div>
-
-<h3>Quick Links</h3>
-
-<a href="#">Notes</a>
-<a href="#">Lectures</a>
-<a href="#">Practice</a>
-
-</div>
-
-<div>
-
-<h3>Connect</h3>
-
-<a href="#">YouTube</a>
-<a href="#">Email</a>
-
-</div>
-
-</div>
-
-<center style="margin-top:40px">
-
-© 2026 Simple Mathematics
-
-</center>
-
 </footer>
-
-
-<button class="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-↑
-</button>
 
 </body>
 </html>
