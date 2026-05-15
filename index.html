@@ -1,1011 +1,695 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Simple Mathematics</title>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Mathematics</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
 
-  <!-- CSS -->
-  <style>
-    :root{
-      --bg:#fffdf7;
-      --ink:#151515;
-      --muted:#55626f;
-    }
-
-    *{
-      box-sizing:border-box;
-      margin:0;
-      padding:0;
-    }
-
-    body{
-      font-family:"Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--ink);
-      overflow-x:hidden;
-    }
-  </style>
-
-</head>
-
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simple Mathematics</title>
-
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      /* LIGHT THEME BASE */
-      --bg:#fffdf7;          /* cream-white */
-      --ink:#151515;         /* dark text */
-      --muted:#55626f;
-
-      --card: rgba(255,255,255,0.92);
-      --stroke:#efe7d6;
-      --shadow: 0 18px 50px rgba(40, 30, 10, 0.10);
-
-      /* FUN COLOR PALETTE */
-      --yellow:#ffd166;
-      --yellow2:#ffb703;
-
-      --green:#2ecc71;
-      --green2:#0ea85a;
-
-      --red:#ff4d4d;
-      --red2:#ff1f5a;
-
-      --blue:#2b7fff;   /* kept small for balance */
-      --pink:#ff4fd8;
-
-      --rXL: 30px;
-      --rL: 22px;
-      --rM: 18px;
-
-      --max: 1200px;
-    }
-
-    *{ box-sizing:border-box; margin:0; padding:0; }
-    html{ scroll-behavior:smooth; }
-
-
-
-
- 
-
-    /* Background blobs (cream + yellow + green + red) */
-    .bg{
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events:none;
-      overflow:hidden;
-    }
-    .blob{
-      position:absolute;
-      width: 560px;
-      height: 560px;
-      border-radius: 50%;
-      filter: blur(55px);
-      opacity: 0.42;
-      animation: float 11s ease-in-out infinite;
-    }
-    .b1{
-      background: radial-gradient(circle, rgba(255,209,102,0.85), transparent 60%);
-      top:-240px; left:-190px;
-    }
-    .b2{
-      background: radial-gradient(circle, rgba(46,204,113,0.55), transparent 60%);
-      top:150px; right:-240px;
-      animation-delay: 2.2s;
-    }
-    .b3{
-      background: radial-gradient(circle, rgba(255,77,77,0.42), transparent 60%);
-      bottom:-290px; left:300px;
-      animation-delay: 3.7s;
-    }
-
-    @keyframes float{
-      0%{ transform: translate(0,0) scale(1); }
-      50%{ transform: translate(16px, 12px) scale(1.05); }
-      100%{ transform: translate(0,0) scale(1); }
-    }
-
-    .container{
-      max-width: var(--max);
-      margin:auto;
-      padding: 18px;
-      position: relative;
-      z-index: 2;
-    }
-
-    /* Navbar (white + cream + colorful border) */
-    .nav{
-      position: sticky;
-      top:0;
-      z-index:50;
-      background: rgba(255,253,247,0.85);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(239,231,214,0.95);
-    }
-
-    .nav-inner{
-      max-width: var(--max);
-      margin:auto;
-      padding: 14px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      font-weight: 900;
-      letter-spacing: 0.2px;
-      white-space: nowrap;
-    }
-
-    .logo{
-      width: 46px;
-      height: 46px;
-      border-radius: 18px;
-      display:grid;
-      place-items:center;
-      color: #111;
-      font-weight: 900;
-      background: linear-gradient(135deg, var(--yellow), var(--green), var(--red));
-      box-shadow: 0 16px 26px rgba(0,0,0,0.10);
-    }
-
-    .links{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .links a{
-      text-decoration:none;
-      color: var(--muted);
-      font-weight: 800;
-      padding: 8px 12px;
-      border-radius: 999px;
-      transition: 0.2s ease;
-    }
-    .links a:hover{
-      background: rgba(255,209,102,0.35);
-      color: var(--ink);
-      transform: translateY(-1px);
-    }
-
-   .nav-btn{
-  text-decoration:none;
-  padding: 10px 14px;
-  border-radius: 999px;
-  font-weight: 900;
-  color: #161616;
-  border: 1px solid rgba(239,231,214,0.95);
-  background: linear-gradient(135deg, var(--yellow), #fff2c7);
-  box-shadow: 0 14px 26px rgba(40,30,10,0.10);
-  transition: 0.2s ease;
-  white-space: nowrap;
-
-  margin-right: 110px; /* ✅ shifts Start Learning left */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
-
-    }
-    .nav-btn:hover{ transform: translateY(-1px); filter: brightness(1.03); }
-
-    /* HERO */
-    .hero{
-      margin-top: 18px;
-      display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 16px;
-      align-items: stretch;
-    }
-
-    .hero-card{
-      background: var(--card);
-      border: 1px solid var(--stroke);
-      border-radius: var(--rXL);
-      box-shadow: var(--shadow);
-      padding: 24px;
-      position: relative;
-      overflow:hidden;
-    }
-
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: linear-gradient(135deg, rgba(255,209,102,0.40), transparent 55%);
-      opacity: 0.45;
-      pointer-events:none;
-    }
-
-    .badge{
-      display:inline-flex;
-      gap: 10px;
-      align-items:center;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-weight: 900;
-      font-size: 13px;
-      background: rgba(46,204,113,0.15);
-      border: 1px solid rgba(46,204,113,0.20);
-      color: #1a3b27;
-    }
-
-    .title{
-      margin-top: 12px;
-      font-size: clamp(26px, 4.2vw, 48px);
-      line-height: 1.1;
-      letter-spacing: -0.4px;
-      font-weight: 900;
-    }
-
-    .title span{
-      background: linear-gradient(90deg, var(--red), var(--yellow2), var(--green));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color: transparent;
-    }
-
-    .sub{
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 15.5px;
-      line-height: 1.75;
-      max-width: 72ch;
-    }
-
-    .cta{
-      margin-top: 16px;
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn{
-      text-decoration:none;
-      padding: 12px 16px;
-      border-radius: 16px;
-      font-weight: 900;
-      transition: 0.2s ease;
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      white-space: nowrap;
-      border: 1px solid var(--stroke);
-      background: white;
-      color: var(--ink);
-    }
-
-    .btn:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 16px 26px rgba(0,0,0,0.08);
-    }
-
-    .btn.main{
-      border:none;
-      background: linear-gradient(135deg, var(--green), var(--yellow2));
-      color: #102015;
-      box-shadow: 0 16px 28px rgba(46,204,113,0.18);
-    }
-
-    /* Right small summary card */
-    .hero-side{
-      background: linear-gradient(135deg, rgba(255,209,102,0.35), rgba(255,255,255,0.85));
-      border: 1px solid rgba(239,231,214,0.95);
-      border-radius: var(--rXL);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      color: var(--ink);
-      position: relative;
-      overflow:hidden;
-    }
-
-    .hero-side h3{
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: -0.2px;
-    }
-
-    .hero-side p{
-      margin-top: 8px;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    .quick{
-      margin-top: 14px;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .quick a{
-      text-decoration:none;
-      border-radius: 18px;
-      padding: 12px;
-      transition: 0.2s ease;
-      color: var(--ink);
-      font-weight: 900;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      border: 1px solid rgba(239,231,214,0.95);
-      background: rgba(255,255,255,0.85);
-    }
-
-    .quick a:hover{
-      transform: translateY(-2px);
-      background: rgba(255,244,210,0.95);
-    }
-
-    /* FEATURE BOXES */
-    .features{
-      margin-top: 16px;
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-    }
-
-    .feature{
-      background: rgba(255,255,255,0.94);
-      border: 1px solid rgba(239,231,214,0.95);
-      border-radius: var(--rXL);
-      padding: 18px;
-      box-shadow: var(--shadow);
-      transition: 0.22s ease;
-      text-decoration:none;
-      color: var(--ink);
-      position: relative;
-      overflow:hidden;
-    }
-
-    .feature::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      opacity: 0.35;
-      pointer-events:none;
-      background: linear-gradient(135deg, rgba(255,209,102,0.35), transparent 55%);
-    }
-
-    .feature:hover{
-      transform: translateY(-6px);
-      box-shadow: 0 22px 46px rgba(40,30,10,0.12);
-    }
-
-    .feature .top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      margin-bottom: 6px;
-    }
-
-    /* NEW ICON STYLE */
-    .bubble{
-      width: 54px;
-      height: 54px;
-      border-radius: 20px;
-      display:grid;
-      place-items:center;
-      font-weight: 900;
-      color: #111;
-      flex: 0 0 auto;
-      box-shadow: 0 14px 24px rgba(0,0,0,0.10);
-      border: 1px solid rgba(255,255,255,0.75);
-      background: white;
-    }
-
-    .bb1{ background: linear-gradient(135deg, rgba(46,204,113,0.85), rgba(255,209,102,0.95)); }
-    .bb2{ background: linear-gradient(135deg, rgba(255,77,77,0.85), rgba(255,209,102,0.95)); }
-    .bb3{ background: linear-gradient(135deg, rgba(255,209,102,0.95), rgba(46,204,113,0.85)); }
-    .bb4{ background: linear-gradient(135deg, rgba(255,77,77,0.90), rgba(46,204,113,0.75)); }
-
-    .feature h4{
-      font-size: 16px;
-      font-weight: 900;
-      letter-spacing: -0.1px;
-    }
-
-    .feature small{
-      display:block;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    /* Sections */
-    .section{
-      margin-top: 18px;
-    }
-
-    .section-head{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-
-    .section h2{
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: -0.2px;
-    }
-
-    .section p{
-      color: var(--muted);
-      line-height: 1.65;
-      max-width: 75ch;
-      font-size: 15px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
-    }
-
-    .box{
-      background: rgba(255,255,255,0.94);
-      border: 1px solid rgba(239,231,214,0.95);
-      border-radius: var(--rXL);
-      padding: 18px;
-      box-shadow: var(--shadow);
-      transition: 0.22s ease;
-    }
-
-    .box:hover{
-      transform: translateY(-5px);
-      box-shadow: 0 22px 46px rgba(40,30,10,0.12);
-    }
-
-    .box h3{
-      font-weight: 900;
-      font-size: 17px;
-      margin-bottom: 6px;
-    }
-
-    .box small{
-      display:block;
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    .actions{
-      margin-top: 12px;
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .chipbtn{
-      text-decoration:none;
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 900;
-      border: 1px solid rgba(239,231,214,0.95);
-      background: white;
-      color: var(--ink);
-      transition: 0.2s ease;
-    }
-
-    .chipbtn:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 16px 26px rgba(0,0,0,0.08);
-    }
-
-    .chipbtn.grad{
-      border: none;
-      background: linear-gradient(135deg, var(--red), var(--yellow2));
-      color: #1a1a1a;
-    }
-
-    /* Video */
-    .video{
-      border-radius: var(--rXL);
-      overflow:hidden;
-      border: 1px solid rgba(239,231,214,0.95);
-      background: white;
-      box-shadow: var(--shadow);
-    }
-    iframe{ width:100%; height: 320px; border:0; display:block; }
-
-    footer{
-      margin-top: 26px;
-      text-align:center;
-      padding: 22px 0 38px;
-      color: var(--muted);
-      font-weight: 800;
-      line-height: 1.7;
-      font-size: 14px;
-    }
-
-    /* Reveal */
-    .reveal{
-      opacity: 0;
-      transform: translateY(14px);
-      transition: 0.75s ease;
-    }
-    .reveal.show{
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 900px){
-      .hero{ grid-template-columns: 1fr; }
-      .quick{ grid-template-columns: 1fr; }
-      iframe{ height: 240px; }
-    }
-
-    /* VISITOR COUNTER FIXED TOP RIGHT */
-#visitor-counter {
-  position: fixed;
-  top: 12px;
-  right: 20px;
-  background: #000;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-family: monospace;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  z-index: 9999;
+body{
+background:#f8f7f2;
+color:#222;
+overflow-x:hidden;
 }
 
-.visitor-label {
-  color: #00c853;   /* GREEN text */
-  font-weight: bold;
-  font-size: 14px;
-}
-/* ===== VISITOR COUNTER (PREMIUM) ===== */
-#visitor-pill{
-  position: fixed;
-  top: 14px;
-  right: 18px;
-  z-index: 9999;
-
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 8px 14px;
-  border-radius: 999px;
-
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(10px);
-
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-  animation: pulse 2.5s infinite;
+:root{
+--yellow:#f8c81f;
+--green:#36d760;
+--red:#ff5757;
+--cream:#fffdf7;
+--shadow:0 15px 40px rgba(0,0,0,.08);
 }
 
-#visitor-pill .label{
-  color: #00ff99;
-  font-weight: 800;
-  font-size: 13px;
+.container{
+width:90%;
+max-width:1300px;
+margin:auto;
 }
 
-#visitor-pill .count{
-  background: linear-gradient(135deg,#00ff99,#7CFF00);
-  color: #000;
-  font-weight: 900;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 13px;
-  min-width: 48px;
-  text-align: center;
+section{
+padding:100px 0;
 }
 
-/* soft pulse */
-@keyframes pulse{
-  0%{ transform: scale(1); }
-  50%{ transform: scale(1.05); }
-  100%{ transform: scale(1); }
+.navbar{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(255,255,255,.85);
+backdrop-filter:blur(15px);
+z-index:999;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
 
-/* mobile adjustment */
-@media (max-width:600px){
-  #visitor-pill{
-    top: 10px;
-    right: 10px;
-    font-size: 12px;
-  }
+.nav-content{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
 }
 
-  </style>
+.logo{
+font-size:32px;
+font-weight:800;
+background:linear-gradient(90deg,var(--yellow),var(--green),var(--red));
+-webkit-background-clip:text;
+color:transparent;
+}
+
+nav a{
+text-decoration:none;
+color:#222;
+margin-left:30px;
+font-weight:600;
+transition:.4s;
+}
+
+nav a:hover{
+color:var(--green);
+}
+
+.hero{
+
+min-height:100vh;
+display:flex;
+align-items:center;
+position:relative;
+overflow:hidden;
+}
+
+.hero-content{
+text-align:center;
+width:100%;
+margin-top:80px;
+}
+
+.hero h1{
+font-size:80px;
+line-height:1.1;
+font-weight:800;
+margin-bottom:30px;
+}
+
+.gradient-text{
+background:linear-gradient(90deg,var(--yellow),var(--green),var(--red));
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero p{
+
+max-width:850px;
+margin:auto;
+font-size:22px;
+line-height:1.8;
+color:#666;
+}
+
+.btns{
+margin-top:40px;
+}
+
+.btn{
+
+padding:18px 35px;
+border-radius:40px;
+border:none;
+font-size:17px;
+font-weight:600;
+cursor:pointer;
+margin:10px;
+transition:.5s;
+text-decoration:none;
+display:inline-block;
+}
+
+.primary{
+background:linear-gradient(90deg,var(--yellow),var(--green),var(--red));
+color:white;
+}
+
+.secondary{
+background:white;
+color:#222;
+border:2px solid #ddd;
+}
+
+.btn:hover{
+transform:translateY(-5px);
+box-shadow:var(--shadow);
+}
+
+.quick{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:40px;
+gap:15px;
+}
+
+.quick span{
+background:white;
+padding:14px 25px;
+border-radius:40px;
+box-shadow:var(--shadow);
+}
+
+.title{
+text-align:center;
+margin-bottom:60px;
+}
+
+.title h2{
+font-size:60px;
+font-weight:800;
+}
+
+.title p{
+color:#666;
+font-size:20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.card{
+
+background:var(--cream);
+padding:30px;
+border-radius:25px;
+box-shadow:var(--shadow);
+transition:.5s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.badge{
+display:inline-block;
+padding:6px 15px;
+background:#fff0bf;
+border-radius:30px;
+margin-bottom:15px;
+font-size:13px;
+font-weight:600;
+}
+
+.card h3{
+margin-bottom:15px;
+font-size:28px;
+}
+
+.card p{
+color:#666;
+line-height:1.8;
+margin-bottom:20px;
+}
+
+.button-group{
+display:flex;
+gap:15px;
+}
+
+.button-group a{
+flex:1;
+text-align:center;
+padding:15px;
+border-radius:12px;
+font-weight:600;
+text-decoration:none;
+color:white;
+}
+
+.download{
+background:#ffc72b;
+}
+
+.view{
+background:#34c759;
+}
+
+iframe{
+width:100%;
+height:300px;
+border:none;
+border-radius:20px;
+}
+
+.contact-box{
+background:var(--cream);
+padding:50px;
+border-radius:30px;
+box-shadow:var(--shadow);
+}
+
+input,textarea{
+width:100%;
+padding:18px;
+margin-top:10px;
+margin-bottom:25px;
+border:1px solid #ddd;
+border-radius:10px;
+}
+
+footer{
+
+padding:70px 0;
+background:#fff;
+margin-top:50px;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:40px;
+}
+
+.footer-grid h3{
+margin-bottom:15px;
+}
+
+.footer-grid p,a{
+color:#666;
+text-decoration:none;
+display:block;
+margin:8px 0;
+}
+
+.glow1,.glow2{
+
+position:absolute;
+width:450px;
+height:450px;
+border-radius:50%;
+filter:blur(90px);
+opacity:.3;
+}
+
+.glow1{
+background:#90ff90;
+left:-100px;
+top:150px;
+}
+
+.glow2{
+background:#ffd56e;
+right:-100px;
+top:300px;
+}
+
+.topBtn{
+
+position:fixed;
+bottom:20px;
+right:20px;
+background:linear-gradient(90deg,var(--yellow),var(--green));
+border:none;
+padding:15px 18px;
+border-radius:50%;
+font-size:22px;
+color:white;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:45px;
+}
+
+.title h2{
+font-size:40px;
+}
+
+nav{
+display:none;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="bg" aria-hidden="true">
-    <div class="blob b1"></div>
-    <div class="blob b2"></div>
-    <div class="blob b3"></div>
-  </div>
+<div class="navbar">
 
-  <!-- NAV -->
-  <div class="nav">
-    <div class="nav-inner">
-      <div class="brand">
-        <div class="logo">∑</div>
-        Simple Mathematics
-      </div>
+<div class="container nav-content">
 
-      <div class="links">
-        <a href="#notes">Notes</a>
-        <a href="#lectures">Lectures</a>
-        <a href="#practice">Practice</a>
-        <a href="quiz.html">Quiz</a>
-        <a href="#contact">Contact</a>
-      </div>
-        
-      <a class="nav-btn" href="#notes">🚀 Start Learning</a>
-    </div>
-
-    <div id="visitor-pill">
-  👀 <span class="label">Visitors</span>
-  <span class="count" id="visitor-count">000001</span>
+<div class="logo">
+Simple Mathematics
 </div>
 
-  </div>
+<nav>
 
-  <main class="container">
+<a href="#">Home</a>
+<a href="#notes">Notes</a>
+<a href="#lectures">Lectures</a>
+<a href="#practice">Practice</a>
+<a href="#quiz">Quiz</a>
+<a href="#contact">Contact</a>
 
-    <!-- HERO -->
-    <section class="hero reveal show" id="top">
-      <div class="hero-card">
-        <div class="badge">✨ Free Learning •Class 11 •Class 12• B.Sc Ag. (Hons.) MATH-101 • B.Tech Biotech MATH-103 • UG</div>
+</nav>
 
-        <div class="title">
-          Learn <span>Mathematics</span> with fun & confidence 🌟
-        </div>
-
-        <p class="sub">
-          Welcome to <b>Simple Mathematics</b> — a bright and student-friendly learning space.
-          Get <b>PDF notes</b>, <b>video lectures</b>, <b>practice sets</b> and <b>quizzes</b>.
-          Learn daily, enjoy Maths and score high ✅
-        </p>
-
-       <div class="quick">
-  <a href="#notes">Notes <span>→</span></a>
-  <a href="#lectures">Lectures <span>→</span></a>
-  <a href="#practice">Practice <span>→</span></a>
-  <a href="quiz.html">Quiz <span>→</span></a>
 </div>
-
-      </div>
-
-      <aside class="hero-side reveal">
-        <h3>🚀 Quick Start</h3>
-        <p>
-          Start with Notes → Watch Lectures → Practice Daily → Take Weekly Quiz.
-          Everything is designed to be easy and enjoyable.
-        </p>
-
-        <div class="quick">
-          <a href="#notes">Notes <span>→</span></a>
-          <a href="#lectures">Lectures <span>→</span></a>
-          <a href="#practice">Practice <span>→</span></a>
-          <a href="quiz.html">Quiz <span>→</span></a>
-        </div>
-      </aside>
-    </section>
-
-    <!-- FEATURES -->
-    <section class="features reveal">
-      <a class="feature" href="#notes">
-        <div class="top">
-          <div class="bubble bb1">📘</div>
-          <div style="font-weight:900;">→</div>
-        </div>
-        <h4>Download Notes</h4>
-        <small>Clean PDFs, formulas and chapter-wise notes.</small>
-      </a>
-
-      <a class="feature" href="#lectures">
-        <div class="top">
-          <div class="bubble bb2">🎥</div>
-          <div style="font-weight:900;">→</div>
-        </div>
-        <h4>Watch Lectures</h4>
-        <small>Learn concepts with simple explanations.</small>
-      </a>
-
-      <a class="feature" href="#practice">
-        <div class="top">
-          <div class="bubble bb3">🧠</div>
-          <div style="font-weight:900;">→</div>
-        </div>
-        <h4>Practice Daily</h4>
-        <small>Build speed and accuracy step by step.</small>
-      </a>
-
-      <a class="feature" href="#quiz">
-        <div class="top">
-          <div class="bubble bb4">📝</div>
-          <div style="font-weight:900;">→</div>
-        </div>
-        <h4>Take Weekly Quiz</h4>
-        <small>Test yourself and improve every week.</small>
-      </a>
-    </section>
-
-    <!-- NOTES -->
-   <section class="section reveal" id="notes">
-  <div class="section-head">
-    <div>
-      <h2>📘 Notes (PDF)</h2>
-      <p>Upload PDFs in your GitHub repo and add download links here.</p>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div class="box">
-      <h3>Class 11 • Number System</h3>
-      <small>Natural, whole, integers, rational, irrational, real & complex numbers.</small>
-      <div class="actions">
-        <a class="chipbtn grad" href="Numbersystem.pdf" target="_blank">⬇ Download</a>
-        <a class="chipbtn" href="#practice">🧠 Practice</a>
-      </div>
-      <div class="box">
-  <h3>Class 11 • Set Theory</h3>
-  <small>Sets, subsets, power set, union, intersection, difference and Venn diagrams.</small>
-  <div class="actions">
-    <a class="chipbtn grad" href="SetTheory.pdf" target="_blank">⬇ Download</a>
-    <a class="chipbtn" href="#practice">🧠 Practice</a>
-  </div>
-<div class="box">
-  <h3>Class 11 • Functions</h3>
-  <small>Definition, domain & range, types of functions and graphs.</small>
-  <div class="actions">
-    <a class="chipbtn grad" href="Functions.pdf" target="_blank">⬇ Download</a>
-    <a class="chipbtn" href="#practice">🧠 Practice</a>
-  </div>
 </div>
 
 
-    <div class="box">
-      <h3>Class 11 • Trigonometry</h3>
-      <small>Identities, graphs, transformations + formulas.</small>
-      <div class="actions">
-         <a class="chipbtn grad" href="Trigonometry.pdf" target="_blank">⬇ Download</a>
-    <a class="chipbtn" href="#practice">🧠 Practice</a>
-        
-      </div>
-    <div class="box">
-  <<div class="box">
-  <h3>Class 11 • Matrices</h3>
-  <small>
-    Definition of matrix, types of matrices, order of matrix,
-    operations on matrices, transpose, symmetric & skew-symmetric matrices,
-    invertible matrices.
-  </small>
-  <div class="actions">
-    <a class="chipbtn grad" href="Matrices.pdf" target="_blank">⬇ Download</a>
-    <a class="chipbtn" href="#practice">🧠 Practice</a>
-  </div>
+<section class="hero">
+
+<div class="glow1"></div>
+<div class="glow2"></div>
+
+<div class="container hero-content">
+
+<h1>
+Learn Mathematics with<br>
+<span class="gradient-text">
+Fun & Confidence
+</span>
+</h1>
+
+<p>
+
+Free mathematics learning platform for Class 11, Class 12, B.Sc Agriculture, MATH-101 and B.Tech Mathematics with notes, lectures, quizzes and practice materials.
+
+</p>
+
+<div class="btns">
+
+<a href="#notes" class="btn primary">
+Start Learning →
+</a>
+
+<a href="#contact" class="btn secondary">
+Contact Us
+</a>
+
 </div>
 
-  </div>
-    </div>
+<div class="quick">
 
-    <div class="box">
-      <h3>Class 12 • Calculus</h3>
-      <small>Limits, continuity, differentiation and integration.</small>
-      <div class="actions">
-        <a class="chipbtn grad" href="#" onclick="alert('Calculus PDF will be added soon!')">⬇ Download</a>
-        <a class="chipbtn" href="#quiz">📝 Quiz</a>
-      </div>
-    </div>
-  </div>
+<span>📘 Notes</span>
+<span>🎥 Lectures</span>
+<span>✏ Practice</span>
+<span>❓ Quiz</span>
+
+</div>
+
+</div>
+
 </section>
 
 
-    <!-- LECTURES -->
-    <section class="section reveal" id="lectures">
-      <div class="section-head">
-        <div>
-          <h2>🎥 Video Lectures</h2>
-          <p>Replace <b>VIDEO_ID_HERE</b> with your YouTube video ID.</p>
-        </div>
-      </div>
 
-      <div class="video">
-        <iframe
-          src="https://www.youtube.com/embed/WjjDB-43DDU"
-          title="YouTube lecture"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </section>
+<section id="notes">
 
-    <!-- PRACTICE -->
-    <section class="section reveal" id="practice">
-      <div class="section-head">
-        <div>
-          <h2>🧠 Practice</h2>
-          <p>Practice daily and make Maths scoring and easy.</p>
-        </div>
-      </div>
+<div class="container">
 
-      <div class="grid">
-        <div class="box">
-          <h3>Daily 10 Questions</h3>
-          <small>Best routine for speed + accuracy.</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('We can add questions later!')">Start</a>
-          </div>
-        </div>
+<div class="title">
 
-        <div class="box">
-          <h3>Assignments</h3>
-          <small>Upload worksheets and accept responses via Google Forms.</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="https://forms.google.com" target="_blank">Submit</a>
-          </div>
-        </div>
+<h2>Study Notes</h2>
+<p>Download PDF notes and revision material</p>
 
-        <div class="box">
-          <h3>Formula Sheets</h3>
-          <small>Fast revision sheets for exams.</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Upload PDF and link here!')">Download</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- QUIZ -->
-    <section class="section reveal" id="quiz">
-      <div class="section-head">
-        <div>
-          <h2>📝 Quiz</h2>
-          <p>Create quizzes using Google Forms or Quizizz and share links.</p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="box">
-          <h3>Google Forms Quiz</h3>
-          <small>Create a quiz and paste link on this button later.</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="https://forms.google.com" target="_blank">Open Forms</a>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3>Quizizz Practice</h3>
-          <small>Fun MCQs and learning games.</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="quiz.html">Start</a>
-          </div>
-        </div>
-
-        <div class="box">
-          <h3>Chapter Tests</h3>
-          <small>Short tests for revision and confidence.</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Add chapter tests later!')">Start</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section reveal" id="contact">
-      <div class="section-head">
-        <div>
-          <h2>📩 Contact</h2>
-          <p>For doubts, topic requests and suggestions.</p>
-        </div>
-      </div>
-
-      <div class="grid">
-        <div class="box">
-          <h3>Teacher</h3>
-          <small><b>Sunny Kumar</b> • Maths Teacher</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="#" onclick="alert('Add Email/WhatsApp link here!')">Message</a>
-          </div>
-        </div>
-
-       <div class="box">
-  <h3>YouTube Channel</h3>
-  <small>https://www.youtube.com/@mathbeyondinfinity</small>
-  <div class="actions">
-    <a class="chipbtn grad" href="https://www.youtube.com/@mathbeyondinfinity" target="_blank" rel="noopener noreferrer">Open</a>
-  </div>
 </div>
-        </div>
 
-        <div class="box">
-          <h3>Motivation</h3>
-          <small>“Small daily progress creates big results.” ✅</small>
-          <div class="actions">
-            <a class="chipbtn grad" href="#top">⬆ Top</a>
-          </div>
-        </div>
-      </div>
-    </section>
+<div class="grid">
 
-    <footer>
-      © 2026 <b>Simple Mathematics</b> • Made free with GitHub Pages 💛💚❤️<br>
-      White + Cream + Yellow + Green + Red theme
-    </footer>
+<div class="card">
 
-  </main>
+<span class="badge">Class 11</span>
 
-  <script>
-    const items = document.querySelectorAll(".reveal");
-    const obs = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          e.target.classList.add("show");
-        }
-      });
-    }, {threshold: 0.12});
-    items.forEach(el=>obs.observe(el));
-  </script>
-<script>
-  window.addEventListener("load", function () {
+<h3>Number System</h3>
 
-    let visits = localStorage.getItem("site_visits");
+<p>
+Complete concepts of Number System.
+</p>
 
-    if (visits === null) {
-      visits = 1;
-    } else {
-      visits = parseInt(visits, 10) + 1;
-    }
+<div class="button-group">
 
-    localStorage.setItem("site_visits", visits);
+<a href="#" class="download">
+Download PDF
+</a>
 
-    const counter = document.getElementById("visitor-count");
-    if (counter) {
-      counter.textContent = visits.toString().padStart(6, "0");
-    } else {
-      console.error("❌ visitor-count element NOT found");
-    }
+<a href="#" class="view">
+View PDF
+</a>
 
-    console.log("✅ Visitor counter updated:", visits);
-  });
-</script>
+</div>
+
+</div>
+
+
+
+<div class="card">
+
+<span class="badge">Class 11</span>
+
+<h3>Set Theory</h3>
+
+<p>
+Sets, relations and operations.
+</p>
+
+<div class="button-group">
+
+<a href="#" class="download">
+Download PDF
+</a>
+
+<a href="#" class="view">
+View PDF
+</a>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<span class="badge">Class 12</span>
+
+<h3>Trigonometry</h3>
+
+<p>
+Trigonometric ratios and identities.
+</p>
+
+<div class="button-group">
+
+<a href="#" class="download">
+Download PDF
+</a>
+
+<a href="#" class="view">
+View PDF
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<section id="lectures">
+
+<div class="container">
+
+<div class="title">
+
+<h2>Video Lectures</h2>
+
+<p>Watch YouTube lectures</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+
+<h3>Introduction to Mathematics</h3>
+
+</div>
+
+
+<div class="card">
+
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+
+<h3>Functions & Graphs</h3>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<section id="practice">
+
+<div class="container">
+
+<div class="title">
+
+<h2>Practice Resources</h2>
+
+<p>Practice daily questions</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Daily Questions</h3>
+
+<p>Improve speed and accuracy.</p>
+
+<a class="btn primary">Start Practice</a>
+
+</div>
+
+<div class="card">
+
+<h3>Formula Sheets</h3>
+
+<p>Quick revision formulas.</p>
+
+<a class="btn primary">Download</a>
+
+</div>
+
+<div class="card">
+
+<h3>Assignments</h3>
+
+<p>Practice with worksheets.</p>
+
+<a class="btn primary">Open</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<section id="contact">
+
+<div class="container">
+
+<div class="title">
+
+<h2>Get in Touch</h2>
+
+<p>Questions or support</p>
+
+</div>
+
+<div class="contact-box">
+
+<input placeholder="Your Name">
+
+<input placeholder="Email">
+
+<input placeholder="Subject">
+
+<textarea rows="6" placeholder="Message"></textarea>
+
+<button class="btn primary">
+Send Message
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<footer>
+
+<div class="container footer-grid">
+
+<div>
+
+<h3>Simple Mathematics</h3>
+
+<p>
+
+Learn mathematics through videos,
+notes and quizzes.
+
+</p>
+
+</div>
+
+<div>
+
+<h3>Quick Links</h3>
+
+<a href="#">Notes</a>
+<a href="#">Lectures</a>
+<a href="#">Practice</a>
+
+</div>
+
+<div>
+
+<h3>Connect</h3>
+
+<a href="#">YouTube</a>
+<a href="#">Email</a>
+
+</div>
+
+</div>
+
+<center style="margin-top:40px">
+
+© 2026 Simple Mathematics
+
+</center>
+
+</footer>
+
+
+<button class="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+↑
+</button>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
