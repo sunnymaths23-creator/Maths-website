@@ -1,14 +1,10 @@
-# Corrected `notes.html`
-
-Replace your entire `notes.html` with this cleaned and corrected version.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notes • Simple Mathematics</title>
+
+<title>Study Notes | Simple Mathematics</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -22,206 +18,222 @@ scroll-behavior:smooth;
 font-family:'Poppins',sans-serif;
 }
 
-:root{
---yellow:#f8c81f;
---green:#36d760;
---red:#ff5757;
---bg:#f8f7f2;
---shadow:0 15px 40px rgba(0,0,0,.08);
-}
-
 body{
-background:var(--bg);
-color:#222;
-padding-top:100px;
+background:#f7f5ef;
+color:#111;
 }
 
-.container{
-width:90%;
-max-width:1300px;
-margin:auto;
-}
-
-/* NAVBAR */
+/* ================= NAVBAR ================= */
 
 .navbar{
 position:fixed;
 top:0;
 left:0;
 width:100%;
-background:rgba(255,255,255,0.95);
-backdrop-filter:blur(10px);
-padding:18px 0;
+background:rgba(255,255,255,0.92);
+backdrop-filter:blur(15px);
 z-index:1000;
+padding:18px 0;
 box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
 
 .nav-content{
+width:90%;
+max-width:1300px;
+margin:auto;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
 }
 
 .logo{
-font-size:34px;
+font-size:40px;
 font-weight:800;
-background:linear-gradient(90deg,var(--yellow),var(--green),var(--red));
+
+background:linear-gradient(
+90deg,
+#f7c600,
+#43d854,
+#ff5757
+);
+
 -webkit-background-clip:text;
 color:transparent;
 }
 
 nav{
 display:flex;
-gap:30px;
+gap:40px;
 }
 
 nav a{
 text-decoration:none;
-color:#222;
+font-size:18px;
 font-weight:600;
+color:#111;
 transition:.3s;
 }
 
 nav a:hover{
-color:var(--green);
+color:#43d854;
 }
 
-/* HEADER */
+/* ================= HERO ================= */
 
-.header{
-padding:60px 0 40px;
+.hero{
+padding-top:170px;
+padding-bottom:80px;
 text-align:center;
 }
 
-.header h1{
-font-size:70px;
+.hero h1{
+font-size:72px;
 font-weight:800;
+line-height:1.1;
 margin-bottom:20px;
 }
 
 .gradient{
-background:linear-gradient(90deg,var(--yellow),var(--green),var(--red));
+background:linear-gradient(
+90deg,
+#f7c600,
+#43d854,
+#ff5757
+);
+
 -webkit-background-clip:text;
 color:transparent;
 }
 
-.header p{
-font-size:20px;
-line-height:1.8;
-color:#666;
-max-width:850px;
+.hero p{
+font-size:24px;
+max-width:950px;
 margin:auto;
+line-height:1.7;
+color:#555;
 }
 
-/* GRID */
+/* ================= NOTES ================= */
 
-.notes{
-padding-bottom:80px;
+.notes-section{
+width:90%;
+max-width:1400px;
+margin:auto;
+padding-bottom:100px;
 }
 
-.grid{
+.notes-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:35px;
-margin-top:50px;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:40px;
 }
 
-.card{
+.note-card{
 background:white;
-padding:30px;
-border-radius:25px;
-box-shadow:var(--shadow);
+padding:35px;
+border-radius:28px;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
 transition:.4s;
 }
 
-.card:hover{
+.note-card:hover{
 transform:translateY(-10px);
 }
 
-.badge{
+.tag{
 display:inline-block;
-padding:6px 15px;
-background:#fff0bf;
+padding:8px 18px;
+background:#fff0c5;
 border-radius:30px;
-font-size:13px;
-font-weight:600;
+font-size:14px;
+font-weight:700;
 margin-bottom:20px;
 }
 
-.card h3{
-font-size:34px;
-margin-bottom:15px;
+.note-card h2{
+font-size:42px;
+margin-bottom:20px;
+line-height:1.2;
 }
 
-.card p{
-color:#666;
+.note-card p{
+font-size:18px;
 line-height:1.8;
-margin-bottom:25px;
+color:#666;
+margin-bottom:30px;
 }
 
-.button-group{
+.btn-group{
 display:flex;
-gap:15px;
+gap:20px;
 flex-wrap:wrap;
 }
 
-.button-group a{
+.download-btn,
+.view-btn{
 flex:1;
 text-align:center;
-padding:15px;
-border-radius:12px;
-font-weight:600;
+padding:18px;
+border-radius:16px;
 text-decoration:none;
-color:white;
+font-weight:700;
+font-size:18px;
 transition:.3s;
 }
 
-.download{
-background:#ffc72b;
+.download-btn{
+background:#f7c600;
+color:white;
 }
 
-.view{
+.download-btn:hover{
+background:#e3b400;
+}
+
+.view-btn{
 background:#34c759;
+color:white;
 }
 
-.button-group a:hover{
-transform:translateY(-3px);
+.view-btn:hover{
+background:#29aa49;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 
 footer{
-padding:50px 0;
 text-align:center;
-background:white;
-margin-top:40px;
-}
-
-footer p{
+padding:40px 20px;
+font-size:18px;
 color:#666;
+background:white;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media(max-width:768px){
 
-.nav-content{
-flex-direction:column;
-gap:15px;
+.logo{
+font-size:30px;
 }
 
 nav{
+gap:20px;
 flex-wrap:wrap;
 justify-content:center;
-gap:15px;
 }
 
-.header h1{
-font-size:45px;
+.hero h1{
+font-size:48px;
 }
 
-.card h3{
-font-size:28px;
+.hero p{
+font-size:18px;
+}
+
+.note-card h2{
+font-size:34px;
 }
 
 }
@@ -231,10 +243,11 @@ font-size:28px;
 
 <body>
 
-<!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
 
-<div class="navbar">
-<div class="container nav-content">
+<header class="navbar">
+
+<div class="nav-content">
 
 <div class="logo">
 Simple Mathematics
@@ -248,12 +261,12 @@ Simple Mathematics
 </nav>
 
 </div>
-</div>
 
-<!-- HEADER -->
+</header>
 
-<section class="header">
-<div class="container">
+<!-- ================= HERO ================= -->
+
+<section class="hero">
 
 <h1>
 Study <span class="gradient">Notes</span>
@@ -263,150 +276,231 @@ Study <span class="gradient">Notes</span>
 Download complete mathematics PDF notes for Class 11, Class 12 and university mathematics topics.
 </p>
 
-</div>
 </section>
 
-<!-- NOTES -->
+<!-- ================= NOTES ================= -->
 
-<section class="notes">
-<div class="container">
+<section class="notes-section">
 
-<div class="grid">
+<div class="notes-grid">
 
 <!-- Number System -->
 
-<div class="card">
-<span class="badge">Class 11</span>
-<h3>Number System</h3>
+<div class="note-card">
+
+<div class="tag">Class 11</div>
+
+<h2>Number System</h2>
+
 <p>
 Complete notes on rational numbers, irrational numbers, real numbers and complex numbers.
 </p>
 
-<div class="button-group">
-<a href="pdf/Numbersystem.pdf" target="_blank" class="download">Download PDF</a>
-<a href="pdf/Numbersystem.pdf" target="_blank" class="view">View PDF</a>
+<div class="btn-group">
+
+<a href="pdf/Numbersystem.pdf" download class="download-btn">
+Download PDF
+</a>
+
+<a href="pdf/Numbersystem.pdf" target="_blank" class="view-btn">
+View PDF
+</a>
+
 </div>
+
 </div>
 
 <!-- Set Theory -->
 
-<div class="card">
-<span class="badge">Class 11</span>
-<h3>Set Theory</h3>
+<div class="note-card">
+
+<div class="tag">Class 11</div>
+
+<h2>Set Theory</h2>
+
 <p>
 Learn sets, subsets, operations on sets and Venn diagrams with examples.
 </p>
 
-<div class="button-group">
-<a href="pdf/SetTheory.pdf" target="_blank" class="download">Download PDF</a>
-<a href="pdf/SetTheory.pdf" target="_blank" class="view">View PDF</a>
+<div class="btn-group">
+
+<a href="pdf/SetTheory.pdf" download class="download-btn">
+Download PDF
+</a>
+
+<a href="pdf/SetTheory.pdf" target="_blank" class="view-btn">
+View PDF
+</a>
+
 </div>
+
 </div>
 
 <!-- Functions -->
 
-<div class="card">
-<span class="badge">Class 11</span>
-<h3>Functions</h3>
+<div class="note-card">
+
+<div class="tag">Class 11</div>
+
+<h2>Functions</h2>
+
 <p>
 Complete explanation of functions, graphs, domain and range concepts.
 </p>
 
-<div class="button-group">
-<a href="pdf/Functions.pdf" target="_blank" class="download">Download PDF</a>
-<a href="pdf/Functions.pdf" target="_blank" class="view">View PDF</a>
+<div class="btn-group">
+
+<a href="pdf/Functions.pdf" download class="download-btn">
+Download PDF
+</a>
+
+<a href="pdf/Functions.pdf" target="_blank" class="view-btn">
+View PDF
+</a>
+
 </div>
+
 </div>
 
 <!-- Trigonometry -->
 
-<div class="card">
-<span class="badge">Class 12</span>
-<h3>Trigonometry</h3>
+<div class="note-card">
+
+<div class="tag">Class 12</div>
+
+<h2>Trigonometry</h2>
+
 <p>
 Important trigonometric identities, formulas and solved examples.
 </p>
 
-<div class="button-group">
-<a href="pdf/Trigonometry.pdf" target="_blank" class="download">Download PDF</a>
-<a href="pdf/Trigonometry.pdf" target="_blank" class="view">View PDF</a>
+<div class="btn-group">
+
+<a href="pdf/Trigonometry.pdf" download class="download-btn">
+Download PDF
+</a>
+
+<a href="pdf/Trigonometry.pdf" target="_blank" class="view-btn">
+View PDF
+</a>
+
 </div>
+
 </div>
 
 <!-- Matrices -->
 
-<div class="card">
-<span class="badge">Class 12</span>
-<h3>Matrices</h3>
+<div class="note-card">
+
+<div class="tag">Class 12</div>
+
+<h2>Matrices</h2>
+
 <p>
 Matrix operations, determinants, inverse matrices and applications.
 </p>
 
-<div class="button-group">
-<a href="pdf/Matrices.pdf" target="_blank" class="download">Download PDF</a>
-<a href="pdf/Matrices.pdf" target="_blank" class="view">View PDF</a>
+<div class="btn-group">
+
+<a href="pdf/Matrices.pdf" download class="download-btn">
+Download PDF
+</a>
+
+<a href="pdf/Matrices.pdf" target="_blank" class="view-btn">
+View PDF
+</a>
+
 </div>
+
 </div>
 
 <!-- Arithmetic Progression -->
 
-<div class="card">
-<span class="badge">Progressions</span>
-<h3>Arithmetic Progression</h3>
+<div class="note-card">
+
+<div class="tag">Progressions</div>
+
+<h2>Arithmetic Progression</h2>
+
 <p>
 AP formulas, nth term, sums and important solved problems.
 </p>
 
-<div class="button-group">
-<a href="pdf/Arithmetic Progression.pdf" target="_blank" class="download">Download PDF</a>
-<a href="pdf/Arithmetic Progression.pdf" target="_blank" class="view">View PDF</a>
+<div class="btn-group">
+
+<a href="pdf/Arithmetic Progression.pdf" download class="download-btn">
+Download PDF
+</a>
+
+<a href="pdf/Arithmetic Progression.pdf" target="_blank" class="view-btn">
+View PDF
+</a>
+
 </div>
+
 </div>
 
 <!-- Geometric Progression -->
 
-<div class="card">
-<span class="badge">Progressions</span>
-<h3>Geometric Progression</h3>
+<div class="note-card">
+
+<div class="tag">Progressions</div>
+
+<h2>Geometric Progression</h2>
+
 <p>
 GP concepts, infinite GP and sequence based applications.
 </p>
 
-<div class="button-group">
-<a href="pdf/Geometric Progression.pdf" target="_blank" class="download">Download PDF</a>
-<a href="pdf/Geometric Progression.pdf" target="_blank" class="view">View PDF</a>
+<div class="btn-group">
+
+<a href="pdf/Geometric Progression.pdf" download class="download-btn">
+Download PDF
+</a>
+
+<a href="pdf/Geometric Progression.pdf" target="_blank" class="view-btn">
+View PDF
+</a>
+
 </div>
+
 </div>
 
 <!-- Harmonic Progression -->
 
-<div class="card">
-<span class="badge">Progressions</span>
-<h3>Harmonic Progression</h3>
+<div class="note-card">
+
+<div class="tag">Progressions</div>
+
+<h2>Harmonic Progression</h2>
+
 <p>
 Complete harmonic progression formulas and practice examples.
 </p>
 
-<div class="button-group">
-<a href="pdf/Harmonic Progression.pdf" target="_blank" class="download">Download PDF</a>
-<a href="pdf/Harmonic Progression.pdf" target="_blank" class="view">View PDF</a>
-</div>
+<div class="btn-group">
+
+<a href="pdf/Harmonic Progression.pdf" download class="download-btn">
+Download PDF
+</a>
+
+<a href="pdf/Harmonic Progression.pdf" target="_blank" class="view-btn">
+View PDF
+</a>
+
 </div>
 
 </div>
+
 </div>
+
 </section>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
-<p>
 © 2026 Simple Mathematics | All Rights Reserved
-</p>
 </footer>
 
 </body>
 </html>
-```
-
-
