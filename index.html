@@ -385,7 +385,85 @@ display:none;
 }
 
 }
+.notes-section{
+    padding:120px 10%;
+}
 
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-size:70px;
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    font-size:24px;
+    color:#666;
+}
+
+.notes-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:35px;
+}
+
+.note-card{
+    background:#fff;
+    padding:35px;
+    border-radius:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.note-card:hover{
+    transform:translateY(-10px);
+}
+
+.class-tag{
+    display:inline-block;
+    background:#ffe9a9;
+    padding:8px 18px;
+    border-radius:30px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.note-card h3{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.note-card p{
+    color:#666;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.btn-group{
+    display:flex;
+    gap:15px;
+}
+
+.download-btn,
+.view-btn{
+    text-decoration:none;
+    padding:15px 25px;
+    border-radius:15px;
+    font-weight:700;
+    color:#fff;
+}
+
+.download-btn{
+    background:#f9c521;
+}
+
+.view-btn{
+    background:#34c759;
+}
 </style>
 </head>
 
@@ -470,7 +548,6 @@ Contact Us
 
     <div class="notes-grid">
 
-        <!-- Number System -->
         <div class="note-card">
             <span class="class-tag">Class 11</span>
             <h3>Number System</h3>
@@ -487,7 +564,6 @@ Contact Us
             </div>
         </div>
 
-        <!-- Set Theory -->
         <div class="note-card">
             <span class="class-tag">Class 11</span>
             <h3>Set Theory</h3>
@@ -504,7 +580,6 @@ Contact Us
             </div>
         </div>
 
-        <!-- Functions -->
         <div class="note-card">
             <span class="class-tag">Class 11</span>
             <h3>Functions</h3>
@@ -521,7 +596,6 @@ Contact Us
             </div>
         </div>
 
-        <!-- Trigonometry -->
         <div class="note-card">
             <span class="class-tag">Class 12</span>
             <h3>Trigonometry</h3>
@@ -538,7 +612,6 @@ Contact Us
             </div>
         </div>
 
-        <!-- Matrices -->
         <div class="note-card">
             <span class="class-tag">Class 12</span>
             <h3>Matrices</h3>
@@ -555,61 +628,9 @@ Contact Us
             </div>
         </div>
 
-        <!-- Arithmetic Progression -->
-        <div class="note-card">
-            <span class="class-tag">Progressions</span>
-            <h3>Arithmetic Progression</h3>
-            <p>AP formulas and sums.</p>
-
-            <div class="btn-group">
-                <a href="./pdf/Arithmetic-Progression.pdf" target="_blank" class="download-btn">
-                    Download PDF
-                </a>
-
-                <a href="./pdf/Arithmetic-Progression.pdf" target="_blank" class="view-btn">
-                    View PDF
-                </a>
-            </div>
-        </div>
-
-        <!-- Geometric Progression -->
-        <div class="note-card">
-            <span class="class-tag">Progressions</span>
-            <h3>Geometric Progression</h3>
-            <p>GP concepts and formulas.</p>
-
-            <div class="btn-group">
-                <a href="./pdf/Geometric-Progression.pdf" target="_blank" class="download-btn">
-                    Download PDF
-                </a>
-
-                <a href="./pdf/Geometric-Progression.pdf" target="_blank" class="view-btn">
-                    View PDF
-                </a>
-            </div>
-        </div>
-
-        <!-- Harmonic Progression -->
-        <div class="note-card">
-            <span class="class-tag">Progressions</span>
-            <h3>Harmonic Progression</h3>
-            <p>HP formulas and examples.</p>
-
-            <div class="btn-group">
-                <a href="./pdf/Harmonic-Progression.pdf" target="_blank" class="download-btn">
-                    Download PDF
-                </a>
-
-                <a href="./pdf/Harmonic-Progression.pdf" target="_blank" class="view-btn">
-                    View PDF
-                </a>
-            </div>
-        </div>
-
     </div>
 
 </section>
-
 
 
 
