@@ -640,17 +640,16 @@ Contact Us
                 Download mathematics notes, lecture PDFs and study materials specially designed for Agriculture students.
             </p>
 
-           <a href="#agriculture-notes" class="course-btn">
+          <button class="course-btn" onclick="showAgricultureNotes()">
     Explore Notes
-</a>
+</button>
 
         </div>
 
     </div>
 
 </section>
-<section id="agriculture-notes" class="notes-section">
-
+<section id="notes" class="notes-section" style="display:none;">
     <div class="section-title">
         <h2>Study Notes</h2>
         <p>Download PDF notes and revision material</p>
@@ -1192,6 +1191,21 @@ notes and quizzes.
 <button class="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
 ↑
 </button>
+<script>
 
+function showAgricultureNotes(){
+
+    const notes = document.getElementById("notes");
+
+    if(notes.style.display === "none"){
+        notes.style.display = "block";
+    }
+    else{
+        notes.style.display = "none";
+    }
+
+}
+
+</script>
 </body>
 </html>
