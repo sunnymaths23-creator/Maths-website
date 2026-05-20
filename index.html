@@ -1,9 +1,14 @@
+# Corrected Agriculture Notes Page
+
+Replace your current `agriculture.html` with this complete code.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Simple Mathematics</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B.Sc (Hons.) Agriculture Notes</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -37,10 +42,6 @@ max-width:1300px;
 margin:auto;
 }
 
-section{
-padding:100px 0;
-}
-
 /* NAVBAR */
 
 .navbar{
@@ -56,63 +57,161 @@ padding:15px 0;
 }
 
 .nav-content{
-
 width:90%;
 max-width:1300px;
 margin:auto;
-
 display:flex;
 justify-content:space-between;
 align-items:center;
 }
 
 .logo{
-
 font-size:32px;
 font-weight:800;
-
-background:linear-gradient(
-90deg,
-#f8c81f,
-#36d760,
-#ff5757
-);
-
+background:linear-gradient(90deg,#f8c81f,#36d760,#ff5757);
 -webkit-background-clip:text;
 color:transparent;
 }
 
-/* Horizontal menu */
-
 nav{
-
 display:flex;
 align-items:center;
 gap:35px;
-flex-wrap:nowrap;
 }
 
 nav a{
-
 text-decoration:none;
 font-size:18px;
 font-weight:600;
 color:#222;
 transition:.3s;
-padding:8px;
 }
 
 nav a:hover{
-
 color:#36d760;
-transform:translateY(-3px);
-
 }
 
+/* HERO */
 
-/* Mobile */
+.hero{
+padding-top:170px;
+padding-bottom:70px;
+text-align:center;
+}
+
+.hero h1{
+font-size:72px;
+font-weight:800;
+margin-bottom:20px;
+line-height:1.1;
+}
+
+.gradient-text{
+background:linear-gradient(90deg,var(--yellow),var(--green),var(--red));
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero p{
+font-size:22px;
+color:#666;
+max-width:850px;
+margin:auto;
+line-height:1.8;
+}
+
+/* NOTES */
+
+.notes-section{
+padding:40px 0 100px;
+}
+
+.notes-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:35px;
+}
+
+.note-card{
+background:white;
+padding:35px;
+border-radius:30px;
+box-shadow:var(--shadow);
+transition:.3s;
+}
+
+.note-card:hover{
+transform:translateY(-10px);
+}
+
+.class-tag{
+display:inline-block;
+padding:8px 18px;
+background:#fff0c9;
+border-radius:30px;
+font-size:14px;
+font-weight:700;
+margin-bottom:22px;
+}
+
+.note-card h3{
+font-size:32px;
+margin-bottom:15px;
+}
+
+.note-card p{
+font-size:17px;
+line-height:1.8;
+color:#666;
+margin-bottom:28px;
+}
+
+.btn-group{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.download-btn,
+.view-btn{
+flex:1;
+text-align:center;
+padding:15px;
+border-radius:14px;
+text-decoration:none;
+font-size:16px;
+font-weight:700;
+color:white;
+transition:.3s;
+}
+
+.download-btn{
+background:#f8c81f;
+}
+
+.view-btn{
+background:#36d760;
+}
+
+.download-btn:hover,
+.view-btn:hover{
+transform:scale(1.03);
+}
+
+footer{
+text-align:center;
+padding:35px;
+background:white;
+color:#666;
+font-size:17px;
+margin-top:50px;
+}
 
 @media(max-width:768px){
+
+.hero h1{
+font-size:48px;
+}
 
 .nav-content{
 flex-direction:column;
@@ -120,1092 +219,214 @@ gap:15px;
 }
 
 nav{
-
 flex-wrap:wrap;
 justify-content:center;
-gap:15px;
-
-}
-
-}
-.gradient-text{
-background:linear-gradient(90deg,var(--yellow),var(--green),var(--red));
--webkit-background-clip:text;
-color:transparent;
-}
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-    padding-top:120px;
-}
-
-.btns{
-margin-top:40px;
-}
-
-.btn{
-
-padding:18px 35px;
-border-radius:40px;
-border:none;
-font-size:17px;
-font-weight:600;
-cursor:pointer;
-margin:10px;
-transition:.5s;
-text-decoration:none;
-display:inline-block;
-}
-
-.primary{
-background:linear-gradient(90deg,var(--yellow),var(--green),var(--red));
-color:white;
-}
-
-.secondary{
-background:white;
-color:#222;
-border:2px solid #ddd;
-}
-
-.btn:hover{
-transform:translateY(-5px);
-box-shadow:var(--shadow);
-}
-
-.quick{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-margin-top:40px;
-gap:15px;
-}
-
-.quick span{
-background:white;
-padding:14px 25px;
-border-radius:40px;
-box-shadow:var(--shadow);
-}
-
-.title{
-text-align:center;
-margin-bottom:60px;
-}
-
-.title h2{
-font-size:60px;
-font-weight:800;
-}
-
-.title p{
-color:#666;
-font-size:20px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:30px;
-}
-
-.card{
-
-background:var(--cream);
-padding:30px;
-border-radius:25px;
-box-shadow:var(--shadow);
-transition:.5s;
-}
-
-.card:hover{
-transform:translateY(-10px);
-}
-
-.badge{
-display:inline-block;
-padding:6px 15px;
-background:#fff0bf;
-border-radius:30px;
-margin-bottom:15px;
-font-size:13px;
-font-weight:600;
-}
-
-.card h3{
-margin-bottom:15px;
-font-size:28px;
-}
-
-.card p{
-color:#666;
-line-height:1.8;
-margin-bottom:20px;
-}
-
-.button-group{
-display:flex;
-gap:15px;
-}
-
-.button-group a{
-flex:1;
-text-align:center;
-padding:15px;
-border-radius:12px;
-font-weight:600;
-text-decoration:none;
-color:white;
-}
-
-.download{
-background:#ffc72b;
-}
-
-.view{
-background:#34c759;
-}
-
-iframe{
-width:100%;
-height:300px;
-border:none;
-border-radius:20px;
-}
-
-.contact-box{
-background:var(--cream);
-padding:50px;
-border-radius:30px;
-box-shadow:var(--shadow);
-}
-
-input,textarea{
-width:100%;
-padding:18px;
-margin-top:10px;
-margin-bottom:25px;
-border:1px solid #ddd;
-border-radius:10px;
-}
-
-footer{
-
-padding:70px 0;
-background:#fff;
-margin-top:50px;
-}
-
-.footer-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px;
-}
-
-.footer-grid h3{
-margin-bottom:15px;
-}
-
-.footer-grid p,a{
-color:#666;
-text-decoration:none;
-display:block;
-margin:8px 0;
-}
-
-.glow1,.glow2{
-
-position:absolute;
-width:450px;
-height:450px;
-border-radius:50%;
-filter:blur(90px);
-opacity:.3;
-}
-
-.glow1{
-background:#90ff90;
-left:-100px;
-top:150px;
-}
-
-.glow2{
-background:#ffd56e;
-right:-100px;
-top:300px;
-}
-
-.topBtn{
-
-position:fixed;
-bottom:20px;
-right:20px;
-background:linear-gradient(90deg,var(--yellow),var(--green));
-border:none;
-padding:15px 18px;
-border-radius:50%;
-font-size:22px;
-color:white;
-cursor:pointer;
-}
-
-@media(max-width:768px){
-
-.hero-content{
-    text-align:center;
-    width:100%;
-    max-width:1000px;
-    margin:auto;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-}
-
-.hero h1{
-    font-size:72px;
-    line-height:1.1;
-    font-weight:800;
-    margin-bottom:25px;
-    text-align:center;
-}
-
-.title h2{
-font-size:40px;
-}
-
-nav{
-display:none;
-}
-
-}
-.notes-section{
-    padding:120px 10%;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:70px;
-}
-
-.section-title h2{
-    font-size:70px;
-    font-weight:800;
-    margin-bottom:15px;
-}
-
-.section-title p{
-    font-size:24px;
-    color:#666;
-}
-
-.notes-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:35px;
-}
-
-.note-card{
-    background:#fff;
-    padding:35px;
-    border-radius:30px;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-    transition:.3s;
-}
-
-.note-card:hover{
-    transform:translateY(-10px);
-}
-
-.class-tag{
-    display:inline-block;
-    background:#ffe9a9;
-    padding:8px 18px;
-    border-radius:30px;
-    font-weight:700;
-    margin-bottom:20px;
+gap:18px;
 }
 
 .note-card h3{
-    font-size:38px;
-    margin-bottom:15px;
+font-size:26px;
 }
 
-.note-card p{
-    color:#666;
-    line-height:1.8;
-    margin-bottom:25px;
 }
 
-.btn-group{
-    display:flex;
-    gap:15px;
-}
-
-.download-btn,
-.view-btn{
-    text-decoration:none;
-    padding:15px 25px;
-    border-radius:15px;
-    font-weight:700;
-    color:#fff;
-}
-
-.download-btn{
-    background:#f9c521;
-}
-
-.view-btn{
-    background:#34c759;
-}
-    .courses-section{
-    padding:120px 10%;
-    background:#f8f7f2;
-}
-
-.section-title{
-    text-align:center;
-    margin-bottom:70px;
-}
-
-.section-title h2{
-    font-size:70px;
-    font-weight:800;
-    margin-bottom:15px;
-}
-
-.section-title p{
-    font-size:22px;
-    color:#666;
-}
-
-.courses-grid{
-    display:flex;
-    justify-content:center;
-}
-
-.course-card{
-    background:white;
-    padding:50px;
-    border-radius:35px;
-    text-align:center;
-    max-width:500px;
-    width:100%;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-    transition:.3s;
-}
-
-.course-card:hover{
-    transform:translateY(-10px);
-}
-
-.course-icon{
-    font-size:80px;
-    margin-bottom:25px;
-}
-
-.course-card h3{
-    font-size:40px;
-    margin-bottom:20px;
-}
-
-.course-card p{
-    color:#666;
-    line-height:1.8;
-    margin-bottom:35px;
-    font-size:18px;
-}
-
-.course-btn{
-    display:inline-block;
-    padding:16px 40px;
-    border-radius:18px;
-    text-decoration:none;
-    font-weight:700;
-    background:linear-gradient(
-    90deg,
-    #f9c521,
-    #34c759
-    );
-    color:white;
-    transition:.3s;
-}
-
-.course-btn:hover{
-    transform:scale(1.05);
-}
 </style>
 </head>
 
 <body>
 
-<div class="navbar">
+<header class="navbar">
 
-<div class="container nav-content">
+<div class="nav-content">
 
 <div class="logo">
 Simple Mathematics
 </div>
 
 <nav>
-
-<a href="#">Home</a>
-<a href="#notes">Notes</a>
-<a href="lectures">Lectures</a>
-<a href="#practice">Practice</a>
-<a href="#quiz">Quiz</a>
-<a href="#contact">Contact</a>
-
+<a href="index.html">Home</a>
+<a href="agriculture.html">Agriculture</a>
+<a href="lectures.html">Lectures</a>
+<a href="quiz.html">Quiz</a>
 </nav>
 
 </div>
-</div>
 
+</header>
 
 <section class="hero">
 
-<div class="glow1"></div>
-<div class="glow2"></div>
-
-<div class="container hero-content">
+<div class="container">
 
 <h1>
-Learn Mathematics with<br>
-<span class="gradient-text">
-Fun & Confidence
-</span>
+<span class="gradient-text">B.Sc (Hons.) Agriculture</span>
 </h1>
 
 <p>
-
-Free mathematics learning platform for Class 11, Class 12, B.Sc Agriculture, MATH-101 and B.Tech Mathematics with notes, lectures, quizzes and practice materials.
-
+Mathematics notes and study materials specially designed for Agriculture students.
 </p>
 
-<div class="btns">
-
-<a href="#notes" class="btn primary">
-Start Learning →
-</a>
-
-<a href="#contact" class="btn secondary">
-Contact Us
-</a>
-
-</div>
-
-<div class="quick">
-
-<span>📘 Notes</span>
-<span>🎥 Lectures</span>
-<span>✏ Practice</span>
-<span>❓ Quiz</span>
-
-</div>
-
 </div>
 
 </section>
 
-
-<!-- ================= B.Sc Agriculture ================= -->
-
-<section class="courses-section">
-
-    <div class="section-title">
-
-        <h2>B.Sc (Hons.) Agriculture</h2>
-
-        <p>
-            Mathematics notes for Agriculture students
-        </p>
-
-    </div>
-
-    <div class="courses-grid">
-
-        <div class="course-card">
-
-            <div class="course-icon">🌾</div>
-
-            <h3>B.Sc (Hons.) Agriculture</h3>
-
-            <p>
-                Download mathematics notes, lecture PDFs and study materials specially designed for Agriculture students.
-            </p>
-
-          <button class="course-btn" onclick="showAgricultureNotes()">
-    Explore Notes
-</button>
-
-        </div>
-
-    </div>
-
-</section>
-<section id="notes" class="notes-section" style="display:none;">
-    <div class="section-title">
-        <h2>Study Notes</h2>
-        <p>Download PDF notes and revision material</p>
-    </div>
-
-    <div class="notes-grid">
-
-        <div class="note-card">
-            <span class="class-tag">Class 11</span>
-            <h3>Number System</h3>
-            <p>Complete concepts of Number System.</p>
-
-            <div class="btn-group">
-                <a href="./pdf/Numbersystem.pdf" target="_blank" class="download-btn">
-                    Download PDF
-                </a>
-
-                <a href="./pdf/Numbersystem.pdf" target="_blank" class="view-btn">
-                    View PDF
-                </a>
-            </div>
-        </div>
-
-        <div class="note-card">
-            <span class="class-tag">Class 11</span>
-            <h3>Set Theory</h3>
-            <p>Sets, relations and operations.</p>
-
-            <div class="btn-group">
-                <a href="./pdf/SetTheory.pdf" target="_blank" class="download-btn">
-                    Download PDF
-                </a>
-
-                <a href="./pdf/SetTheory.pdf" target="_blank" class="view-btn">
-                    View PDF
-                </a>
-            </div>
-        </div>
-
-        <div class="note-card">
-            <span class="class-tag">Class 11</span>
-            <h3>Functions</h3>
-            <p>Functions and graph concepts.</p>
-
-            <div class="btn-group">
-                <a href="./pdf/Functions.pdf" target="_blank" class="download-btn">
-                    Download PDF
-                </a>
-
-                <a href="./pdf/Functions.pdf" target="_blank" class="view-btn">
-                    View PDF
-                </a>
-            </div>
-        </div>
-
-        <div class="note-card">
-            <span class="class-tag">Class 12</span>
-            <h3>Trigonometry</h3>
-            <p>Trigonometric ratios and identities.</p>
-
-            <div class="btn-group">
-                <a href="./pdf/Trigonometry.pdf" target="_blank" class="download-btn">
-                    Download PDF
-                </a>
-
-                <a href="./pdf/Trigonometry.pdf" target="_blank" class="view-btn">
-                    View PDF
-                </a>
-            </div>
-        </div>
-
-        <div class="note-card">
-            <span class="class-tag">Class 12</span>
-            <h3>Matrices</h3>
-            <p>Matrix operations and determinants.</p>
-
-            <div class="btn-group">
-                <a href="./pdf/Matrices.pdf" target="_blank" class="download-btn">
-                    Download PDF
-                </a>
-
-                <a href="./pdf/Matrices.pdf" target="_blank" class="view-btn">
-                    View PDF
-                </a>
-            </div>
-        </div>
-        <!-- Determinant -->
-
-<div class="note-card">
-
-    <span class="class-tag">Algebra</span>
-
-    <h3>Determinant</h3>
-
-    <p>Properties of determinants, minors, cofactors and solved examples.</p>
-
-    <div class="btn-group">
-
-        <a href="./pdf/Determinant.pdf" target="_blank" class="download-btn">
-            Download PDF
-        </a>
-
-        <a href="./pdf/Determinant.pdf" target="_blank" class="view-btn">
-            View PDF
-        </a>
-
-    </div>
-
-</div>
-        <div class="note-card">
-    <span class="class-tag">Progressions</span>
-    <h3>Arithmetic Progression</h3>
-    <p>AP formulas, nth term and solved examples.</p>
-
-    <div class="btn-group">
-        <a href="./pdf/Arithmetic-Progression.pdf" target="_blank" class="download-btn">
-            Download PDF
-        </a>
-
-        <a href="./pdf/Arithmetic-Progression.pdf" target="_blank" class="view-btn">
-            View PDF
-        </a>
-    </div>
-</div>
-
-<div class="note-card">
-    <span class="class-tag">Progressions</span>
-    <h3>Geometric Progression</h3>
-    <p>GP concepts, series and important questions.</p>
-
-    <div class="btn-group">
-        <a href="./pdf/Geometric-Progression.pdf" target="_blank" class="download-btn">
-            Download PDF
-        </a>
-
-        <a href="./pdf/Geometric-Progression.pdf" target="_blank" class="view-btn">
-            View PDF
-        </a>
-    </div>
-</div>
-
-<div class="note-card">
-    <span class="class-tag">Progressions</span>
-    <h3>Harmonic Progression</h3>
-    <p>Harmonic progression formulas and applications.</p>
-
-    <div class="btn-group">
-        <a href="./pdf/Harmonic-Progression.pdf" target="_blank" class="download-btn">
-            Download PDF
-        </a>
-
-        <a href="./pdf/Harmonic-Progression.pdf" target="_blank" class="view-btn">
-            View PDF
-        </a>
-    </div>
-</div>
-<!-- Differentiation -->
-<div class="note-card">
-    <span class="class-tag">Calculus</span>
-    <h3>Differentiation</h3>
-    <p>Limits, derivatives and differentiation formulas.</p>
-
-    <div class="btn-group">
-        <a href="./pdf/Differentiation.pdf" target="_blank" class="download-btn">
-            Download PDF
-        </a>
-
-        <a href="./pdf/Differentiation.pdf" target="_blank" class="view-btn">
-            View PDF
-        </a>
-    </div>
-</div>
-
-<!-- Applications of Derivatives -->
-<div class="note-card">
-    <span class="class-tag">Calculus</span>
-    <h3>Applications of Derivatives</h3>
-    <p>Maxima minima, tangents and rate of change.</p>
-
-    <div class="btn-group">
-        <a href="./pdf/Applications_of_Derivatives.pdf" target="_blank" class="download-btn">
-            Download PDF
-        </a>
-
-        <a href="./pdf/Applications_of_Derivatives.pdf" target="_blank" class="view-btn">
-            View PDF
-        </a>
-    </div>
-</div>
-
-<!-- Partial Differential Equations -->
-<div class="note-card">
-    <span class="class-tag">Advanced Maths</span>
-    <h3>Partial Differential Equations</h3>
-    <p>PDE concepts, equations and solved examples.</p>
-
-    <div class="btn-group">
-        <a href="./pdf/Partial_Differential_Equations.pdf" target="_blank" class="download-btn">
-            Download PDF
-        </a>
-
-        <a href="./pdf/Partial_Differential_Equations.pdf" target="_blank" class="view-btn">
-            View PDF
-        </a>
-    </div>
-</div>
-
-<!-- Integration -->
-<div class="note-card">
-    <span class="class-tag">Calculus</span>
-    <h3>Integration</h3>
-    <p>Indefinite and definite integration methods.</p>
-
-    <div class="btn-group">
-        <a href="./pdf/Integration.pdf" target="_blank" class="download-btn">
-            Download PDF
-        </a>
-
-        <a href="./pdf/Integration.pdf" target="_blank" class="view-btn">
-            View PDF
-        </a>
-    </div>
-</div>
-
-<!-- Mathematical Models -->
-<div class="note-card">
-    <span class="class-tag">Applied Maths</span>
-    <h3>Mathematical Models</h3>
-    <p>Mathematical modelling and applications.</p>
-
-    <div class="btn-group">
-        <a href="./pdf/Mathematical_Models.pdf" target="_blank" class="download-btn">
-            Download PDF
-        </a>
-
-        <a href="./pdf/Mathematical_Models.pdf" target="_blank" class="view-btn">
-            View PDF
-        </a>
-    </div>
-</div>
-        <!-- Limit -->
-
-<div class="note-card">
-
-    <span class="class-tag">Calculus</span>
-
-    <h3>Limit</h3>
-
-    <p>Introduction to limits, standard limits.</p>
-
-    <div class="btn-group">
-
-        <a href="./pdf/Limit.pdf" target="_blank" class="download-btn">
-            Download PDF
-        </a>
-
-        <a href="./pdf/Limit.pdf" target="_blank" class="view-btn">
-            View PDF
-        </a>
-
-    </div>
-
-</div>
-       <!-- Continuity -->
-
-<div class="note-card">
-
-    <span class="class-tag">Calculus</span>
-
-    <h3>Continuity</h3>
-
-    <p>Continuity of functions, types of discontinuity and solved examples.</p>
-
-    <div class="btn-group">
-
-        <a href="./pdf/Continuity.pdf" target="_blank" class="download-btn">
-            Download PDF
-        </a>
-
-        <a href="./pdf/Continuity.pdf" target="_blank" class="view-btn">
-            View PDF
-        </a>
-
-    </div>
-
-</div> 
-        <!-- Differentiation 2 -->
-
-<div class="note-card">
-
-    <span class="class-tag">Calculus</span>
-
-    <h3>Differentiation 2</h3>
-
-    <p>Advanced differentiation techniques, applications and solved problems.</p>
-
-    <div class="btn-group">
-
-        <a href="./pdf/Differentiation_2.pdf" target="_blank" class="download-btn">
-            Download PDF
-        </a>
-
-        <a href="./pdf/Differentiation_2.pdf" target="_blank" class="view-btn">
-            View PDF
-        </a>
-
-    </div>
-
-</div>
-    </div>
-
-</section>
-
-
-
-<section id="lectures">
+<section class="notes-section">
 
 <div class="container">
 
-<div class="title">
+<div class="notes-grid">
 
-<h2>Video Lectures</h2>
-
-<p>Watch YouTube lectures</p>
-
-</div>
-
-<div class="grid">
-
-<!-- Lecture 1 -->
-
-<div class="card">
-
-<iframe 
-src="https://www.youtube.com/embed/WjjDB-43DDU"
-allowfullscreen>
-</iframe>
-
+<div class="note-card">
+<span class="class-tag">Mathematics</span>
 <h3>Number System</h3>
-
+<p>Complete concepts of Number System.</p>
+<div class="btn-group">
+<a href="./pdf/Numbersystem.pdf" target="_blank" class="download-btn">Download PDF</a>
+<a href="./pdf/Numbersystem.pdf" target="_blank" class="view-btn">View PDF</a>
+</div>
 </div>
 
-<!-- Lecture 2 -->
-
-<div class="card">
-
-<iframe 
-src="https://www.youtube.com/embed/Pb6L1nfdJBU"
-allowfullscreen>
-</iframe>
-
-<h3>Functions </h3>
-
+<div class="note-card">
+<span class="class-tag">Mathematics</span>
+<h3>Set Theory</h3>
+<p>Sets, relations and operations.</p>
+<div class="btn-group">
+<a href="./pdf/SetTheory.pdf" target="_blank" class="download-btn">Download PDF</a>
+<a href="./pdf/SetTheory.pdf" target="_blank" class="view-btn">View PDF</a>
+</div>
 </div>
 
-<!-- Lecture 3 -->
-
-<div class="card">
-
-<iframe 
-src="https://www.youtube.com/embed/ze5PA6I9jC0"
-allowfullscreen>
-</iframe>
-
-<h3>One-One Function</h3>
-
+<div class="note-card">
+<span class="class-tag">Mathematics</span>
+<h3>Functions</h3>
+<p>Functions and graph concepts.</p>
+<div class="btn-group">
+<a href="./pdf/Functions.pdf" target="_blank" class="download-btn">Download PDF</a>
+<a href="./pdf/Functions.pdf" target="_blank" class="view-btn">View PDF</a>
+</div>
 </div>
 
-<!-- Lecture 4 -->
-
-<div class="card">
-
-<iframe 
-src="https://www.youtube.com/embed/sh3KyVIPjWg"
-allowfullscreen>
-</iframe>
-
-<h3>Onto Function</h3>
-
+<div class="note-card">
+<span class="class-tag">Progressions</span>
+<h3>Arithmetic Progression</h3>
+<p>AP formulas and solved examples.</p>
+<div class="btn-group">
+<a href="./pdf/Arithmetic-Progression.pdf" target="_blank" class="download-btn">Download PDF</a>
+<a href="./pdf/Arithmetic-Progression.pdf" target="_blank" class="view-btn">View PDF</a>
+</div>
 </div>
 
-<!-- Lecture 5 -->
-
-<div class="card">
-
-<iframe 
-src="https://www.youtube.com/embed/yE7zfaog3-s"
-allowfullscreen>
-</iframe>
-
-<h3>Into, May-One Function</h3>
-
+<div class="note-card">
+<span class="class-tag">Progressions</span>
+<h3>Geometric Progression</h3>
+<p>GP concepts and sequence applications.</p>
+<div class="btn-group">
+<a href="./pdf/Geometric-Progression.pdf" target="_blank" class="download-btn">Download PDF</a>
+<a href="./pdf/Geometric-Progression.pdf" target="_blank" class="view-btn">View PDF</a>
+</div>
 </div>
 
+<div class="note-card">
+<span class="class-tag">Progressions</span>
+<h3>Harmonic Progression</h3>
+<p>HP formulas and applications.</p>
+<div class="btn-group">
+<a href="./pdf/Harmonic-Progression.pdf" target="_blank" class="download-btn">Download PDF</a>
+<a href="./pdf/Harmonic-Progression.pdf" target="_blank" class="view-btn">View PDF</a>
+</div>
 </div>
 
+<div class="note-card">
+<span class="class-tag">Algebra</span>
+<h3>Matrices</h3>
+<p>Matrix operations and determinants.</p>
+<div class="btn-group">
+<a href="./pdf/Matrices.pdf" target="_blank" class="download-btn">Download PDF</a>
+<a href="./pdf/Matrices.pdf" target="_blank" class="view-btn">View PDF</a>
+</div>
 </div>
 
-</section>
-
-
-
-
-<section id="practice">
-
-<div class="container">
-
-<div class="title">
-
-<h2>Practice Resources</h2>
-
-<p>Practice daily questions</p>
-
+<div class="note-card">
+<span class="class-tag">Algebra</span>
+<h3>Determinant</h3>
+<p>Properties and applications of determinants.</p>
+<div class="btn-group">
+<a href="./pdf/Determinant.pdf" target="_blank" class="download-btn">Download PDF</a>
+<a href="./pdf/Determinant.pdf" target="_blank" class="view-btn">View PDF</a>
+</div>
 </div>
 
-<div class="grid">
-
-<div class="card">
-
-<h3>Daily Questions</h3>
-
-<p>Improve speed and accuracy.</p>
-
-<a class="btn primary">Start Practice</a>
-
+<div class="note-card">
+<span class="class-tag">Calculus</span>
+<h3>Differentiation</h3>
+<p>Differentiation formulas and examples.</p>
+<div class="btn-group">
+<a href="./pdf/Differentiation.pdf" target="_blank" class="download-btn">Download PDF</a>
+<a href="./pdf/Differentiation.pdf" target="_blank" class="view-btn">View PDF</a>
+</div>
 </div>
 
-<div class="card">
-
-<h3>Formula Sheets</h3>
-
-<p>Quick revision formulas.</p>
-
-<a class="btn primary">Download</a>
-
+<div class="note-card">
+<span class="class-tag">Calculus</span>
+<h3>Applications of Derivatives</h3>
+<p>Maxima minima and tangents.</p>
+<div class="btn-group">
+<a href="./pdf/Applications_of_Derivatives.pdf" target="_blank" class="download-btn">Download PDF</a>
+<a href="./pdf/Applications_of_Derivatives.pdf" target="_blank" class="view-btn">View PDF</a>
+</div>
 </div>
 
-<div class="card">
-
-<h3>Assignments</h3>
-
-<p>Practice with worksheets.</p>
-
-<a class="btn primary">Open</a>
-
+<div class="note-card">
+<span class="class-tag">Advanced Maths</span>
+<h3>Partial Differential Equations</h3>
+<p>Concepts and solved examples of PDE.</p>
+<div class="btn-group">
+<a href="./pdf/Partial_Differential_Equations.pdf" target="_blank" class="download-btn">Download PDF</a>
+<a href="./pdf/Partial_Differential_Equations.pdf" target="_blank" class="view-btn">View PDF</a>
+</div>
 </div>
 
+<div class="note-card">
+<span class="class-tag">Calculus</span>
+<h3>Integration</h3>
+<p>Definite and indefinite integration.</p>
+<div class="btn-group">
+<a href="./pdf/Integration.pdf" target="_blank" class="download-btn">Download PDF</a>
+<a href="./pdf/Integration.pdf" target="_blank" class="view-btn">View PDF</a>
+</div>
 </div>
 
+<div class="note-card">
+<span class="class-tag">Applied Maths</span>
+<h3>Mathematical Models</h3>
+<p>Applications of mathematical modelling.</p>
+<div class="btn-group">
+<a href="./pdf/Mathematical_Models.pdf" target="_blank" class="download-btn">Download PDF</a>
+<a href="./pdf/Mathematical_Models.pdf" target="_blank" class="view-btn">View PDF</a>
 </div>
-
-</section>
-
-
-
-
-<section id="contact">
-
-<div class="container">
-
-<div class="title">
-
-<h2>Get in Touch</h2>
-
-<p>Questions or support</p>
-
 </div>
-
-<div class="contact-box">
-
-<input placeholder="Your Name">
-
-<input placeholder="Email">
-
-<input placeholder="Subject">
-
-<textarea rows="6" placeholder="Message"></textarea>
-
-<button class="btn primary">
-Send Message
-</button>
 
 </div>
 
 </div>
 
 </section>
-
-
-
 
 <footer>
-
-<div class="container footer-grid">
-
-<div>
-
-<h3>Simple Mathematics</h3>
-
-<p>
-
-Learn mathematics through videos,
-notes and quizzes.
-
-</p>
-
-</div>
-
-<div>
-
-<h3>Quick Links</h3>
-
-<a href="#">Notes</a>
-<a href="#">Lectures</a>
-<a href="#">Practice</a>
-
-</div>
-
-<div>
-
-<h3>Connect</h3>
-
-<a href="#">YouTube</a>
-<a href="#">Email</a>
-
-</div>
-
-</div>
-
-<center style="margin-top:40px">
-
-© 2026 Simple Mathematics
-
-</center>
-
+© 2026 Simple Mathematics | All Rights Reserved
 </footer>
 
-
-<button class="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-↑
-</button>
-<script>
-
-function showAgricultureNotes(){
-
-    const notes = document.getElementById("notes");
-
-    if(notes.style.display === "none"){
-        notes.style.display = "block";
-    }
-    else{
-        notes.style.display = "none";
-    }
-
-}
-
-</script>
 </body>
 </html>
+```
+
+Now:
+
+1. Create `agriculture.html`
+2. Paste this full code
+3. Commit changes
+4. Open:
+
+```text
+https://sunnymaths23-creator.github.io/Maths-website/agriculture.html
+```
